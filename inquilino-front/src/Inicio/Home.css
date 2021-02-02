@@ -1,0 +1,8 @@
+.listHomes ul {
+    display: flex;
+    flex-direction: row;
+}
+
+.listHomes ul li {
+    margin: 10px;
+}
