@@ -1,0 +1,122 @@
+const { getConnection } = require('../db/db')
+
+const search = async (req, res, next) => {
+    let connection;
+
+    try {
+        connection = await getConnection()
+
+        //OBTENER LOS CRITERIOS DE BÚSQUEDA
+        const {
+            provincia,
+            ciudad,
+            nBanos,
+            nHabitaciones,
+            m2,
+            precio1,
+            precio2,
+            ascensor,
+            garaje,
+            balcon,
+            jardin,
+            order,
+            direction } = req.query;
+
+        //NOMBRAMOS LA QUERY BASE
+        let query = 'select * from piso';
+
+        //ESTABLECEMOS LOS PARÁMETROS DE BÚSQUEDA
+        const params = [];
+
+        //ESTABLECER CRITERIO DE SENTIDO DE BÚSQUEDA
+        const orderDirection = (direction && direction.toLowerCase()) === 'asc' ? 'ASC' : 'DESC';
+
+        //ESTABLECER CRITERIO DE ORDEN
+        let orderBy;
+        switch (order) {
+            case 'precio':
+                orderBy = 'precio'
+                break
+            case 'fechaActualizacion':
+                orderBy = 'fechaActualizacion'
+                break
+            default:
+                orderBy = 'fechaActualizacion'
+        }
+
+        //CONSTRUIMOS QUERY MULTIBÚSQUEDA
+        if (provincia || ciudad || nBanos || nHabitaciones || m2 || precio1 || precio2 || ascensor || garaje || balcon || jardin) {
+
+            //ESTABLECEMOS CONDICIONES PARA LA QUERY
+            const conditions = [];
+            if (provincia) {
+                conditions.push(`provincia LIKE ?`)
+                params.push(`${provincia}`)
+            }
+            if (ciudad) {
+                conditions.push(`ciudad LIKE ?`)
+                params.push(`${ciudad}`)
+            }
+            if (nBanos) {
+                conditions.push(`nBanos >= ?`)
+                params.push(`${nBanos}`)
+            }
+            if (nHabitaciones) {
+                conditions.push(`nHabitaciones >= ?`)
+                params.push(`${nHabitaciones}`)
+            }
+            if (m2) {
+                conditions.push(`m2 >= ?`)
+                params.push(`${m2}`)
+            }
+            if (precio1 && precio2) {
+                conditions.push(`precio between ? and ?`)
+                params.push(`${precio1}`, `${precio2}`)
+            }
+            if (ascensor) {
+                conditions.push(`ascensor = ?`)
+                params.push(`${ascensor}`)
+            }
+            if (garaje) {
+                conditions.push(`garaje = ?`)
+                params.push(`${garaje}`)
+            }
+            if (balcon) {
+                conditions.push(`balcon = ?`)
+                params.push(`${balcon}`)
+            }
+            if (jardin) {
+                conditions.push(`jardin = ?`)
+                params.push(`${jardin}`)
+            }
+            /**
+             * 
+             * HAY QUE AÑADIR UN CAMPO FECHA DE DISPONIBILIDAD
+             * 
+             */
+
+            //FINALIZAMOS CONSTRUCCIÓN DE QUERY
+            query = `${query} where ${conditions.join(
+                ` and `
+            )} order by ${orderBy} ${orderDirection} `;
+
+            console.log(query, params)
+            const [result] = await connection.query(query, params)
+
+            res.send({
+                data: result
+            })
+        }
+
+    } catch (e) {
+        next(e)
+    } finally {
+        if (connection) {
+            connection.release()
+        }
+    }
+}
+
+module.exports = {
+    search
+}
