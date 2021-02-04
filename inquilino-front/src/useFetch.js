@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import { useLogin } from "./LoginContext";
+import { useSelector } from "react-redux";
 
 function useFetch(url, key) {
     const [data, setData] = useState()
-    const [login] = useLogin()
+
+    const login = useSelector(s => s.login)
+
 
     useEffect(() => {
         const opts = {}
