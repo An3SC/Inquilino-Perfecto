@@ -4,15 +4,27 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom'
-import { LoginProvider } from './LoginContext';
+import { createStore, combineReducers, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux';
+import loginReducer from './Store/loginReducer';
+import ErrorBoundary from './ErrorBoundary';
+
+
+const rootReducer = combineReducers({
+  login: loginReducer
+})
+
+const store = createStore(rootReducer)
 
 ReactDOM.render(
   <React.StrictMode>
-    <LoginProvider>
-      <Router>
-        <App />
-      </Router>
-    </LoginProvider>
+    <ErrorBoundary>
+      <Provider store={store}>
+        <Router>
+          <App />
+        </Router>
+      </Provider>
+    </ErrorBoundary>
   </React.StrictMode>,
   document.getElementById('root')
 );

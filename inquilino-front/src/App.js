@@ -1,13 +1,23 @@
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
+import Header from './Header';
 import Home from './Inicio/Home';
+import Login from './Login/Login';
+import Recovery from './Login/Recovery';
 
 function App() {
   return (
     <div className="App">
+      <Header />
       <Switch>
-        <Route>
+        <Route path='/' exact>
           <Home />
+        </Route>
+        <Route path='/login'>
+          <Login />
+        </Route>
+        <Route path='/recovery'>
+          <Recovery />
         </Route>
       </Switch>
     </div>
