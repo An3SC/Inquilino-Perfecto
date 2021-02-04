@@ -80,7 +80,7 @@ const login = async (req, res) => {
     const token = jwt.sign(tokenPayload, process.env.SECRET, {
         expiresIn: '1d'
     });
-   
+
     res.send({
         token
     })

@@ -110,6 +110,7 @@ const recoverPassword = async (req, res) => {
         await emailValidator.validateAsync(req.body)
 
         const { email } = req.body
+        console.log(email)
 
         const user = await db.getUser(email)
 
@@ -123,6 +124,7 @@ const recoverPassword = async (req, res) => {
 
         utils.recoverPasswordMail(email, `http://${process.env.PUBLIC_DOMAIN}/usuario/password/reset/${validationCode}`)
     } catch (e) {
+        console.log(e)
         res.status(403).send()
     }
     res.send()
