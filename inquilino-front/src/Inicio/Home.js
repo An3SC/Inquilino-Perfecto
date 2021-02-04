@@ -1,5 +1,5 @@
-import Login from "../Login/Login";
 import ListHomes from "../Viviendas/ListHomes";
+import ErrorBoundary from '../ErrorBoundary';
 import './Home.css'
 
 function Home() {
@@ -7,8 +7,9 @@ function Home() {
         <div className='page home'>
             <div className='box'>
                 <h1>Inquilino perfecto</h1>
-                <ListHomes />
-                <Login />
+                <ErrorBoundary>
+                    <ListHomes />
+                </ErrorBoundary>
             </div>
         </div>
     )
