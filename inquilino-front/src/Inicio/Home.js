@@ -1,6 +1,6 @@
-import ListHomes from "../Viviendas/ListHomes";
 import ErrorBoundary from '../ErrorBoundary';
 import './Home.css'
+import FirstSearch from "./FirstSearch";
 
 function Home() {
     return (
@@ -8,7 +8,7 @@ function Home() {
             <div className='box'>
                 <h1>Inquilino perfecto</h1>
                 <ErrorBoundary>
-                    <ListHomes />
+                    <FirstSearch />
                 </ErrorBoundary>
             </div>
         </div>

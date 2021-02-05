@@ -11,7 +11,9 @@ function Header() {
 
     return (
         <header>
-            <h1>Mi App</h1>
+            <div>
+                <Link to='/'>Inicio</Link>
+            </div>
             <div>
                 {!login &&
                     <Link to="/login">Iniciar sesión</Link>
@@ -23,9 +25,7 @@ function Header() {
                     </div>
                 }
             </div>
-            <div>
-                <Link to='/'>Inicio</Link>
-            </div>
+
         </header>
     );
 }

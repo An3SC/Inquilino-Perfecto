@@ -53,7 +53,7 @@ function Login() {
                 <button>Iniciar</button>
             </div>
             <p>
-                <Link to="/recovery">No recuerdas tu contraseña?</Link>
+                <Link to="/recovery">¿No recuerdas tu contraseña?</Link>
             </p>
         </form>
     )

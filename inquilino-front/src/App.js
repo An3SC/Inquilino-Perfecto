@@ -4,6 +4,7 @@ import Header from './Header';
 import Home from './Inicio/Home';
 import Login from './Login/Login';
 import Recovery from './Login/Recovery';
+import SearchPage from './Viviendas/SearchPage';
 
 function App() {
   return (
@@ -13,10 +14,13 @@ function App() {
         <Route path='/' exact>
           <Home />
         </Route>
-        <Route path='/login'>
+        <Route path='/search' exact>
+          <SearchPage />
+        </Route>
+        <Route path='/login' exact>
           <Login />
         </Route>
-        <Route path='/recovery'>
+        <Route path='/recovery' exact>
           <Recovery />
         </Route>
       </Switch>
