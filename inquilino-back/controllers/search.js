@@ -1,4 +1,5 @@
 const { getConnection } = require('../db/db')
+const { dateToDb } = require('../utils/moment')
 
 const search = async (req, res, next) => {
     let connection;
@@ -15,6 +16,8 @@ const search = async (req, res, next) => {
             m2,
             precio1,
             precio2,
+            fecha_entrada,
+            fecha_salida,
             ascensor,
             garaje,
             balcon,
@@ -23,7 +26,8 @@ const search = async (req, res, next) => {
             direction } = req.query;
 
         //NOMBRAMOS LA QUERY BASE
-        let query = 'select * from piso';
+        let query = `select * from piso
+                    left outer join reserva on reserva.id_piso = piso.id`;
 
         //ESTABLECEMOS LOS PARÁMETROS DE BÚSQUEDA
         const params = [];
@@ -45,7 +49,7 @@ const search = async (req, res, next) => {
         }
 
         //CONSTRUIMOS QUERY MULTIBÚSQUEDA
-        if (provincia || ciudad || nBanos || nHabitaciones || m2 || precio1 || precio2 || ascensor || garaje || balcon || jardin) {
+        if (provincia || ciudad || nBanos || nHabitaciones || m2 || precio1 || precio2 || (fecha_entrada && fecha_salida) || ascensor || garaje || balcon || jardin) {
 
             //ESTABLECEMOS CONDICIONES PARA LA QUERY
             const conditions = [];
@@ -80,6 +84,14 @@ const search = async (req, res, next) => {
                     conditions.push(`precio between ? and ?`)
                     params.push(`${precio1}`, `${precio2}`)
                 }
+            }
+            if (fecha_entrada && fecha_salida) {
+                const entrada = dateToDb(fecha_entrada)
+                const salida = dateToDb(fecha_salida)
+
+                conditions.push(`fecha_entrada not between ? and ?
+                                and fecha_salida not between ? and ?`)
+                params.push(`${entrada}`, `${salida}`, `${entrada}`, `${salida}`)
             }
             if (ascensor) {
                 conditions.push(`ascensor = ?`)

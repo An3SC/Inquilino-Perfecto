@@ -4,7 +4,8 @@ const bcrypt = require('bcrypt');
 const faker = require('faker/locale/es')
 const fsPromises = require('fs').promises
 const { random } = require("lodash");
-const moment = require('moment')
+const { sixMonths, dateToDb } = require('../utils/moment')
+
 
 const { getConnection } = require("./db");
 
@@ -87,8 +88,9 @@ async function main() {
         create table if not exists reserva(
             id_reserva int unsigned auto_increment primary key,
             precio bigint unsigned not null,
-            fecha_entrada timestamp unique,
-            fecha_salida timestamp unique,
+            fecha_reserva timestamp default current_timestamp,
+            fecha_entrada date,
+            fecha_salida date,
             score_piso float,
             score_usuario float,
             estado enum('aceptado', 'pendiente', 'declinado') default 'pendiente' not null,
@@ -187,6 +189,42 @@ async function main() {
         }
 
         console.log('*******PISOS CREADOS')
+
+        let reserva = 50;
+
+        for (let i = 1; i <= reserva; i++) {
+            const precio = random(200, 2000);
+            const checkIn = faker.date.soon();
+            const fecha_entrada = dateToDb(checkIn);
+            const fecha_salida = sixMonths(checkIn);
+            const score_piso = random(0, 5);
+            const score_usuario = random(0, 5);
+            const id_piso = i;
+            const id_usuario = random(1, 100);
+            const estado = faker.random.arrayElement(['aceptado', 'pendiente', 'declinado']);
+            await connection.query(`
+                insert into reserva(
+                    precio,
+                    fecha_entrada,
+                    fecha_salida,
+                    score_piso,
+                    score_usuario,
+                    id_piso,
+                    id_usuario,
+                    estado) values (
+                        '${precio}',
+                        '${fecha_entrada}',
+                        '${fecha_salida}',
+                        '${score_piso}',
+                        '${score_usuario}',
+                        '${id_piso}',
+                        '${id_usuario}',
+                        '${estado}'
+                    )
+                `)
+        }
+
+        console.log('******** RESERVAS CREADAS')
 
     } catch (e) {
         console.log('Some error ocurred: ', e)
