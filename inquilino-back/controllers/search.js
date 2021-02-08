@@ -85,13 +85,21 @@ const search = async (req, res, next) => {
                     params.push(`${precio1}`, `${precio2}`)
                 }
             }
+            // if (fecha_entrada && fecha_salida) {
+            //     const entrada = dateToDb(fecha_entrada)
+            //     const salida = dateToDb(fecha_salida)
+
+            //     conditions.push(`fecha_entrada not between ? and ?
+            //         and fecha_salida not between ? and ?`)
+            //     params.push(`${entrada}`, `${salida}`, `${entrada}`, `${salida}`)
+            // }
             if (fecha_entrada && fecha_salida) {
                 const entrada = dateToDb(fecha_entrada)
                 const salida = dateToDb(fecha_salida)
 
-                conditions.push(`fecha_entrada not between ? and ?
-                                and fecha_salida not between ? and ?`)
-                params.push(`${entrada}`, `${salida}`, `${entrada}`, `${salida}`)
+                conditions.push(`fecha_entrada < ?
+                    and fecha_salida > ?`)
+                params.push(`${entrada}`, `${salida}`)
             }
             if (ascensor) {
                 conditions.push(`ascensor = ?`)
@@ -109,16 +117,11 @@ const search = async (req, res, next) => {
                 conditions.push(`jardin = ?`)
                 params.push(`${jardin}`)
             }
-            /**
-             * 
-             * HAY QUE AÑADIR UN CAMPO FECHA DE DISPONIBILIDAD
-             * 
-             */
 
             //FINALIZAMOS CONSTRUCCIÓN DE QUERY
             query = `${query} where ${conditions.join(
                 ` and `
-            )} order by ${orderBy} ${orderDirection} `;
+            )} or reserva.id_reserva is null order by ${orderBy} ${orderDirection} `;
 
             console.log(query, params)
             const [result] = await connection.query(query, params)

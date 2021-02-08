@@ -145,6 +145,7 @@ async function main() {
         console.log('******USUARIOS CREADOS')
 
         let pisos = 500;
+
         for (let i = 1; i <= pisos; i++) {
             const provincia = faker.address.state();
             const ciudad = faker.address.cityPrefix();
@@ -190,11 +191,11 @@ async function main() {
 
         console.log('*******PISOS CREADOS')
 
-        let reserva = 50;
+        let reserva = 75;
 
         for (let i = 1; i <= reserva; i++) {
             const precio = random(200, 2000);
-            const checkIn = faker.date.soon();
+            const checkIn = faker.date.future();
             const fecha_entrada = dateToDb(checkIn);
             const fecha_salida = sixMonths(checkIn);
             const score_piso = random(0, 5);
