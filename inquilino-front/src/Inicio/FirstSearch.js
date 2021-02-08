@@ -17,7 +17,7 @@ function FirstSearch() {
         const data = await res.json()
         console.log(data)
         setResults(data)
-        history.push('/search')
+        history.push(`/search/&ciudad=${city}&precio2=${price}`)
     }
 
     return (

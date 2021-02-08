@@ -14,7 +14,7 @@ function App() {
         <Route path='/' exact>
           <Home />
         </Route>
-        <Route path='/search' exact>
+        <Route path='/search'>
           <SearchPage />
         </Route>
         <Route path='/login' exact>
