@@ -14,7 +14,7 @@ const register = async (req, res) => {
          * Cuando cambiemos a NOT NULL los demás parámetros habrá que
          * meterlos al lado de email y password
          */
-        const { email, password, nombre, provincia } = req.body
+        const { email, password, nombre, provincia, apellidos, ciudad, descripcion } = req.body
         const user = await db.getUser(email)
         if (user) {
             res.status(400).send()
@@ -24,7 +24,7 @@ const register = async (req, res) => {
 
         const validationCode = randomstring.generate(21)
 
-        await db.register(email, passwordBcrypt, nombre, provincia, validationCode)
+        await db.register(email, passwordBcrypt, nombre, provincia, apellidos, ciudad, descripcion, validationCode)
 
         utils.sendConfirmationMail(email, `http://${process.env.PUBLIC_DOMAIN}/usuario/validate/${validationCode}`)
 
