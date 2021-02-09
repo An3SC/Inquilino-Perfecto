@@ -6,7 +6,6 @@ function useFetch(url, key) {
 
     const login = useSelector(s => s.login)
 
-
     useEffect(() => {
         const opts = {}
         if (login) {

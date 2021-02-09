@@ -5,19 +5,17 @@ function FirstSearch() {
     const [city, setCity] = useState('')
     const [price, setPrice] = useState('')
 
-    const [results, setResults] = useState()
+    const [, setResults] = useState()
 
     let history = useHistory()
 
     const handleSubmit = async e => {
         e.preventDefault()
-        console.log(city, price)
-        const url = `http://localhost:9999/vivienda/busqueda?` + `ciudad=${city}` + `&precio2=${price}`
+        const url = `http://localhost:9999/vivienda/busqueda?` + `ciudad=${city}` /*+ `&precio2=${price}`*/
         const res = await fetch(url)
         const data = await res.json()
-        console.log(data)
         setResults(data)
-        history.push(`/search/&ciudad=${city}&precio2=${price}`)
+        history.push(`/search/&ciudad=${city}`)
     }
 
     return (
