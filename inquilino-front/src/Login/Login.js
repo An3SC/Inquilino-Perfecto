@@ -9,6 +9,8 @@ function Login() {
     const login = useSelector(s => s.login)
     const dispatch = useDispatch()
 
+    console.log(login)
+
     const handleSubmit = async e => {
         e.preventDefault()
         try {
@@ -17,8 +19,9 @@ function Login() {
                 body: JSON.stringify({ email, password }),
                 method: 'POST'
             })
+            // console.log(res)
             const data = await res.json()
-            console.log(data)
+            // console.log(data)
             dispatch({ type: 'login', data })
         } catch (e) {
             console.warn(e)
