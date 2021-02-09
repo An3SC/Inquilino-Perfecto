@@ -25,7 +25,9 @@ function Header() {
                     </div>
                 }
             </div>
-
+            <div>
+                <Link to='/register'>Registro</Link>
+            </div>
         </header>
     );
 }

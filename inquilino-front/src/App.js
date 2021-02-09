@@ -4,6 +4,7 @@ import Header from './Header';
 import Home from './Inicio/Home';
 import Login from './Login/Login';
 import Recovery from './Login/Recovery';
+import Register from './Login/Register';
 import SearchPage from './Viviendas/SearchPage';
 
 function App() {
@@ -16,6 +17,9 @@ function App() {
         </Route>
         <Route path='/search'>
           <SearchPage />
+        </Route>
+        <Route path='/register' exact>
+          <Register />
         </Route>
         <Route path='/login' exact>
           <Login />
