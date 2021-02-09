@@ -64,7 +64,6 @@ const recoverPasswordMail = async (email, code) => {
   await sendgrid.send(message);
 }
 
-
 module.exports = {
   sendConfirmationMail,
   updateEmailMail,

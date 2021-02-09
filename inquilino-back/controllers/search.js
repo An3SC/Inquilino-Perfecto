@@ -85,21 +85,14 @@ const search = async (req, res, next) => {
                     params.push(`${precio1}`, `${precio2}`)
                 }
             }
-            // if (fecha_entrada && fecha_salida) {
-            //     const entrada = dateToDb(fecha_entrada)
-            //     const salida = dateToDb(fecha_salida)
-
-            //     conditions.push(`fecha_entrada not between ? and ?
-            //         and fecha_salida not between ? and ?`)
-            //     params.push(`${entrada}`, `${salida}`, `${entrada}`, `${salida}`)
-            // }
             if (fecha_entrada && fecha_salida) {
                 const entrada = dateToDb(fecha_entrada)
                 const salida = dateToDb(fecha_salida)
 
-                conditions.push(`fecha_entrada < ?
-                    and fecha_salida > ?`)
-                params.push(`${entrada}`, `${salida}`)
+                conditions.push(`fecha_entrada not between ? and ?
+                    and fecha_salida not between ? and ?
+                    and not (fecha_entrada < ? and fecha_salida > ?)`)
+                params.push(`${entrada}`, `${salida}`, `${entrada}`, `${salida}`, `${entrada}`, `${salida}`)
             }
             if (ascensor) {
                 conditions.push(`ascensor = ?`)
