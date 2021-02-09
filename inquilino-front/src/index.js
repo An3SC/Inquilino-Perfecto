@@ -7,11 +7,13 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux';
 import loginReducer from './Store/loginReducer';
+import registerReducer from './Store/registerReducer'
 import ErrorBoundary from './ErrorBoundary';
 
 
 const rootReducer = combineReducers({
-  login: loginReducer
+  login: loginReducer,
+  register: registerReducer
 })
 
 const store = createStore(rootReducer)
