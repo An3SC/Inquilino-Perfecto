@@ -3,20 +3,20 @@ import { useHistory } from "react-router-dom"
 
 function FirstSearch() {
     const [city, setCity] = useState('')
-    const [price, setPrice] = useState('')
-
-    const [results, setResults] = useState()
-    console.log(results)
+    // const [price, setPrice] = useState('')
+    // const [banos, setBanos] = useState('')
 
     let history = useHistory()
 
+    // FUNCIÓN CON USO DE PARAMS
+    // const handleSubmit = async e => {
+    //     e.preventDefault()
+    //     history.push(`/search/${city}/${banos}`)
+    // }
+
     const handleSubmit = async e => {
         e.preventDefault()
-        const url = `http://localhost:9999/vivienda/busqueda?` + `ciudad=${city}` /*+ `&precio2=${price}`*/
-        const res = await fetch(url)
-        const data = await res.json()
-        setResults(data)
-        // history.push(`/search/&ciudad=${city}`)
+        history.push(`/search/&ciudad=${city}`)
     }
 
     return (
@@ -28,7 +28,8 @@ function FirstSearch() {
                 <input type='text' placeholder='Ciudad...'
                     value={city} onChange={e => setCity(e.target.value)}
                 />
-                <label>
+                {/* <input type='number' min='0' value={banos} onChange={e => setBanos(e.target.value)} /> */}
+                {/* <label>
                     Precio máximo
                     <select value={price} onChange={e => setPrice(e.target.value)}>
                         <option value='' hidden>Max</option>
@@ -37,7 +38,7 @@ function FirstSearch() {
                         <option value={600}>600</option>
                         <option value={700}>700</option>
                     </select>
-                </label>
+                </label> */}
                 <button>Buscar</button>
             </form>
         </div>
