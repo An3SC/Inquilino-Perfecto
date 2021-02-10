@@ -15,6 +15,11 @@ function App() {
         <Route path='/' exact>
           <Home />
         </Route>
+        {/*
+        FUNCIÓN CON USO DE PARAMS
+        <Route path='/search/:city/:banos' exact>
+          <SearchPage />
+        </Route> */}
         <Route path='/search'>
           <SearchPage />
         </Route>
