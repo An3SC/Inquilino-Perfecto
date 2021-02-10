@@ -75,13 +75,13 @@ const search = async (req, res, next) => {
             }
             if (precio1 || precio2) {
                 if (!precio1) {
-                    conditions.push(`precio <= ?`)
+                    conditions.push(`precio_piso <= ?`)
                     params.push(`${precio2}`)
                 } else if (!precio2) {
-                    conditions.push(`precio >= ?`)
+                    conditions.push(`precio_piso >= ?`)
                     params.push(`${precio1}`)
                 } else if (precio1 && precio2) {
-                    conditions.push(`precio between ? and ?`)
+                    conditions.push(`precio_piso between ? and ?`)
                     params.push(`${precio1}`, `${precio2}`)
                 }
             }

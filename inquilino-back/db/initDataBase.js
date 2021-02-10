@@ -54,7 +54,7 @@ async function main() {
                 nBanos smallint unsigned not null,
                 nHabitaciones smallint unsigned not null,
                 m2 float not null,
-                precio bigint unsigned not null,
+                precio_piso bigint unsigned not null,
                 ascensor enum('si','no') not null default 'no',
                 garaje enum('si', 'no') not null default 'no',
                 balcon enum('si', 'no') not null default 'no',
@@ -87,7 +87,7 @@ async function main() {
         await connection.query(`
         create table if not exists reserva(
             id_reserva int unsigned auto_increment primary key,
-            precio bigint unsigned not null,
+            precio_reserva bigint unsigned not null,
             fecha_reserva timestamp default current_timestamp,
             fecha_entrada date,
             fecha_salida date,
@@ -153,7 +153,7 @@ async function main() {
             const nBanos = random(1, 5);
             const nHabitaciones = random(2, 10);
             const m2 = random(40, 300);
-            const precio = random(200, 2000);
+            const precio_piso = random(200, 2000);
             const ascensor = faker.random.arrayElement(['si', 'no'])
             const garaje = faker.random.arrayElement(['si', 'no'])
             const balcon = faker.random.arrayElement(['si', 'no'])
@@ -167,7 +167,7 @@ async function main() {
                     nBanos,
                     nHabitaciones,
                     m2,
-                    precio,
+                    precio_piso,
                     ascensor,
                     garaje,
                     balcon,
@@ -179,7 +179,7 @@ async function main() {
                         "${nBanos}",
                         "${nHabitaciones}",
                         "${m2}",
-                        "${precio}",
+                        "${precio_piso}",
                         "${ascensor}",
                         "${garaje}",
                         '${balcon}',
@@ -194,7 +194,7 @@ async function main() {
         let reserva = 75;
 
         for (let i = 1; i <= reserva; i++) {
-            const precio = random(200, 2000);
+            const precio_reserva = random(200, 2000);
             const checkIn = faker.date.future();
             const fecha_entrada = dateToDb(checkIn);
             const fecha_salida = sixMonths(checkIn);
@@ -205,7 +205,7 @@ async function main() {
             const estado = faker.random.arrayElement(['aceptado', 'pendiente', 'declinado']);
             await connection.query(`
                 insert into reserva(
-                    precio,
+                    precio_reserva,
                     fecha_entrada,
                     fecha_salida,
                     score_piso,
@@ -213,7 +213,7 @@ async function main() {
                     id_piso,
                     id_usuario,
                     estado) values (
-                        '${precio}',
+                        '${precio_reserva}',
                         '${fecha_entrada}',
                         '${fecha_salida}',
                         '${score_piso}',
