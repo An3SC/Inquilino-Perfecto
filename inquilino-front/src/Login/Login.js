@@ -9,8 +9,6 @@ function Login() {
     const login = useSelector(s => s.login)
     const dispatch = useDispatch()
 
-    console.log(login)
-
     const handleSubmit = async e => {
         e.preventDefault()
         try {

@@ -20,7 +20,7 @@ function Header() {
                 }
                 {login &&
                     <div>
-                        {login.username}
+                        <label>{login.username} </label>
                         <button onClick={handleLogout}>Logout</button>
                     </div>
                 }

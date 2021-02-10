@@ -5,7 +5,8 @@ function FirstSearch() {
     const [city, setCity] = useState('')
     const [price, setPrice] = useState('')
 
-    const [, setResults] = useState()
+    const [results, setResults] = useState()
+    console.log(results)
 
     let history = useHistory()
 
@@ -15,7 +16,7 @@ function FirstSearch() {
         const res = await fetch(url)
         const data = await res.json()
         setResults(data)
-        history.push(`/search/&ciudad=${city}`)
+        // history.push(`/search/&ciudad=${city}`)
     }
 
     return (
