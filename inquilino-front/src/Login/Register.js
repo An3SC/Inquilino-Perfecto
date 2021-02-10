@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useHistory } from "react-router-dom"
 
 function Register() {
 
@@ -16,6 +17,12 @@ function Register() {
         setRegistered(true)
     }
 
+    const history = useHistory()
+
+    if (registered) {
+        history.push(`/`)
+    }
+
     return (
         <form onSubmit={handleSubmit}>
             <input name='nombre' placeholder='Nombre...' value={user.nombre || ''} onChange={e => setUser({ ...user, nombre: e.target.value })} required />
@@ -26,11 +33,11 @@ function Register() {
             <input name='password' type='password' placeholder='Contraseña...' value={user.password || ''} onChange={e => setUser({ ...user, password: e.target.value })} required />
             <input name='descripcion' placeholder='Descripcion...' value={user.descripcion || ''} onChange={e => setUser({ ...user, descripcion: e.target.value })} />
             <button>¡Regístrame!</button>
-            {registered &&
+            {/* {registered &&
                 <div>
                     <label>¡Te hemos enviado un correo electrónico!</label>
                 </div>
-            }
+            } */}
         </form>
     )
 }
