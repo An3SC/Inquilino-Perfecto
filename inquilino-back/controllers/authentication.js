@@ -54,6 +54,8 @@ const login = async (req, res) => {
     const { email, password } = req.body
 
     const user = await db.getUser(email)
+    const username = user.nombre
+    const userImage = user.imagen
     if (!user) {
         res.status(401).send()
         return
@@ -70,7 +72,7 @@ const login = async (req, res) => {
         isAdmin: user.role === 'admin',
         role: user.role,
         email: user.email,
-        id: user.id
+        id: user.id,
         /**
          * Ponemos cualquier tipo de información que
          * pueda ser de utilidad en los endpoints
@@ -82,7 +84,9 @@ const login = async (req, res) => {
     });
 
     res.send({
-        token
+        token,
+        username,
+        userImage
     })
 }
 

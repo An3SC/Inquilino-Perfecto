@@ -89,9 +89,10 @@ const search = async (req, res, next) => {
                 const entrada = dateToDb(fecha_entrada)
                 const salida = dateToDb(fecha_salida)
 
-                conditions.push(`fecha_entrada not between ? and ?
+                conditions.push(`(fecha_entrada not between ? and ?
                     and fecha_salida not between ? and ?
-                    and not (fecha_entrada < ? and fecha_salida > ?)`)
+                    and not (fecha_entrada < ? and fecha_salida > ?)
+                    or (reserva.id_reserva is null))`)
                 params.push(`${entrada}`, `${salida}`, `${entrada}`, `${salida}`, `${entrada}`, `${salida}`)
             }
             if (ascensor) {
@@ -114,7 +115,7 @@ const search = async (req, res, next) => {
             //FINALIZAMOS CONSTRUCCIÓN DE QUERY
             query = `${query} where ${conditions.join(
                 ` and `
-            )} or reserva.id_reserva is null order by ${orderBy} ${orderDirection} `;
+            )} order by ${orderBy} ${orderDirection} `;
 
             console.log(query, params)
             const [result] = await connection.query(query, params)
