@@ -1,5 +1,6 @@
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
+import Footer from './Footer';
 import Header from './Header';
 import Home from './Inicio/Home';
 import Login from './Login/Login';
@@ -15,12 +16,7 @@ function App() {
         <Route path='/' exact>
           <Home />
         </Route>
-        {/*
-        FUNCIÓN CON USO DE PARAMS
-        <Route path='/search/:city/:banos' exact>
-          <SearchPage />
-        </Route> */}
-        <Route path='/search'>
+        <Route path='/search/:cityUrl' exact>
           <SearchPage />
         </Route>
         <Route path='/register' exact>
@@ -32,7 +28,11 @@ function App() {
         <Route path='/recovery' exact>
           <Recovery />
         </Route>
+        {/* <Route>
+          <CreateHome path='/createHome' />
+        </Route> */}
       </Switch>
+      <Footer />
     </div>
   );
 }
