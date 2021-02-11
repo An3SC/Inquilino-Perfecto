@@ -25,6 +25,7 @@ const createHome = async (req, res) => {
     try {
         const decodedToken = jwt.verify(authorization, process.env.SECRET);
         const id_usuario = decodedToken.id
+        // await homeValidator.validateAsync(req.body)
 
         await db.createHome(fechaPublicacion, provincia, ciudad, direccion, precio_piso, nBanos, nHabitaciones, ascensor, garaje, balcon, jardin, m2, descripcion, id_usuario)
     } catch (e) {
