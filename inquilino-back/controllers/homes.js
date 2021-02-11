@@ -8,7 +8,7 @@ const createHome = async (req, res) => {
         provincia,
         ciudad,
         direccion,
-        precio,
+        precio_piso,
         nBanos,
         nHabitaciones,
         m2,
@@ -21,7 +21,7 @@ const createHome = async (req, res) => {
         const id_usuario = await db.getUser(decodedToken.id)
         await homeValidator.validateAsync(req.body)
 
-        await db.createHome(fechaPublicacion, provincia, ciudad, direccion, precio, nBanos, nHabitaciones, m2, id_usuario)
+        await db.createHome(fechaPublicacion, provincia, ciudad, direccion, precio_piso, nBanos, nHabitaciones, m2, id_usuario)
     } catch (e) {
         let statusCode = 400;
         if (e.message === 'database-error') {
@@ -86,7 +86,7 @@ const updateHome = async (req, res) => {
         provincia,
         ciudad,
         direccion,
-        precio,
+        precio_piso,
         nBanos,
         nHabitaciones,
         m2,
@@ -96,7 +96,7 @@ const updateHome = async (req, res) => {
 
     try {
         await homeValidator.validateAsync(req.body)
-        await db.updateHome(provincia, ciudad, direccion, precio, nBanos, nHabitaciones, m2, id_usuario, id)
+        await db.updateHome(provincia, ciudad, direccion, precio_piso, nBanos, nHabitaciones, m2, id_usuario, id)
     } catch (e) {
         let statusCode = 400;
         if (e.message === 'database-error') {

@@ -103,6 +103,7 @@ async function main() {
         )
         `)
 
+
         console.log('*****CREADA TABLA DE RESERVA')
 
         const passwordBcrypt = await bcrypt.hash(process.env.DEFAULT_ADMIN_PASSWORD, 10);

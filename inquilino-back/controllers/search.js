@@ -38,8 +38,8 @@ const search = async (req, res, next) => {
         //ESTABLECER CRITERIO DE ORDEN
         let orderBy;
         switch (order) {
-            case 'precio':
-                orderBy = 'precio'
+            case 'precio_piso':
+                orderBy = 'precio_piso'
                 break
             case 'fechaActualizacion':
                 orderBy = 'fechaActualizacion'

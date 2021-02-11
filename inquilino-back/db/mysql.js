@@ -139,10 +139,10 @@ const checkUpdateCode = async (code) => {
 
 // QUERYS DE HOMES ///
 
-const createHome = async (fechaPublicacion, provincia, ciudad, direccion, precio, nBanos, nHabitaciones, m2, id_usuario) => {
-    const query = `insert into piso(fechaPublicacion, provincia, ciudad, direccion, precio, nBanos, nHabitaciones, m2, id_usuario)
+const createHome = async (fechaPublicacion, provincia, ciudad, direccion, precio_piso, nBanos, nHabitaciones, m2, id_usuario) => {
+    const query = `insert into piso(fechaPublicacion, provincia, ciudad, direccion, precio_piso, nBanos, nHabitaciones, m2, id_usuario)
     VALUES(UTC_TIMESTAMP, ?, ?, ?, ?, ?, ?, ?, ?)`
-    const params = [provincia, ciudad, direccion, precio, nBanos, nHabitaciones, m2, id_usuario]
+    const params = [provincia, ciudad, direccion, precio_piso, nBanos, nHabitaciones, m2, id_usuario]
 
     await performQuery(query, params)
 }
@@ -168,20 +168,20 @@ const deleteHome = async (id) => {
     await performQuery(query, params)
 }
 
-const updateHome = async (provincia, ciudad, direccion, precio, nBanos, nHabitaciones, m2, id_usuario, id) => {
+const updateHome = async (provincia, ciudad, direccion, precio_piso, nBanos, nHabitaciones, m2, id_usuario, id) => {
     const query = `
     update piso set fechaActualizacion = UTC_TIMESTAMP,
     provincia = ?,
     ciudad = ?,
     direccion = ?,
-    precio = ?,
+    precio_piso = ?,
     nBanos = ?,
     nHabitaciones = ?,
     m2 = ?,
     id_usuario = ?
     where id = ?`
 
-    const params = [provincia, ciudad, direccion, precio, nBanos, nHabitaciones, m2, id_usuario, id]
+    const params = [provincia, ciudad, direccion, precio_piso, nBanos, nHabitaciones, m2, id_usuario, id]
     await performQuery(query, params)
 }
 
@@ -202,7 +202,7 @@ const saveHomeImage = async (imagen, id_piso) => {
 /// QUERYS DE BOOKINGS ///
 
 const createBooking = async (id_piso, id_usuario) => {
-    const query = `insert into reserva(id_piso, id_usuario, precio) values(?,?,(select precio from piso where id = ?))`
+    const query = `insert into reserva(id_piso, id_usuario, precio_reserva) values(?,?,(select precio_piso from piso where id = ?))`
     const params = [id_piso, id_usuario, id_piso]
 
     await performQuery(query, params)
