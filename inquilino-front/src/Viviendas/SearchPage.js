@@ -62,6 +62,7 @@ function SearchPage() {
                         Baños
                         <select name='banos' value={nBanos} onChange={e => setNBanos(e.target.value)}>
                             <option value='' >Baños</option>
+                            <option value={0} >Todo</option>
                             <option value={1} >1</option>
                             <option value={2} >2</option>
                             <option value={3} >3 o más</option>
@@ -71,6 +72,7 @@ function SearchPage() {
                         Habitaciones
                         <select name='habitaciones' value={nHabitaciones} onChange={e => setNHabitaciones(e.target.value)}>
                             <option value='' >Habitaciones</option>
+                            <option value={0} >Todo</option>
                             <option value={1} >1</option>
                             <option value={2} >2</option>
                             <option value={3} >3</option>
@@ -81,10 +83,11 @@ function SearchPage() {
                         Metros cuadrados
                         <select name='m2' value={m2} onChange={e => setM2(e.target.value)}>
                             <option value='' hidden>m2</option>
-                            <option value={50} >50</option>
-                            <option value={70} >70</option>
-                            <option value={90} >90</option>
-                            <option value={110} >110 o más</option>
+                            <option value={0} >Todo</option>
+                            <option value={60} >50</option>
+                            <option value={80} >70</option>
+                            <option value={100} >90</option>
+                            <option value={120} >110 o más</option>
                         </select>
                     </label>
                     <label>
