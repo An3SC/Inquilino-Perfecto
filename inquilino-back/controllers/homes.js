@@ -1,5 +1,5 @@
-const db = require('../db/mysql')
-// const jwt = require('jsonwebtoken');
+const db = require('../db/mysql');
+const jwt = require('jsonwebtoken');
 
 const { homeValidator } = require('../validators/homes')
 
@@ -11,18 +11,24 @@ const createHome = async (req, res) => {
         precio_piso,
         nBanos,
         nHabitaciones,
+        ascensor,
+        garaje,
+        balcon,
+        jardin,
         m2,
+        descripcion,
         fechaPublicacion } = req.body
 
-    const { authorization } = req.header
+    const { authorization } = req.headers
+    console.log(authorization)
 
     try {
         const decodedToken = jwt.verify(authorization, process.env.SECRET);
-        const id_usuario = await db.getUser(decodedToken.id)
-        await homeValidator.validateAsync(req.body)
+        const id_usuario = decodedToken.id
 
-        await db.createHome(fechaPublicacion, provincia, ciudad, direccion, precio_piso, nBanos, nHabitaciones, m2, id_usuario)
+        await db.createHome(fechaPublicacion, provincia, ciudad, direccion, precio_piso, nBanos, nHabitaciones, ascensor, garaje, balcon, jardin, m2, descripcion, id_usuario)
     } catch (e) {
+        console.log(e)
         let statusCode = 400;
         if (e.message === 'database-error') {
             statusCode = 500
