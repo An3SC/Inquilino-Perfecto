@@ -2,10 +2,9 @@ const Joi = require('joi');
 
 const homeValidator = Joi.object({
     provincia: Joi.string()
-        .valid('Pontevedra', 'A Coruña', 'Lugo', 'Ourense')
         .required()
         .error(
-            new Error('Debe escoger una de las proporcionadas')
+            new Error('Debe escoger una válida')
         ),
     ciudad: Joi.string()
         .required()
@@ -19,7 +18,7 @@ const homeValidator = Joi.object({
         .error(
             new Error('La dirección debe tener más de tres caracteres')
         ),
-    precio: Joi.number()
+    precio_piso: Joi.number()
         .required()
         .error(
             new Error('Debe proporcionar un precio numérico')

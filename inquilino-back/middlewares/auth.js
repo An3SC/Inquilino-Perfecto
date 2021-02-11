@@ -4,6 +4,7 @@ const db = require('../db/mysql')
 
 const isAuthenticated = async (req, res, next) => {
     const { authorization } = req.headers;
+    console.log(authorization)
 
     try {
         const decodedToken = jwt.verify(authorization, process.env.SECRET);
@@ -15,6 +16,7 @@ const isAuthenticated = async (req, res, next) => {
 
         req.auth = decodedToken;
     } catch (e) {
+        console.log(e)
         res.status(401).send()
         return
     }
