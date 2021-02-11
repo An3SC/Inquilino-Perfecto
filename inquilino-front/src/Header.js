@@ -26,7 +26,9 @@ function Header() {
                 }
             </div>
             <div>
-                <Link to='/register'>Registro</Link>
+                {!login &&
+                    <Link to='/register'>Registro</Link>
+                }
             </div>
         </header>
     );
