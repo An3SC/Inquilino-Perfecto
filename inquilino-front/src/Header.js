@@ -18,6 +18,8 @@ function Header() {
                 {!login &&
                     <Link to="/login">Iniciar sesión</Link>
                 }
+            </div>
+            <div>
                 {login &&
                     <div>
                         <label>{login.username} </label>
@@ -28,6 +30,11 @@ function Header() {
             <div>
                 {!login &&
                     <Link to='/register'>Registro</Link>
+                }
+            </div>
+            <div>
+                {login &&
+                    <Link to='/createHome'>Publicar vivienda</Link>
                 }
             </div>
         </header>

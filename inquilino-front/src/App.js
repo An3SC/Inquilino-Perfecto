@@ -6,6 +6,7 @@ import Home from './Inicio/Home';
 import Login from './Login/Login';
 import Recovery from './Login/Recovery';
 import Register from './Login/Register';
+import CreateHome from './Viviendas/CreateHome';
 import SearchPage from './Viviendas/SearchPage';
 
 function App() {
@@ -28,9 +29,9 @@ function App() {
         <Route path='/recovery' exact>
           <Recovery />
         </Route>
-        {/* <Route>
-          <CreateHome path='/createHome' />
-        </Route> */}
+        <Route>
+          <CreateHome path='/createHome' exact />
+        </Route>
       </Switch>
       <Footer />
     </div>
