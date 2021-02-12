@@ -6,9 +6,9 @@ function FirstSearch() {
 
     let history = useHistory()
 
-    const handleSubmit = async e => {
+    const handleSubmit = e => {
         e.preventDefault()
-        history.push(`/search/${cityUrl}`)
+        history.push(cityUrl ? `/search/${cityUrl}` : `/searchPage`)
     }
 
     return (
