@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useSelector } from "react-redux"
+import { useHistory } from "react-router-dom"
 
 function CreateHome() {
     const [ciudad, setCiudad] = useState('')
@@ -9,39 +10,40 @@ function CreateHome() {
     const [m2, setM2] = useState('')
     const [nBanos, setNBanos] = useState('')
     const [precio_piso, setPrecio_piso] = useState('')
-    const [ascensor, setAscensor] = useState('no')
-    const [garaje, setGaraje] = useState('no')
-    const [balcon, setBalcon] = useState('no')
-    const [jardin, setJardin] = useState('no')
+    const [ascensor, setAscensor] = useState(false)
+    const [garaje, setGaraje] = useState(false)
+    const [balcon, setBalcon] = useState(false)
+    const [jardin, setJardin] = useState(false)
     const [descripcion, setDescripcion] = useState('')
 
+    const [error, setError] = useState()
+
     const login = useSelector(s => s.login)
+
+    const history = useHistory()
 
     const handleSubmit = async e => {
         e.preventDefault()
         const headers = { 'Content-Type': 'application/json' }
         if (login) headers['Authorization'] = login.token
-        await fetch('http://localhost:9999/vivienda', {
+        const ret = await fetch('http://localhost:9999/vivienda', {
             headers,
             body: JSON.stringify({
                 provincia, ciudad, direccion, precio_piso,
                 nBanos, nHabitaciones, ascensor, garaje,
-                balcon, jardin, m2, descripcion
+                balcon, jardin, m2, descripcion: descripcion ? descripcion : []
             }),
             method: 'POST'
         })
-        setCiudad('')
-        setProvincia('')
-        setDireccion('')
-        setNBanos('')
-        setNHabitaciones('')
-        setM2('')
-        setPrecio_piso('')
-        setAscensor('')
-        setGaraje('')
-        setBalcon('')
-        setJardin('')
-        setDescripcion('')
+        if (ret.ok) {
+            console.log(ret.body)
+            const data = await ret.json()
+            console.log(data)
+            // history.push('//home/:id')
+        } else {
+            console.log('Error')
+            setError(true)
+        }
     }
 
     return (
@@ -56,22 +58,25 @@ function CreateHome() {
             <div>
                 <label>
                     Ascensor
-                <input type='checkbox' name='ascensor' value={ascensor} onChange={e => setAscensor('si')} />
+                <input type='checkbox' name='ascensor' checked={ascensor} onChange={e => setAscensor(e.target.checked)} />
                 </label>
                 <label>
                     Garaje
-                <input type='checkbox' name='garaje' value={garaje} onChange={e => setGaraje('si')} />
+                <input type='checkbox' name='garaje' checked={garaje} onChange={e => setGaraje(e.target.checked)} />
                 </label>
                 <label>
                     Balcón
-                <input type='checkbox' name='balcon' value={balcon} onChange={e => setBalcon('si')} />
+                <input type='checkbox' name='balcon' checked={balcon} onChange={e => setBalcon(e.target.checked)} />
                 </label>
                 <label>
                     Jardín
-                <input type='checkbox' name='jardin' value={jardin} onChange={e => setJardin('si')} />
+                <input type='checkbox' name='jardin' checked={jardin} onChange={e => setJardin(e.target.checked)} />
                 </label>
                 <textarea name='descripcion' value={descripcion} onChange={e => setDescripcion(e.target.value)} />
             </div>
+            {error &&
+                <div>Error en la creación</div>
+            }
             <button>Publicar</button>
         </form>
     )
