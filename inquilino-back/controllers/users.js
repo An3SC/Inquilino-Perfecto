@@ -122,7 +122,7 @@ const recoverPassword = async (req, res) => {
 
         await db.updatePasswordCode(validationCode, email)
 
-        utils.recoverPasswordMail(email, validationCode)
+        utils.recoverPasswordMail(email, `http://${process.env.FRONT_DOMAIN}/reset/${validationCode}`)
     } catch (e) {
         console.log(e)
         res.status(403).send()

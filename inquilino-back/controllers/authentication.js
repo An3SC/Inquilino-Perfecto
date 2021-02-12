@@ -26,7 +26,7 @@ const register = async (req, res) => {
 
         await db.register(email, passwordBcrypt, nombre, provincia, apellidos, ciudad, descripcion, validationCode)
 
-        utils.sendConfirmationMail(email, `http://${process.env.PUBLIC_DOMAIN}/usuario/validate/${validationCode}`)
+        utils.sendConfirmationMail(email, `http://${process.env.FRONT_DOMAIN}/validate/${validationCode}`)
 
     } catch (e) {
         console.log(e)
