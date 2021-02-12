@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useHistory, useParams } from 'react-router-dom'
 import useFetch from '../useFetch'
 
 function SearchPage() {
@@ -15,13 +15,21 @@ function SearchPage() {
     const [balcon, setBalcon] = useState(false)
     const [jardin, setJardin] = useState(false)
 
+    const [page, setPage] = useState(1)
+
     const [results, setResults] = useState('')
     const dataResults = results.data
+
+    const paginatedData = dataResults ? dataResults.slice(5 * (page - 1), 5 * page) : []
+    const max = dataResults ? Math.ceil(dataResults.length / 5) : []
 
     const { cityUrl } = useParams()
 
     const searchPage = useFetch(`http://localhost:9999/vivienda/busqueda?` + `ciudad=${cityUrl}`) || []
     const firstResults = searchPage.data
+
+    const paginatedFirstResults = firstResults ? firstResults.slice(5 * (page - 1), 5 * page) : []
+    const maxFirst = firstResults ? Math.ceil(firstResults.length / 5) : []
 
     const handleSubmit = async e => {
         e.preventDefault()
@@ -33,6 +41,7 @@ function SearchPage() {
         const res = await fetch(url)
         const data = await res.json()
         setResults(data)
+        setPage(1)
     }
 
     const handleReset = e => {
@@ -48,6 +57,18 @@ function SearchPage() {
         setGaraje('')
         setBalcon('')
         setJardin('')
+        setPage(1)
+    }
+
+    const [id, setId] = useState('')
+
+    console.log(id)
+
+    const history = useHistory()
+
+    const handleClick = e => {
+        e.preventDefault()
+        history.push(`/home/${id}`)
     }
 
     console.log(results)
@@ -125,27 +146,43 @@ function SearchPage() {
             </div>
             <div>
                 <ul>
-                    {dataResults && dataResults.map(result =>
-                        <li key={result.id}>
-                            <div>{result.ciudad}</div>
-                            <div>{result.provincia}</div>
-                            <div>{result.direccion}</div>
-                        </li>
+                    {dataResults && paginatedData.map(result =>
+                        <Link key={result.id} to={`/home/${result.id}`}>
+                            <li >
+                                <div>{result.ciudad}</div>
+                                <div>{result.provincia}</div>
+                                <div>{result.direccion}</div>
+                            </li>
+                        </Link>
                     )}
                 </ul>
+                {dataResults &&
+                    <div>
+                        <span onClick={() => setPage(page > 1 ? page - 1 : 1)}>◄</span>
+                        <span>{page} / {max}</span>
+                        <span onClick={() => setPage(page < max ? page + 1 : max)}>►</span>
+                    </div>}
             </div>
             <div>
                 <ul>
-                    {!dataResults && firstResults && firstResults.map(result =>
-                        <li key={result.id}>
-                            <div>{result.ciudad}</div>
-                            <div>{result.provincia}</div>
-                            <div>{result.direccion}</div>
-                        </li>
+                    {!dataResults && firstResults && paginatedFirstResults.map(result =>
+                        <Link key={result.id} to={`/home/${result.id}`}>
+                            <li >
+                                <div>{result.ciudad}</div>
+                                <div>{result.provincia}</div>
+                                <div>{result.direccion}</div>
+                            </li>
+                        </Link>
                     )}
                 </ul>
+                {!dataResults && firstResults &&
+                    <div>
+                        <span onClick={() => setPage(page > 1 ? page - 1 : 1)}>◄</span>
+                        <span>{page} / {maxFirst}</span>
+                        <span onClick={() => setPage(page < maxFirst ? page + 1 : maxFirst)}>►</span>
+                    </div>}
             </div>
-        </div>
+        </div >
     )
 }
 
