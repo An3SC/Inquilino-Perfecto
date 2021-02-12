@@ -62,16 +62,12 @@ function SearchPage() {
 
     const [id, setId] = useState('')
 
-    console.log(id)
-
     const history = useHistory()
 
     const handleClick = e => {
         e.preventDefault()
         history.push(`/home/${id}`)
     }
-
-    console.log(results)
 
     return (
         <div>
@@ -186,4 +182,4 @@ function SearchPage() {
     )
 }
 
-export default SearchPage 
+export default SearchPage
