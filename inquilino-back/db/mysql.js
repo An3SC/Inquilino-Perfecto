@@ -6,6 +6,7 @@ const { getConnection } = require("./db");
 const performQuery = async (query, params) => {
     let connection;
     console.log(query)
+    console.log(params)
 
     try {
         connection = await getConnection();
