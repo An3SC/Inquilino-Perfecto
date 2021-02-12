@@ -35,20 +35,17 @@ const homeValidator = Joi.object({
         .error(
             new Error('Debe proporcionar un número válido')
         ),
-    ascensor: Joi.string()
-        .valid('si', 'no'),
-    garaje: Joi.string()
-        .valid('si', 'no'),
-    balcon: Joi.string()
-        .valid('si', 'no'),
-    jardin: Joi.string()
-        .valid('si', 'no'),
+    ascensor: Joi.boolean(),
+    garaje: Joi.boolean(),
+    balcon: Joi.boolean(),
+    jardin: Joi.boolean(),
     m2: Joi.number()
         .required()
         .error(
             new Error('Debe proporcionar un número válido')
         ),
     descripcion: Joi.string()
+        .min(0)
         .max(500)
         .error(
             new Error('La descripción no debe exceder los 500 caracteres')
