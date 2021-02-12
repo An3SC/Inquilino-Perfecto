@@ -36,7 +36,7 @@ function App() {
         <Route path='/createHome' exact>
           <CreateHome />
         </Route>
-        <Route path='/home/:id'>
+        <Route path='/home/:id' exact>
           <ShowHome />
           {/* <Contacto />
           <Reserva /> */}
