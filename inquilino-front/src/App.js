@@ -3,6 +3,7 @@ import './App.css';
 import Footer from './Footer';
 import Header from './Header';
 import Home from './Inicio/Home';
+import ShowHome from './Viviendas/ShowHome'
 import Login from './Login/Login';
 import Recovery from './Login/Recovery';
 import Register from './Login/Register';
@@ -20,6 +21,9 @@ function App() {
         <Route path='/search/:cityUrl' exact>
           <SearchPage />
         </Route>
+        <Route path='/searchPage' exact>
+          <SearchPage />
+        </Route>
         <Route path='/register' exact>
           <Register />
         </Route>
@@ -29,8 +33,13 @@ function App() {
         <Route path='/recovery' exact>
           <Recovery />
         </Route>
-        <Route>
-          <CreateHome path='/createHome' exact />
+        <Route path='/createHome' exact>
+          <CreateHome />
+        </Route>
+        <Route path='/home/:id'>
+          <ShowHome />
+          {/* <Contacto />
+          <Reserva /> */}
         </Route>
       </Switch>
       <Footer />
