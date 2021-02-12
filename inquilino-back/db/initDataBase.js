@@ -55,10 +55,10 @@ async function main() {
                 nHabitaciones smallint unsigned not null,
                 m2 float not null,
                 precio_piso bigint unsigned not null,
-                ascensor enum('si','no') not null default 'no',
-                garaje enum('si', 'no') not null default 'no',
-                balcon enum('si', 'no') not null default 'no',
-                jardin enum('si', 'no') not null default 'no' ,
+                ascensor tinyint(1) not null,
+                garaje tinyint(1) not null,
+                balcon tinyint(1) not null,
+                jardin tinyint(1) not null ,
                 estado enum('activo', 'inactivo') default 'activo' not null,
                 score float,
                 descripcion varchar(500),
@@ -155,10 +155,10 @@ async function main() {
             const nHabitaciones = random(2, 10);
             const m2 = random(40, 300);
             const precio_piso = random(200, 2000);
-            const ascensor = faker.random.arrayElement(['si', 'no'])
-            const garaje = faker.random.arrayElement(['si', 'no'])
-            const balcon = faker.random.arrayElement(['si', 'no'])
-            const jardin = faker.random.arrayElement(['si', 'no'])
+            const ascensor = random(0, 1)
+            const garaje = random(0, 1)
+            const balcon = random(0, 1)
+            const jardin = random(0, 1)
             const id_usuario = random(1, 100);
             await connection.query(`
                 insert into piso(
