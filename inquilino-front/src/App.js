@@ -9,6 +9,8 @@ import Recovery from './Login/Recovery';
 import Register from './Login/Register';
 import CreateHome from './Viviendas/CreateHome';
 import SearchPage from './Viviendas/SearchPage';
+import Validate from './Login/Validate';
+import Reset from './Login/Reset';
 
 function App() {
   return (
@@ -30,8 +32,15 @@ function App() {
         <Route path='/login' exact>
           <Login />
         </Route>
+        <Route path='/validate/:code' exact>
+          <Validate />
+          <Login />
+        </Route>
         <Route path='/recovery' exact>
           <Recovery />
+        </Route>
+        <Route path='/reset/:code' exact>
+          <Reset />
         </Route>
         <Route path='/createHome' exact>
           <CreateHome />
