@@ -21,7 +21,7 @@ function CreateHome() {
         e.preventDefault()
         const headers = { 'Content-Type': 'application/json' }
         if (login) headers['Authorization'] = login.token
-        const ret = await fetch('http://localhost:9999/vivienda', {
+        await fetch('http://localhost:9999/vivienda', {
             headers,
             body: JSON.stringify({
                 provincia, ciudad, direccion, precio_piso,
@@ -32,6 +32,7 @@ function CreateHome() {
         })
         setCiudad('')
         setProvincia('')
+        setDireccion('')
         setNBanos('')
         setNHabitaciones('')
         setM2('')
@@ -40,6 +41,7 @@ function CreateHome() {
         setGaraje('')
         setBalcon('')
         setJardin('')
+        setDescripcion('')
     }
 
     return (
