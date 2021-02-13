@@ -10,10 +10,13 @@ function SearchPage() {
     const [nBanos, setNBanos] = useState('')
     const [precio1, setPrecio1] = useState('')
     const [precio2, setPrecio2] = useState('')
+    const [fechaEntrada, setFechaEntrada] = useState('')
+    const [fechaSalida, setFechaSalida] = useState('')
     const [ascensor, setAscensor] = useState(false)
     const [garaje, setGaraje] = useState(false)
     const [balcon, setBalcon] = useState(false)
     const [jardin, setJardin] = useState(false)
+
 
     const [page, setPage] = useState(1)
 
@@ -36,7 +39,7 @@ function SearchPage() {
         const url = `http://localhost:9999/vivienda/busqueda?`
             + `ciudad=${city ? city : cityUrl}` + `&provincia=${provincia}` + `&nBanos=${nBanos}`
             + `&nHabitaciones=${nHabitaciones}` + `&m2=${m2}` + `&precio1=${precio1}`
-            + `&precio2=${precio2}` + `&ascensor=${ascensor ? 'si' : ''}` + `&garaje=${garaje ? 'si' : ''}`
+            + `&precio2=${precio2}` + `&fecha_entrada=${fechaEntrada}` + `&fecha_salida=${fechaSalida}` + `&ascensor=${ascensor ? 'si' : ''}` + `&garaje=${garaje ? 'si' : ''}`
             + `&balcon=${balcon ? 'si' : ''}` + `&jardin=${jardin ? 'si' : ''}`
         const res = await fetch(url)
         const data = await res.json()
@@ -53,20 +56,13 @@ function SearchPage() {
         setM2('')
         setPrecio1('')
         setPrecio2('')
+        setFechaEntrada('')
+        setFechaSalida('')
         setAscensor('')
         setGaraje('')
         setBalcon('')
         setJardin('')
         setPage(1)
-    }
-
-    const [id, setId] = useState('')
-
-    const history = useHistory()
-
-    const handleClick = e => {
-        e.preventDefault()
-        history.push(`/home/${id}`)
     }
 
     return (
@@ -123,6 +119,12 @@ function SearchPage() {
                             <option value={900}>900</option>
                             <option value={1000}>1000</option>
                         </select>
+                    </label>
+                    <label>
+                        Fecha de entrada
+                        <input type='date' name='fechaEntrada' value={fechaEntrada} onChange={e => setFechaEntrada(e.target.value)} />
+                        Fecha de salida
+                        <input type='date' name='fechaSalida' value={fechaSalida} onChange={e => setFechaSalida(e.target.value)} />
                     </label>
                     <label>
                         Ascensor

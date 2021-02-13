@@ -28,7 +28,7 @@ function Reset() {
         <div>
             <form onSubmit={handleReset}>
                 Introduce tu nueva contraseña
-                <input name='code' placeholder='Nueva contraseña' type='password' value={password} onChange={e => setPassword(e.target.value)} required />
+                <input name='password' placeholder='Nueva contraseña' type='password' value={password} onChange={e => setPassword(e.target.value)} required />
                 <button>Cambiar</button>
                 {error &&
                     <div>Error en el reseteo</div>
