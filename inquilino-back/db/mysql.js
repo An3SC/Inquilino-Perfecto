@@ -129,11 +129,13 @@ const checkUpdateCode = async (code) => {
 
     const [result] = await performQuery(query, params)
 
-    if (result) {
-        const query = `update usuario set estado = 'activo', validationCode = '' where validationCode = ?`
-        await performQuery(query, [code])
-    } else {
-        throw new Error('validation-error')
+    try {
+        if (result) {
+            const query = `update usuario set estado = 'activo', validationCode = '' where validationCode = ?`
+            await performQuery(query, [code])
+        }
+    } catch (e) {
+        console.log(e)
     }
 }
 
