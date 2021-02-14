@@ -1,19 +1,37 @@
+@font-face {
+  font-family: 'quicksandlight';
+  src: url('./fonts/finalFonts/quicksand-variablefont_wght-webfont.woff2') format('woff2'),
+       url('./fonts/finalFonts/quicksand-variablefont_wght-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'lobster_twoitalic';
+  src: url('./fonts/finalFonts/lobstertwo-italic-webfont.woff2') format('woff2'),
+       url('./fonts/finalFonts/lobstertwo-italic-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'lobster_twobold_italic';
+  src: url('./fonts/finalFonts/lobstertwo-bolditalic-webfont.woff2') format('woff2'),
+       url('./fonts/finalFonts/lobstertwo-bolditalic-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+
+
 .App {
   text-align: center;
-  margin-top: 15vh;
   display: flex;
   flex-direction: column;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  font-family: 'quicksandlight';
 }
 
 .App-header {
@@ -24,22 +42,47 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: whitesmoke;
 }
 
 .headerContainer {
   display: flex;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
   height: 10vh;
   justify-content: space-between;
+  background-color: transparent;
 }
 
 .headerContainer div {
   padding-right: 5px;
+}
+
+.pageHome, .firstSearch, .videoHome, .loginContainer, .recoveryContainer, .registerContainer, .searchPage, .showHomeContainer  {
+  height: 70vh;
+  width: 100%;
+  
+}
+
+.pageHome {
+  object-fit: contain;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'lobster_twobold_italic';
+}
+
+.firstSearch {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: whitesmoke;
+  background: rgba(0,0,0, 0.3);
+}
+
+.videoHome {
+  object-fit: cover;
+  position: absolute;
+  z-index: -1;
 }
 
 .logo {
@@ -51,13 +94,20 @@
 }
 
 .footerContainer {
-  background: #FFD500;
+  background: #F5C634;
   bottom: 0;
   right: 0;
   left:0;
-  height: 10vh;
+  height: 100vh;
   position: absolute;
   z-index: 1;
+}
+
+.footerContent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .linksContainer {
@@ -68,11 +118,8 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.headerContainer, .loginContainer, .recoveryContainer, .registerContainer, .pageHome, .searchPage, .resetContainer, .validateContainer, .showHomeContainer {
+  position:relative;
+  z-index: 2;
+  background: whitesmoke;
 }
