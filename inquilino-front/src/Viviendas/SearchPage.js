@@ -67,7 +67,7 @@ function SearchPage() {
     }
 
     return (
-        <div>
+        <div className='searchPage'>
             <div>
                 <form onSubmit={handleSubmit}>
                     <input name='ciudad' placeholder={city ? city : cityUrl} value={city} onChange={e => setCity(e.target.value)} />

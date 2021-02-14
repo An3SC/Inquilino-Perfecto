@@ -8,7 +8,7 @@ function ShowHome() {
     console.log(vivienda)
 
     return (
-        <div>
+        <div className='showHomeContainer'>
             {vivienda.map(v =>
                 <div>
                     <div>{v.ciudad}</div>
