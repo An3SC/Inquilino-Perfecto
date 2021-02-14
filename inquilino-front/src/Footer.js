@@ -2,7 +2,9 @@ import './App.css';
 
 function Footer() {
     return (
-        <div className='footerContainer'>Soy un footer horrendo</div>
+        <div className='footerContainer'>
+            <div className='footerContent'>Soy un footer horrendo</div>
+        </div>
     )
 }
 
