@@ -16,7 +16,6 @@ const userValidator = Joi.object({
             new Error('La fecha debe ser válida')
         ),
     provincia: Joi.string()
-        // .valid('Pontevedra', 'A Coruña', 'Lugo', 'Ourense')
         .error(
             new Error('Debe proporcionar una provincia válida')
         ),

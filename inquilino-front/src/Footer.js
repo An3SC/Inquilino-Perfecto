@@ -1,6 +1,8 @@
+import './App.css';
+
 function Footer() {
     return (
-        <div>Soy un footer horrendo</div>
+        <div className='footerContainer'>Soy un footer horrendo</div>
     )
 }
 

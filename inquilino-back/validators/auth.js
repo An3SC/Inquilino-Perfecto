@@ -21,7 +21,9 @@ const authValidator = Joi.object({
 
     ciudad: Joi.string(),
 
-    descripcion: Joi.string()
+    descripcion: Joi.string(),
+
+    fechaNacimiento: Joi.date()
     /**
      * Aquí hay que meter todos los elementos not null que queramos validar,
      * como nombre, ciudad, etc.

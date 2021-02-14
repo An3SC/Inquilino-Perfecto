@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useHistory, useParams } from 'react-router-dom'
 import useFetch from '../useFetch'
+import './Viviendas.css';
 
 function SearchPage() {
     const [city, setCity] = useState('')
@@ -142,7 +143,7 @@ function SearchPage() {
                     <button onClick={handleReset}>Borrar</button>
                 </div>
             </div>
-            <div>
+            <div className='searchResults'>
                 <ul>
                     {dataResults && paginatedData.map(result =>
                         <Link key={result.id} to={`/home/${result.id}`}>
@@ -161,7 +162,7 @@ function SearchPage() {
                         <span onClick={() => setPage(page < max ? page + 1 : max)}>►</span>
                     </div>}
             </div>
-            <div>
+            <div className='searchResults'>
                 <ul>
                     {!dataResults && firstResults && paginatedFirstResults.map(result =>
                         <Link key={result.id} to={`/home/${result.id}`}>

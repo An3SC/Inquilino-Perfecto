@@ -32,9 +32,9 @@ const performQuery = async (query, params) => {
  * los campos not null que hayamos puesto.
  */
 
-const register = async (email, password, nombre, provincia, apellidos, ciudad, descripcion, validationCode) => {
-    const query = `insert into usuario (email, password, nombre, provincia, apellidos, ciudad, descripcion, validationCode) values (?,?,?,?,?,?,?,?)`
-    const params = [email, password, nombre, provincia, apellidos, ciudad, descripcion, validationCode]
+const register = async (email, password, nombre, provincia, apellidos, ciudad, descripcion, fechaNacimiento, validationCode) => {
+    const query = `insert into usuario (email, password, nombre, provincia, apellidos, ciudad, descripcion, fechaNacimiento, validationCode) values (?,?,?,?,?,?,?,?,?)`
+    const params = [email, password, nombre, provincia, apellidos, ciudad, descripcion, fechaNacimiento, validationCode]
     console.log(params)
 
     await performQuery(query, params)
