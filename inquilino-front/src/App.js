@@ -20,17 +20,11 @@ function App() {
         <Route path='/' exact>
           <Home />
         </Route>
-        <Route path='/search/:cityUrl' exact>
-          <SearchPage />
-        </Route>
-        <Route path='/searchPage' exact>
-          <SearchPage />
+        <Route path='/login' exact>
+          <Login />
         </Route>
         <Route path='/register' exact>
           <Register />
-        </Route>
-        <Route path='/login' exact>
-          <Login />
         </Route>
         <Route path='/validate/:code' exact>
           <Validate />
@@ -42,8 +36,16 @@ function App() {
         <Route path='/reset/:code' exact>
           <Reset />
         </Route>
+        <Route path='/search/:cityUrl' exact>
+          <SearchPage />
+        </Route>
         <Route path='/createHome' exact>
           <CreateHome />
+        </Route>
+        <Route path='/searchPage' exact>
+          <div className='searchPage'>
+            <SearchPage />
+          </div>
         </Route>
         <Route path='/home/:id' exact>
           <ShowHome />
