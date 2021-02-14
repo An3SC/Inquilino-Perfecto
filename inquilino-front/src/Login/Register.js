@@ -31,7 +31,7 @@ function Register() {
     // }
 
     return (
-        <div>
+        <div className='registerContainer'>
             {!registered &&
                 <form onSubmit={handleSubmit}>
                     <input name='nombre' placeholder='Nombre...' value={user.nombre || ''} onChange={e => setUser({ ...user, nombre: e.target.value })} required />

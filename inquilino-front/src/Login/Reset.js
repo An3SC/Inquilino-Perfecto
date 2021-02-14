@@ -25,7 +25,7 @@ function Reset() {
     }
 
     return (
-        <div>
+        <div className='resetContainer'>
             <form onSubmit={handleReset}>
                 Introduce tu nueva contraseña
                 <input name='password' placeholder='Nueva contraseña' type='password' value={password} onChange={e => setPassword(e.target.value)} required />

@@ -30,7 +30,7 @@ function Login() {
 
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className='loginContainer'>
             <div>
                 Inicia sesión
             </div>

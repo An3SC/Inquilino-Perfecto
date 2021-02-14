@@ -20,7 +20,7 @@ function Recovery() {
     }
 
     return (
-        <div>
+        <div className='recoveryContainer'>
             <form onSubmit={handleSubmit}>
                 Introduce tu email para que te enviemos las instrucciones
                     <div>

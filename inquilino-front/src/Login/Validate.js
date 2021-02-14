@@ -7,7 +7,7 @@ function Validate() {
     const validated = useFetch(`http://localhost:9999/usuario/validate/${code}`) || []
 
     return (
-        <div>
+        <div className='validateContainer'>
             {validated &&
                 <div>Tu email ha sido validado correctamente</div>
             }
