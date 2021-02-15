@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { Link, useHistory, useParams } from 'react-router-dom'
 import useFetch from '../useFetch'
-import './Viviendas.css';
 
 function SearchPage() {
     const [city, setCity] = useState('')

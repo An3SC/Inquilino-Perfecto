@@ -50,13 +50,14 @@
   height: 10vh;
   justify-content: space-between;
   background-color: transparent;
+  align-items: center;
 }
 
 .headerContainer div {
   padding-right: 5px;
 }
 
-.pageHome, .firstSearch, .videoHome, .loginContainer, .recoveryContainer, .registerContainer, .searchPage, .showHomeContainer  {
+.pageHome, .firstSearch, .videoHome, .loginContainer, .recoveryContainer, .registerContainer, .searchPage, .showHomeContainer, .createHomeContainer  {
   height: 70vh;
   width: 100%;
   
@@ -87,7 +88,7 @@
 
 .logo {
   left: 100%;
-  background: url('./icons/logo.png') no-repeat;
+  background: url('./icons/logo2.png') no-repeat;
   background-size: contain;
   height: 8vh;
   width: 8vw;
@@ -118,7 +119,7 @@
   color: #61dafb;
 }
 
-.headerContainer, .loginContainer, .recoveryContainer, .registerContainer, .pageHome, .searchPage, .resetContainer, .validateContainer, .showHomeContainer {
+.headerContainer, .loginContainer, .recoveryContainer, .registerContainer, .pageHome, .searchPage, .resetContainer, .validateContainer, .showHomeContainer, .createHomeContainer {
   position:relative;
   z-index: 2;
   background: whitesmoke;

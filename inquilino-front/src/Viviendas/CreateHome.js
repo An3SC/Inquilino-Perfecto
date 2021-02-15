@@ -47,38 +47,41 @@ function CreateHome() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input name='ciudad' placeholder='Ciudad...' value={ciudad} onChange={e => setCiudad(e.target.value)} />
-            <input name='provincia' placeholder='Provincia...' value={provincia} onChange={e => setProvincia(e.target.value)} />
-            <input name='direccion' placeholder='Direccion...' value={direccion} onChange={e => setDireccion(e.target.value)} />
-            <input name='banos' type='number' placeholder='Baños...' value={nBanos} onChange={e => setNBanos(e.target.value)} />
-            <input name='habitaciones' type='number' placeholder='Habitaciones...' value={nHabitaciones} onChange={e => setNHabitaciones(e.target.value)} />
-            <input name='m2' type='number' placeholder='m2...' value={m2} onChange={e => setM2(e.target.value)} />
-            <input name='precio' type='number' placeholder='Precio...' value={precio_piso} onChange={e => setPrecio_piso(e.target.value)} />
-            <div>
-                <label>
-                    Ascensor
+        <div className='createHomeContainer'>
+            <form onSubmit={handleSubmit}>
+                <input name='ciudad' placeholder='Ciudad...' value={ciudad} onChange={e => setCiudad(e.target.value)} />
+                <input name='provincia' placeholder='Provincia...' value={provincia} onChange={e => setProvincia(e.target.value)} />
+                <input name='direccion' placeholder='Direccion...' value={direccion} onChange={e => setDireccion(e.target.value)} />
+                <input name='banos' type='number' placeholder='Baños...' value={nBanos} onChange={e => setNBanos(e.target.value)} />
+                <input name='habitaciones' type='number' placeholder='Habitaciones...' value={nHabitaciones} onChange={e => setNHabitaciones(e.target.value)} />
+                <input name='m2' type='number' placeholder='m2...' value={m2} onChange={e => setM2(e.target.value)} />
+                <input name='precio' type='number' placeholder='Precio...' value={precio_piso} onChange={e => setPrecio_piso(e.target.value)} />
+                <div>
+                    <label>
+                        Ascensor
                 <input type='checkbox' name='ascensor' checked={ascensor} onChange={e => setAscensor(e.target.checked)} />
-                </label>
-                <label>
-                    Garaje
+                    </label>
+                    <label>
+                        Garaje
                 <input type='checkbox' name='garaje' checked={garaje} onChange={e => setGaraje(e.target.checked)} />
-                </label>
-                <label>
-                    Balcón
+                    </label>
+                    <label>
+                        Balcón
                 <input type='checkbox' name='balcon' checked={balcon} onChange={e => setBalcon(e.target.checked)} />
-                </label>
-                <label>
-                    Jardín
+                    </label>
+                    <label>
+                        Jardín
                 <input type='checkbox' name='jardin' checked={jardin} onChange={e => setJardin(e.target.checked)} />
-                </label>
-                <textarea name='descripcion' value={descripcion} onChange={e => setDescripcion(e.target.value)} />
-            </div>
-            {error &&
-                <div>Error en la creación</div>
-            }
-            <button>Publicar</button>
-        </form>
+                    </label>
+                    <textarea name='descripcion' value={descripcion} onChange={e => setDescripcion(e.target.value)} />
+                </div>
+                {error &&
+                    <div>Error en la creación</div>
+                }
+                <button>Publicar</button>
+            </form>
+        </div>
+
     )
 }
 
