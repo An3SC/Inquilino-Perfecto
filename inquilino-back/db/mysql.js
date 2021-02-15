@@ -52,7 +52,7 @@ const getUserById = async (id) => {
     const query = `select * from usuario where id = ?`
     const params = [id]
 
-    const [result] = await performQuery(query, params)
+    const result = await performQuery(query, params)
     return result
 }
 
@@ -152,6 +152,14 @@ const createHome = async (fechaPublicacion, provincia, ciudad, direccion, precio
 const listHomes = async () => {
     const query = `select * from piso`
     const [...result] = await performQuery(query)
+    return result
+}
+
+const myHomes = async (id) => {
+    const query = `select * from piso where id_usuario = ?`
+    const params = [id]
+
+    const [...result] = await performQuery(query, params)
     return result
 }
 
@@ -282,6 +290,7 @@ module.exports = {
     checkUpdateCode,
     createHome,
     listHomes,
+    myHomes,
     getHome,
     deleteHome,
     updateHome,

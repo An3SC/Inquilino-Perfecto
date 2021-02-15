@@ -48,6 +48,21 @@ const getListOfHomes = async (req, res) => {
     }
 }
 
+const getMyHomes = async (req, res) => {
+    const { id } = req.params
+
+    try {
+        const myHomes = await db.myHomes(id)
+        if (!myHomes.length) {
+            res.status(404).send()
+        } else {
+            res.send(myHomes)
+        }
+    } catch (e) {
+        res.status(500).send()
+    }
+}
+
 const getHome = async (req, res) => {
     const { id } = req.params
 
@@ -117,6 +132,7 @@ const updateHome = async (req, res) => {
 module.exports = {
     createHome,
     getListOfHomes,
+    getMyHomes,
     getHome,
     deleteHome,
     updateHome,

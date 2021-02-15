@@ -26,6 +26,7 @@ const {
 const {
     createHome,
     getListOfHomes,
+    getMyHomes,
     getHome,
     deleteHome,
     updateHome,
@@ -70,7 +71,7 @@ app.post('/usuario/login', login)
 
 app.get('/usuario/validate/:code', validate)
 
-// app.get('/usuario/:id', getUserById)
+app.get('/usuario/:id', getUserById)
 app.delete('/usuario/:id', isAuthenticated, isSameUserOrAdmin, deleteUser)
 app.put('/usuario/:id', isAuthenticated, isSameUserOrAdmin, updateUser)
 
@@ -98,6 +99,7 @@ app.put('/reserva/:id/score', haveBooking, scoreBooking)
 app.get('/vivienda/busqueda', search)
 app.get('/vivienda', getListOfHomes)
 app.get('/vivienda/:id', getHome)
+app.get('/usuario/vivienda/:id', getMyHomes)
 
 app.post('/vivienda', isAuthenticated, createHome)
 app.delete('/vivienda/:id', isAuthenticated, isSameUserOrAdmin, deleteHome)
