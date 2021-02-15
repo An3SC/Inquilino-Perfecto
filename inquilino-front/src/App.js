@@ -13,6 +13,7 @@ import Validate from './Login/Validate';
 import Reset from './Login/Reset';
 import Profile from './User/Profile';
 import MyHomes from './Viviendas/MyHomes';
+import Update from './User/Update';
 
 function App() {
   return (
@@ -40,6 +41,9 @@ function App() {
         </Route>
         <Route path='/user/:id' exact>
           <Profile />
+        </Route>
+        <Route path='/user/update/:id' exact>
+          <Update />
         </Route>
         <Route path='/user/homes/:id_usuario'>
           <MyHomes />
