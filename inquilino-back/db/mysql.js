@@ -56,7 +56,7 @@ const getUserById = async (id) => {
     return result
 }
 
-const updateUser = async (nombre, apellidos, fechaNacimiento, provincia, ciudad, descripcion, telefono, id) => {
+const updateUser = async (nombre, apellidos, fechaNacimiento, provincia, ciudad, descripcion, telefono, imagen, id) => {
     const query = `
     update usuario set nombre = ?,
     apellidos = ?,
@@ -64,10 +64,11 @@ const updateUser = async (nombre, apellidos, fechaNacimiento, provincia, ciudad,
     provincia = ?,
     ciudad = ?,
     descripcion = ?,
-    telefono = ?
+    telefono = ?,
+    imagen = ?
     where id = ?
     `
-    const params = [nombre, apellidos, fechaNacimiento, provincia, ciudad, descripcion, telefono, id]
+    const params = [nombre, apellidos, fechaNacimiento, provincia, ciudad, descripcion, telefono, imagen, id]
     console.log(params)
 
     await performQuery(query, params)

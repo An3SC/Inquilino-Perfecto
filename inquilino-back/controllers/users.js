@@ -49,13 +49,14 @@ const updateUser = async (req, res) => {
         provincia,
         ciudad,
         descripcion,
-        telefono } = req.body
+        telefono,
+        imagen } = req.body
     const { id } = req.params
     try {
         await userValidator.validateAsync(req.body)
-        await db.updateUser(nombre, apellidos, fechaNacimiento, provincia, ciudad, descripcion, telefono, id)
-        console.log(db.updateUser(nombre, apellidos, fechaNacimiento, provincia, ciudad, descripcion, telefono, id))
+        await db.updateUser(nombre, apellidos, fechaNacimiento, provincia, ciudad, descripcion, telefono, imagen, id)
     } catch (e) {
+        console.log(e)
         let statusCode = 400;
         if (e.message === 'database-error') {
             statusCode = 500

@@ -11,7 +11,7 @@ const userValidator = Joi.object({
         .error(
             new Error('Los apellidos no deben exceder los 50 caracteres')
         ),
-    fechaNacimiento: Joi.date().timestamp()
+    fechaNacimiento: Joi.date()
         .error(
             new Error('La fecha debe ser válida')
         ),
@@ -26,7 +26,6 @@ const userValidator = Joi.object({
             new Error('La ciudad debe tener un mínimo de 3 y un máximo de 20 caracteres')
         ),
     descripcion: Joi.string()
-        .min(10)
         .max(500)
         .error(
             new Error('La descripción debe tener un mínimo de 10 y un máximo de 500 caracteres')

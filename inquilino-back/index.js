@@ -73,7 +73,7 @@ app.get('/usuario/validate/:code', validate)
 
 app.get('/usuario/:id', getUserById)
 app.delete('/usuario/:id', isAuthenticated, isSameUserOrAdmin, deleteUser)
-app.put('/usuario/:id', isAuthenticated, isSameUserOrAdmin, updateUser)
+app.put('/usuario/:id', /*isAuthenticated, isSameUserOrAdmin,*/ updateUser)
 
 app.put('/usuario/:id/password', isAuthenticated, isSameUserOrAdmin, updateUserPassword)
 app.put('/usuario/:id/email', isAuthenticated, isSameUserOrAdmin, updateUserEmail)
