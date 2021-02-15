@@ -1,14 +1,10 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './App.css';
+import Menu from './Utils/Menu';
 
 function Header() {
     const login = useSelector(s => s.login)
-    const dispatch = useDispatch()
-
-    const handleLogout = () => {
-        dispatch({ type: 'logout' })
-    }
 
     return (
         <header className='headerContainer'>
@@ -18,15 +14,12 @@ function Header() {
             <div className='linksContainer'>
                 <div>
                     {!login &&
-                        <Link to="/login">Iniciar sesión</Link>
+                        <Link to='/login'>Iniciar sesión</Link>
                     }
                 </div>
                 <div>
                     {login &&
-                        <div>
-                            <label>{login.username} </label>
-                            <button onClick={handleLogout}>Logout</button>
-                        </div>
+                        <Menu>{login.username}</Menu>
                     }
                 </div>
                 <div>
