@@ -57,7 +57,12 @@
   padding-right: 5px;
 }
 
-.pageHome, .firstSearch, .videoHome, .loginContainer, .recoveryContainer, .registerContainer, .searchPage, .showHomeContainer, .createHomeContainer  {
+.pageHome, .firstSearch,
+.videoHome, .loginContainer,
+.recoveryContainer, .registerContainer,
+.searchPage, .showHomeContainer,
+.createHomeContainer, .profileContainer,
+.myHomesContainer  {
   height: 70vh;
   width: 100%;
   
@@ -119,7 +124,12 @@
   color: #61dafb;
 }
 
-.headerContainer, .loginContainer, .recoveryContainer, .registerContainer, .pageHome, .searchPage, .resetContainer, .validateContainer, .showHomeContainer, .createHomeContainer {
+.headerContainer, .loginContainer,
+.recoveryContainer, .registerContainer,
+.pageHome, .searchPage, .resetContainer,
+.validateContainer, .showHomeContainer,
+.createHomeContainer, .profileContainer,
+.myHomesContainer {
   position:relative;
   z-index: 2;
   background: whitesmoke;
