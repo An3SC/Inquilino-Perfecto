@@ -11,6 +11,8 @@ import CreateHome from './Viviendas/CreateHome';
 import SearchPage from './Viviendas/SearchPage';
 import Validate from './Login/Validate';
 import Reset from './Login/Reset';
+import Profile from './User/Profile';
+import MyHomes from './Viviendas/MyHomes';
 
 function App() {
   return (
@@ -35,6 +37,12 @@ function App() {
         </Route>
         <Route path='/reset/:code' exact>
           <Reset />
+        </Route>
+        <Route path='/user/:id' exact>
+          <Profile />
+        </Route>
+        <Route path='/user/homes/:id_usuario'>
+          <MyHomes />
         </Route>
         <Route path='/search/:cityUrl' exact>
           <SearchPage />
