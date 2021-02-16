@@ -26,7 +26,7 @@ const search = async (req, res, next) => {
             direction } = req.query;
 
         //NOMBRAMOS LA QUERY BASE
-        let query = `select * from piso
+        let query = `select piso.id, piso.precio, piso.provincia, piso.ciudad, piso.m2, piso.direccion from piso
                     left outer join reserva on reserva.id_piso = piso.id`;
 
         //ESTABLECEMOS LOS PARÁMETROS DE BÚSQUEDA
@@ -55,11 +55,11 @@ const search = async (req, res, next) => {
             const conditions = [];
             if (provincia) {
                 conditions.push(`provincia LIKE ?`)
-                params.push(`${provincia}`)
+                params.push(`%${provincia}%`)
             }
             if (ciudad) {
                 conditions.push(`ciudad LIKE ?`)
-                params.push(`${ciudad}`)
+                params.push(`%${ciudad}%`)
             }
             if (nBanos) {
                 conditions.push(`nBanos >= ?`)
@@ -115,16 +115,15 @@ const search = async (req, res, next) => {
             //FINALIZAMOS CONSTRUCCIÓN DE QUERY
             query = `${query} where ${conditions.join(
                 ` and `
-            )} order by ${orderBy} ${orderDirection} `;
+            )} group by piso.id order by ${orderBy} ${orderDirection}`;
 
             console.log(query, params)
-            const [result] = await connection.query(query, params)
 
-            res.send({
-                data: result
-            })
         }
-
+        const [result] = await connection.query(query, params)
+        res.send({
+            data: result
+        })
     } catch (e) {
         next(e)
     } finally {
