@@ -28,7 +28,7 @@ function SearchPage() {
 
     const { cityUrl } = useParams()
 
-    const searchPage = useFetch(`http://localhost:9999/vivienda/busqueda?` + `ciudad=${cityUrl}`) || []
+    const searchPage = useFetch(`http://localhost:9999/vivienda/busqueda?` + (cityUrl ? `ciudad=${cityUrl}` : '')) || []
     const firstResults = searchPage.data
 
     const paginatedFirstResults = firstResults ? firstResults.slice(5 * (page - 1), 5 * page) : []
@@ -37,7 +37,7 @@ function SearchPage() {
     const handleSubmit = async e => {
         e.preventDefault()
         const url = `http://localhost:9999/vivienda/busqueda?`
-            + `ciudad=${city ? city : cityUrl}` + `&provincia=${provincia}` + `&nBanos=${nBanos}`
+            + (city ? `ciudad=${city}` : '') + `&provincia=${provincia}` + `&nBanos=${nBanos}`
             + `&nHabitaciones=${nHabitaciones}` + `&m2=${m2}` + `&precio1=${precio1}`
             + `&precio2=${precio2}` + `&fecha_entrada=${fechaEntrada}` + `&fecha_salida=${fechaSalida}` + `&ascensor=${ascensor ? 'si' : ''}` + `&garaje=${garaje ? 'si' : ''}`
             + `&balcon=${balcon ? 'si' : ''}` + `&jardin=${jardin ? 'si' : ''}`
