@@ -90,7 +90,7 @@ app.post('/image', saveImage)
 app.post('/vivienda/imagen/:id', saveHomeImage)
 app.get('/vivienda/imagen/:uuid', getImage)
 
-app.post('/vivienda/:id/reserva', isAuthenticated, booking)
+app.post('/vivienda/:id/reserva', /*isAuthenticated,*/ booking)
 app.get('/reserva', isAuthenticated, isSameUserOrAdmin, getListOfBookings)
 app.get('/reserva/:id', haveBooking, getBooking)
 app.delete('/reserva/:id', isAuthenticated, isSameUserOrAdmin, deleteBooking)

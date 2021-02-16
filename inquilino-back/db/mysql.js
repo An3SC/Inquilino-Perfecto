@@ -56,7 +56,7 @@ const getUserById = async (id) => {
     return result
 }
 
-const updateUser = async (nombre, apellidos, fechaNacimiento, provincia, ciudad, descripcion, telefono, imagen, id) => {
+const updateUser = async (nombre, apellidos, fechaNacimiento, provincia, ciudad, descripcion, telefono, id) => {
     const query = `
     update usuario set nombre = ?,
     apellidos = ?,
@@ -64,11 +64,10 @@ const updateUser = async (nombre, apellidos, fechaNacimiento, provincia, ciudad,
     provincia = ?,
     ciudad = ?,
     descripcion = ?,
-    telefono = ?,
-    imagen = ?
+    telefono = ?
     where id = ?
     `
-    const params = [nombre, apellidos, fechaNacimiento, provincia, ciudad, descripcion, telefono, imagen, id]
+    const params = [nombre, apellidos, fechaNacimiento, provincia, ciudad, descripcion, telefono, id]
     console.log(params)
 
     await performQuery(query, params)
@@ -200,8 +199,16 @@ const updateHome = async (provincia, ciudad, direccion, precio_piso, nBanos, nHa
 
 //QUERYS DE IMAGES ///
 
+const saveUserImage = async (imagen, id) => {
+    const query = `update usuario set imagen = ? where id = ?`
+    const params = [imagen, id]
+
+    console.log(query, params)
+    await performQuery(query, params)
+}
+
 const saveHomeImage = async (imagen, id_piso) => {
-    const query = `insert into imagenesPiso (id_piso, imagen) values (?, ?)`
+    const query = `insert into imagenesPiso (imagen, id_piso) values (?, ?)`
     const params = [imagen, id_piso]
 
     console.log(query, params)
@@ -212,9 +219,9 @@ const saveHomeImage = async (imagen, id_piso) => {
 
 /// QUERYS DE BOOKINGS ///
 
-const createBooking = async (id_piso, id_usuario) => {
-    const query = `insert into reserva(id_piso, id_usuario, precio_reserva) values(?,?,(select precio_piso from piso where id = ?))`
-    const params = [id_piso, id_usuario, id_piso]
+const createBooking = async (id_piso, id_usuario, fecha_entrada, fecha_salida) => {
+    const query = `insert into reserva(id_piso, id_usuario, fecha_entrada, fecha_salida, precio_reserva) values(?,?,?,?,(select precio_piso from piso where id = ?))`
+    const params = [id_piso, id_usuario, fecha_entrada, fecha_salida, id_piso]
 
     await performQuery(query, params)
 }
@@ -295,6 +302,7 @@ module.exports = {
     getHome,
     deleteHome,
     updateHome,
+    saveUserImage,
     saveHomeImage,
     createBooking,
     getBooking,

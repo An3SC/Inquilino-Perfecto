@@ -5,6 +5,9 @@ const randomstring = require('randomstring')
 
 const utils = require('../utils/utils')
 
+const fsPromises = require('fs').promises
+const uuid = require('uuid')
+
 const { userValidator, passwordValidator, emailValidator } = require('../validators/users');
 
 const getUserById = async (req, res) => {
@@ -49,12 +52,29 @@ const updateUser = async (req, res) => {
         provincia,
         ciudad,
         descripcion,
-        telefono,
-        imagen } = req.body
+        telefono } = req.body
     const { id } = req.params
+
+    if (req.files) {
+        await fsPromises.mkdir(process.env.TARGET_FOLDER, { recursive: true })
+
+        try {
+            const fileID = uuid.v4()
+            const outputFileName = `${process.env.TARGET_FOLDER}/${fileID}.jpg`
+
+            await fsPromises.writeFile(outputFileName, req.files.imagen.data)
+
+            await db.saveUserImage(fileID, id)
+            res.send()
+        } catch (e) {
+            console.log('Error: ', e)
+            res.status(500).send()
+        }
+    }
+
     try {
         await userValidator.validateAsync(req.body)
-        await db.updateUser(nombre, apellidos, fechaNacimiento, provincia, ciudad, descripcion, telefono, imagen, id)
+        await db.updateUser(nombre, apellidos, fechaNacimiento, provincia, ciudad, descripcion, telefono, id)
     } catch (e) {
         console.log(e)
         let statusCode = 400;
