@@ -82,7 +82,95 @@
   flex-direction: column;
   justify-content: center;
   color: whitesmoke;
-  background: rgba(0,0,0, 0.3);
+  background: rgba(0,0,0, 0.4);
+  font-size: 25px;
+}
+
+.firstSearchForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.firstSearchForm input[type=text] {
+  font-size: 15px;
+  text-align: center;
+  height: 3vh;
+  width: 35vw;
+  border-radius: 5px;
+  margin: 20px;
+  background: whitesmoke;
+}
+
+.firstSearchForm input[type=date] {
+  display: flex;
+  height: 3vh;
+  width: 25vw;
+  border-radius: 5px;
+  background: whitesmoke;
+}
+
+.firstSearchForm button {
+  font-size: 15px;
+  height: 5vh;
+  width: 15vw;
+  margin: 15px;
+  cursor: pointer;
+  transition: all .3s;
+  box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.75);
+}
+.firstSearchForm button:hover {
+  box-shadow: 6px 6px 6px 6px rgba(0,0,0,0.75);
+  transform: scale(1.05);
+}
+
+.firstSearchForm button:active {
+  box-shadow: 6px 6px 6px 6px rgba(0,0,0,0.75);
+  transform: scale(.95)
+}
+
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginContainer .loginContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border: 1px solid black;
+  height: 45vh;
+  width: 45vw;
+  box-shadow: 3px 2px 2px 2px rgba(0,0,0,0.5);
+}
+
+.loginContent .loginTitulo {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.loginContent input {
+  height: 3vh;
+  width: 30vw;
+  margin: 10px;
+}
+
+.loginContent button {
+  background: url('./icons/enter.png') no-repeat;
+  background-size: contain;
+  height: 30px;
+  width: 30px;
+  border: none;
+  margin: 5px;
+  cursor: pointer;
+  transition: all .3s;
+}
+.loginContent button:hover {
+  transform: scale(1.09);
 }
 
 .videoHome {
