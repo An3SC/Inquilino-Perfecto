@@ -15,7 +15,7 @@ function FirstSearch() {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className='firstSearchForm'>
                 <input type='text' placeholder='¿En qué ciudad buscas?'
                     value={cityUrl} onChange={e => setCityUrl(e.target.value)}
                 />
