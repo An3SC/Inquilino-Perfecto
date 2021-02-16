@@ -36,9 +36,9 @@ function CreateHome() {
             method: 'POST'
         })
         if (ret.ok) {
-            console.log(ret.body)
-            const data = await ret.json()
-            console.log(data)
+            // console.log(ret.body)
+            // const data = await ret.json()
+            // console.log(data)
             // history.push('//home/:id')
         } else {
             console.log('Error')
