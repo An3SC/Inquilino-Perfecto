@@ -21,6 +21,7 @@ function Profile() {
             {user &&
                 <div>
                     <ul>
+                        <img src={user.imagen} />
                         <li>{user.nombre}</li>
                         <li>{user.provincia}</li>
                         <li>{user.ciudad}</li>
