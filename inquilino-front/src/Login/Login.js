@@ -31,32 +31,33 @@ function Login() {
 
     return (
         <form onSubmit={handleSubmit} className='loginContainer'>
-            <div>
-                Inicia sesión
+            <div className='loginContent'>
+                <div className='loginTitulo'>
+                    Inicia sesión
             </div>
-            <input
-                type='email'
-                className='email'
-                placeholder='Email...'
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                required
-                autoFocus
-            />
-            <input
-                type='password'
-                className='password'
-                placeholder='Contraseña...'
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-                required
-            />
-            <div>
-                <button>Iniciar</button>
+                <input
+                    type='email'
+                    className='email'
+                    placeholder='Email...'
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                    required
+                    autoFocus
+                />
+                <input
+                    type='password'
+                    className='password'
+                    placeholder='Contraseña...'
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
+                    required
+                />
+                <button />
+                <p>
+                    <Link to="/recovery">¿No recuerdas tu contraseña?</Link>
+                </p>
             </div>
-            <p>
-                <Link to="/recovery">¿No recuerdas tu contraseña?</Link>
-            </p>
+
         </form>
     )
 }
