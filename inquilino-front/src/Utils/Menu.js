@@ -29,6 +29,11 @@ function Menu({ children }) {
         history.push(`/user/homes/${login.id}`)
     }
 
+    const handleBookings = e => {
+        e.preventDefault()
+        history.push(`/userBookings`)
+    }
+
 
     return (
         <div onClick={handleOpen}>
@@ -37,7 +42,7 @@ function Menu({ children }) {
                 <div>
                     <Link onClick={handleProfile}>Mi perfil</Link>
                     <Link onClick={handlePisos}>Mis pisos</Link>
-                    <label>Mis reservas</label>
+                    <Link onClick={handleBookings}>Mis reservas</Link>
                     <button onClick={handleLogout}>Logout</button>
                 </div>
             }
