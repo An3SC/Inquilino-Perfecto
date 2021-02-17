@@ -55,7 +55,7 @@ const login = async (req, res) => {
 
     const user = await db.getUser(email)
     const username = user.nombre
-    const userImage = user.imagen
+    const imagen = user.imagen
     const id = user.id
     if (!user) {
         res.status(401).send()
@@ -87,7 +87,7 @@ const login = async (req, res) => {
     res.send({
         token,
         username,
-        userImage,
+        imagen,
         id
     })
 }
