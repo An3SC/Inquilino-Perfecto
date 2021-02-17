@@ -60,7 +60,7 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(fileUpload())
-app.use('/imagen', express.static(__dirname + '/imagen'))
+app.use('/images', express.static(__dirname + '/images'))
 
 const DEFAULT_PORT = 3333
 
