@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { Link, useHistory } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 function Menu({ children }) {
     const [open, setOpen] = useState(false)
@@ -17,32 +17,14 @@ function Menu({ children }) {
         dispatch({ type: 'logout' })
     }
 
-    const history = useHistory()
-
-    const handleProfile = e => {
-        e.preventDefault()
-        history.push(`/user/${login.id}`)
-    }
-
-    const handlePisos = e => {
-        e.preventDefault()
-        history.push(`/user/homes/${login.id}`)
-    }
-
-    const handleBookings = e => {
-        e.preventDefault()
-        history.push(`/userBookings`)
-    }
-
-
     return (
         <div onClick={handleOpen}>
             <button>{children}</button>
             {open &&
-                <div>
-                    <Link onClick={handleProfile}>Mi perfil</Link>
-                    <Link onClick={handlePisos}>Mis pisos</Link>
-                    <Link onClick={handleBookings}>Mis reservas</Link>
+                <div className='userLinks'>
+                    <Link to={`/user/${login.id}`}>Mi perfil</Link>
+                    <Link to={`/user/homes/${login.id}`}>Mis pisos</Link>
+                    <Link to={`/userBookings`}>Mis reservas</Link>
                     <button onClick={handleLogout}>Logout</button>
                 </div>
             }
