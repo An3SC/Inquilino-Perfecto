@@ -15,6 +15,7 @@ import Profile from './User/Profile';
 import MyHomes from './Viviendas/MyHomes';
 import Update from './User/Update';
 import MyBookings from './Bookings/MyBookings';
+import UpdateHome from './Viviendas/UpdateHome';
 
 function App() {
   return (
@@ -40,14 +41,14 @@ function App() {
         <Route path='/reset/:code' exact>
           <Reset />
         </Route>
-        <Route path='/user/:id' exact>
-          <Profile />
-        </Route>
         <Route path='/user/update/:id' exact>
           <Update />
         </Route>
         <Route path='/user/homes/:id_usuario' exact>
           <MyHomes />
+        </Route>
+        <Route path='/user/:id'>
+          <Profile />
         </Route>
         <Route path='/userBookings' exact>
           <MyBookings />
@@ -57,6 +58,9 @@ function App() {
         </Route>
         <Route path='/createHome' exact>
           <CreateHome />
+        </Route>
+        <Route path='/updateHome/:id' exact>
+          <UpdateHome />
         </Route>
         <Route path='/searchPage' exact>
           <div className='searchPage'>
