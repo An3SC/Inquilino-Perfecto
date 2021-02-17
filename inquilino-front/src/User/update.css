@@ -1,0 +1,7 @@
+.avatar-picker .avatar {
+    height: 60px;
+    width: 60px;
+    background-size: cover;
+    margin: auto;
+    background-image: url('../icons/ava_0010-512.v1443724322.png');
+}

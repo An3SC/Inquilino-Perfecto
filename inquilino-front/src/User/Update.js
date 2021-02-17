@@ -2,23 +2,27 @@ import { useState } from "react"
 import { useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom"
 import useFetch from "../useFetch"
+import './update.css'
 
-function Update() {
+function UpdateUserWrapper() {
+    const { id } = useParams()
+    const data = useFetch(`http://localhost:9999/usuario/${id}`)
+    return data ? <Update data={data[0]} /> : false
+}
+
+function Update({ data }) {
     const login = useSelector(s => s.login)
     const { id } = useParams()
 
-    const userData = useFetch(`http://localhost:9999/usuario/${id}`) || []
-    const user = userData[0]
-
-    const [nombre, setNombre] = useState(user && (user.nombre || ''))
-    const [apellidos, setApellidos] = useState(user && (user.apellidos || ''))
-    const [provincia, setProvincia] = useState(user && (user.provincia || ''))
-    const [ciudad, setCiudad] = useState(user && (user.ciudad || ''))
-    // const [email, setEmail] = useState(user && (user.email || ''))
-    // const [password, setPassword] = useState(user && (user.password || ''))
-    const [fechaNacimiento, setFechaNacimiento] = useState(user && (user.fechaNacimiento || ''))
-    const [descripcion, setDescripcion] = useState(user && (user.descripcion || ''))
-    const [telefono, setTelefono] = useState(user && (user.telefono || ''))
+    const [nombre, setNombre] = useState(data.nombre || '')
+    const [apellidos, setApellidos] = useState(data.apellidos || '')
+    const [provincia, setProvincia] = useState(data.provincia || '')
+    const [ciudad, setCiudad] = useState(data.ciudad || '')
+    // const [email, setEmail] = useState(data.email || '')
+    // const [password, setPassword] = useState(data.password || '')
+    const [fechaNacimiento, setFechaNacimiento] = useState(data.fechaNacimiento || '')
+    const [descripcion, setDescripcion] = useState(data.descripcion || '')
+    const [telefono, setTelefono] = useState(data.telefono || '')
 
     const history = useHistory()
 
@@ -52,15 +56,16 @@ function Update() {
 
     }
 
-    const avatarStyle = login && login.userImage && { backgroundImage: 'url(' + login.userImage + ')' }
+    const avatarUrl = data.imagen && (`http://localhost:9999/images/${data.imagen}.jpg`)
+    const avatarStyle = login && data.imagen && { backgroundImage: 'url(' + avatarUrl + ')' }
 
     return (
         <div className='updateContainer'>
             <h2>Edita tu perfil</h2>
             <form onSubmit={handleSubmit}>
-                <label>
+                <label className='avatarPicker'>
                     <span>Foto de perfil:</span>
-                    <div >
+                    <div className='value'>
                         <div className="avatar" style={avatarStyle} />
                         <input name="userImage" type="file" accept="image/*" />
                     </div>
@@ -107,4 +112,4 @@ function Update() {
     )
 }
 
-export default Update
+export default UpdateUserWrapper
