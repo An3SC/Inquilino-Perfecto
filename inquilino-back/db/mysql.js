@@ -245,7 +245,15 @@ const deleteBooking = async (id) => {
  */
 
 const getListBookings = async (id_usuario) => {
-    const query = `select * from reserva where id_usuario = ?`
+    const query = `select r.id_reserva,
+                r.id_usuario,
+                p.id 'id_piso',
+                p.direccion,
+                p.ciudad,
+                r.precio_reserva,
+                r.fecha_entrada,
+                r.fecha_salida
+                from reserva r join piso p on r.id_piso =p.id where r.id_usuario = ?`
     const params = [id_usuario]
 
     const [...result] = await performQuery(query, params)
