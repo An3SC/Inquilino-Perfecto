@@ -62,8 +62,10 @@
 .recoveryContainer, .registerContainer,
 .searchPage, .showHomeContainer,
 .createHomeContainer, .profileContainer,
-.myHomesContainer, .updateContainer  {
-  height: 70vh;
+.myHomesContainer, .updateContainer,
+.myBookingsContainer {
+  height: 80vh;
+  min-height: 65vh;
   width: 100%;
   
 }
@@ -222,7 +224,8 @@
 .pageHome, .searchPage, .resetContainer,
 .validateContainer, .showHomeContainer,
 .createHomeContainer, .profileContainer,
-.myHomesContainer, .updateContainer {
+.myHomesContainer, .updateContainer,
+.myBookingsContainer {
   position:relative;
   z-index: 1;
   background: whitesmoke;
