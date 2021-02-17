@@ -14,6 +14,7 @@ import Reset from './Login/Reset';
 import Profile from './User/Profile';
 import MyHomes from './Viviendas/MyHomes';
 import Update from './User/Update';
+import MyBookings from './Bookings/MyBookings';
 
 function App() {
   return (
@@ -45,8 +46,11 @@ function App() {
         <Route path='/user/update/:id' exact>
           <Update />
         </Route>
-        <Route path='/user/homes/:id_usuario'>
+        <Route path='/user/homes/:id_usuario' exact>
           <MyHomes />
+        </Route>
+        <Route path='/userBookings' exact>
+          <MyBookings />
         </Route>
         <Route path='/search/:cityUrl' exact>
           <SearchPage />
