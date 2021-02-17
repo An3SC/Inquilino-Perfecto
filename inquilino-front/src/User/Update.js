@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useSelector } from "react-redux"
-import { useParams } from "react-router-dom"
+import { useHistory, useParams } from "react-router-dom"
 import Header from "../Header"
 import useFetch from "../useFetch"
 
@@ -21,6 +21,7 @@ function Update() {
     const [descripcion, setDescripcion] = useState(user && (user.descripcion || ''))
     const [telefono, setTelefono] = useState(user && (user.telefono || ''))
 
+    const history = useHistory()
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -39,15 +40,17 @@ function Update() {
         fd.append('descripcion', descripcion)
         fd.append('telefono', telefono)
 
-        fetch(`http://localhost:9999/usuario/${id}`, {
+        const ret = fetch(`http://localhost:9999/usuario/${id}`, {
             method: 'PUT',
-            headers: { 'Authorization': 'Bearer ' + login.token },
+            headers: { 'Authorization': login.token },
             body: fd
         })
-        // .then(res => res.json())
-        // .then(data => {
+        if (ret.ok) {
+            history.push(`/user/${id}`)
+        } else {
+            console.log('Ha habido un error')
+        }
 
-        // })
     }
 
     const avatarStyle = login && login.userImage && { backgroundImage: 'url(' + login.userImage + ')' }
@@ -61,7 +64,6 @@ function Update() {
                     <div >
                         <div className="avatar" style={avatarStyle} />
                         <input name="userImage" type="file" accept="image/*" />
-                        {/* Ojo: Los input type file no usan value/onChange! */}
                     </div>
                 </label>
                 <label>
