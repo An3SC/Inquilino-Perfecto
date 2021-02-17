@@ -73,7 +73,7 @@ app.get('/usuario/validate/:code', validate)
 
 app.get('/usuario/:id', getUserById)
 app.delete('/usuario/:id', isAuthenticated, isSameUserOrAdmin, deleteUser)
-app.put('/usuario/:id', /*isAuthenticated, isSameUserOrAdmin,*/ updateUser)
+app.put('/usuario/:id', isAuthenticated, isSameUserOrAdmin, updateUser)
 
 app.put('/usuario/:id/password', isAuthenticated, isSameUserOrAdmin, updateUserPassword)
 app.put('/usuario/:id/email', isAuthenticated, isSameUserOrAdmin, updateUserEmail)
@@ -81,16 +81,11 @@ app.put('/usuario/:id/email', isAuthenticated, isSameUserOrAdmin, updateUserEmai
 app.post('/usuario/recover-password', recoverPassword)
 app.put('/usuario/password/reset/:code', resetPassword)
 
-// app.post('/usuario/image', upload.single('image'), (req, res) => {
-//     console.log(req.file)
-//     res.send()
-// })
-
 app.post('/image', saveImage)
 app.post('/vivienda/imagen/:id', saveHomeImage)
 app.get('/vivienda/imagen/:uuid', getImage)
 
-app.post('/vivienda/:id/reserva', /*isAuthenticated,*/ booking)
+app.post('/vivienda/:id/reserva', isAuthenticated, booking)
 app.get('/reserva', isAuthenticated, isSameUserOrAdmin, getListOfBookings)
 app.get('/reserva/:id', haveBooking, getBooking)
 app.delete('/reserva/:id', isAuthenticated, isSameUserOrAdmin, deleteBooking)
