@@ -119,17 +119,17 @@
   width: 15vw;
   margin: 15px;
   cursor: pointer;
-  transition: all .3s;
+  transition: all .2s;
   box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.75);
 }
 .firstSearchForm button:hover {
-  box-shadow: 6px 6px 6px 6px rgba(0,0,0,0.75);
-  transform: scale(1.05);
+  box-shadow: 4px 4px 4px 4px rgba(0,0,0,0.75);
+  transform: scale(1.02);
 }
 
 .firstSearchForm button:active {
-  box-shadow: 6px 6px 6px 6px rgba(0,0,0,0.75);
-  transform: scale(.95)
+  box-shadow: 4px 4px 4px 4px rgba(0,0,0,0.75);
+  transform: scale(.9)
 }
 
 .loginContainer {

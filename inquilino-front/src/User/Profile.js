@@ -1,7 +1,6 @@
-import { Link, useHistory, useParams } from "react-router-dom"
+import { useHistory, useParams } from "react-router-dom"
 import useFetch from "../useFetch"
 import Tabs from "../Utils/Tabs"
-import Update from "./Update"
 
 function Profile() {
     const { id } = useParams()
@@ -21,7 +20,7 @@ function Profile() {
             {user &&
                 <div>
                     <ul>
-                        <img src={user.imagen} />
+                        <img alt='avatar' src={user.imagen} />
                         <li>{user.nombre}</li>
                         <li>{user.provincia}</li>
                         <li>{user.ciudad}</li>

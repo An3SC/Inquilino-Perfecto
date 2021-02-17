@@ -13,7 +13,7 @@ function Reservar() {
     const handleBooking = e => {
         e.preventDefault()
         try {
-            const ret = fetch(`http://localhost:9999/vivienda/${id}/reserva`, {
+            fetch(`http://localhost:9999/vivienda/${id}/reserva`, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': login.token

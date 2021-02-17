@@ -1,5 +1,4 @@
 import { useState } from "react"
-import { useHistory } from "react-router-dom"
 
 function Register() {
 
@@ -23,12 +22,6 @@ function Register() {
         }
 
     }
-
-    // const history = useHistory()
-
-    // if (registered) {
-    //     history.push(`/`)
-    // }
 
     return (
         <div className='registerContainer'>

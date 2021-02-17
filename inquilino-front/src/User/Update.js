@@ -1,7 +1,6 @@
 import { useState } from "react"
 import { useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom"
-import Header from "../Header"
 import useFetch from "../useFetch"
 
 function Update() {
