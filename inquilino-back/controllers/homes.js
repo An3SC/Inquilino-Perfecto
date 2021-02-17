@@ -28,6 +28,7 @@ const createHome = async (req, res) => {
         await homeValidator.validateAsync(req.body)
 
         await db.createHome(fechaPublicacion, provincia, ciudad, direccion, precio_piso, nBanos, nHabitaciones, ascensor, garaje, balcon, jardin, m2, descripcion, id_usuario)
+
     } catch (e) {
         let statusCode = 400;
         if (e.message === 'database-error') {

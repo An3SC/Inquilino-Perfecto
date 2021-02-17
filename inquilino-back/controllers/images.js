@@ -36,7 +36,7 @@ const saveHomeImage = async (req, res) => {
 
         await fsPromises.writeFile(outputFileName, req.files.imagen.data)
 
-        await db.saveHomeImage(id, fileID)
+        await db.saveHomeImage(fileID, id)
 
         res.send()
     } catch (e) {
@@ -49,7 +49,7 @@ const getImage = async (req, res) => {
 
     const { uuid } = req.params
 
-    const imagePath = '/home/andres/Escritorio/proyectoFinal/inquilinoPerfecto/images'
+    const imagePath = '/home/andres/Escritorio/proyectoFinal/Inquilino-Perfecto/images'
 
     const path = `${imagePath}/${uuid}.jpg`
     console.log(path)
