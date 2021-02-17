@@ -39,7 +39,7 @@ function CreateHome() {
             // console.log(ret.body)
             // const data = await ret.json()
             // console.log(data)
-            // history.push('//home/:id')
+            history.push(`/user/homes/${login.id}`)
         } else {
             console.log('Error')
             setError(true)
@@ -49,6 +49,13 @@ function CreateHome() {
     return (
         <div className='createHomeContainer'>
             <form onSubmit={handleSubmit}>
+                {/* <label>
+                    <span>Foto del piso:</span>
+                    <div >
+                        <div className="pisoImagen" />
+                        <input name="pisoImagen" type="file" accept="image/*" />
+                    </div>
+                </label> */}
                 <input name='ciudad' placeholder='Ciudad...' value={ciudad} onChange={e => setCiudad(e.target.value)} />
                 <input name='provincia' placeholder='Provincia...' value={provincia} onChange={e => setProvincia(e.target.value)} />
                 <input name='direccion' placeholder='Direccion...' value={direccion} onChange={e => setDireccion(e.target.value)} />
