@@ -1,18 +1,19 @@
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
+import { NavLink } from 'react-router-dom'
 import './Tabs.css'
 
-function Tabs({ tabList, onChange }) {
-    const [value, setValue] = useState('disabled')
-    tabList = tabList || ['Tus pisos', 'Opiniones', 'Reservas']
-    const handleClick = tab => {
-        setValue(tab)
-        if (onChange) onChange(tab)
-    }
+function Tabs() {
+    const [active,] = useState()
+
+    const login = useSelector(s => s.login)
+
+    const tabList = ['Viviendas', 'Opiniones', 'Reservas']
+
     return (
         <div className='tabs '>
             {tabList.map(tab =>
-                <div className={value === tab ? 'enabled' : ''} onClick={() => handleClick(tab)}>{tab}</div>
-
+                <NavLink to={`/user/${login && login.id}/${tab}`} activeClassName={active}>{tab}</NavLink>
             )}
         </div>
     )
