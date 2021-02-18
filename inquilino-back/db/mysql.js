@@ -178,7 +178,7 @@ const deleteHome = async (id) => {
     await performQuery(query, params)
 }
 
-const updateHome = async (provincia, ciudad, direccion, precio_piso, nBanos, nHabitaciones, m2, id_usuario, id) => {
+const updateHome = async (provincia, ciudad, direccion, precio_piso, nBanos, nHabitaciones, ascensor, garaje, balcon, jardin, m2, descripcion, id_usuario, id) => {
     const query = `
     update piso set fechaActualizacion = UTC_TIMESTAMP,
     provincia = ?,
@@ -187,11 +187,16 @@ const updateHome = async (provincia, ciudad, direccion, precio_piso, nBanos, nHa
     precio_piso = ?,
     nBanos = ?,
     nHabitaciones = ?,
+    ascensor = ?,
+    garaje = ?,
+    balcon = ?,
+    jardin = ?,
     m2 = ?,
+    descripcion = ?,
     id_usuario = ?
     where id = ?`
 
-    const params = [provincia, ciudad, direccion, precio_piso, nBanos, nHabitaciones, m2, id_usuario, id]
+    const params = [provincia, ciudad, direccion, precio_piso, nBanos, nHabitaciones, ascensor, garaje, balcon, jardin, m2, descripcion, id_usuario, id]
     await performQuery(query, params)
 }
 

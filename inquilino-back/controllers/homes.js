@@ -111,15 +111,23 @@ const updateHome = async (req, res) => {
         precio_piso,
         nBanos,
         nHabitaciones,
+        ascensor,
+        garaje,
+        balcon,
+        jardin,
         m2,
+        descripcion,
         id_usuario } = req.body
+
+    console.log(req.body)
 
     const { id } = req.params
 
     try {
         await homeValidator.validateAsync(req.body)
-        await db.updateHome(provincia, ciudad, direccion, precio_piso, nBanos, nHabitaciones, m2, id_usuario, id)
+        await db.updateHome(provincia, ciudad, direccion, precio_piso, nBanos, nHabitaciones, ascensor, garaje, balcon, jardin, m2, descripcion, id_usuario, id)
     } catch (e) {
+        console.log(e)
         let statusCode = 400;
         if (e.message === 'database-error') {
             statusCode = 500

@@ -35,10 +35,10 @@ const homeValidator = Joi.object({
         .error(
             new Error('Debe proporcionar un número válido')
         ),
-    ascensor: Joi.boolean(),
-    garaje: Joi.boolean(),
-    balcon: Joi.boolean(),
-    jardin: Joi.boolean(),
+    ascensor: Joi.number(),
+    garaje: Joi.number(),
+    balcon: Joi.number(),
+    jardin: Joi.number(),
     m2: Joi.number()
         .required()
         .error(
@@ -49,7 +49,8 @@ const homeValidator = Joi.object({
         .max(500)
         .error(
             new Error('La descripción no debe exceder los 500 caracteres')
-        )
+        ),
+    id_usuario: Joi.number()
 })
 
 module.exports = {
