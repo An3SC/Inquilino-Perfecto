@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom"
 import useFetch from "../useFetch"
+import './Login.css'
 
 function Validate() {
     const { code } = useParams()

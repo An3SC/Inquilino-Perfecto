@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom"
 import useFetch from "../useFetch"
-import './update.css'
+import './User.css'
 
 function UpdateUserWrapper() {
     const { id } = useParams()

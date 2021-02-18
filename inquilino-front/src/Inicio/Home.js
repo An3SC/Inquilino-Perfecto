@@ -2,6 +2,7 @@ import ErrorBoundary from '../ErrorBoundary';
 import './Home.css'
 import FirstSearch from "./FirstSearch";
 import video1 from '../videos/autumnHouse.mp4'
+import './Home.css'
 
 function Home() {
     return (

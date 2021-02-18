@@ -1,0 +1,19 @@
+  .searchResults {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .result {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+    border: 1px solid black;
+    width: 75vw;
+    margin: 10px;
+  }
+  
+  .result li {
+    padding: 5px;
+  }

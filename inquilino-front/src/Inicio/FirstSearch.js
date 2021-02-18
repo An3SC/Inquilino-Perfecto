@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useHistory } from "react-router-dom"
+import './Home.css'
 
 function FirstSearch() {
     const [cityUrl, setCityUrl] = useState('')

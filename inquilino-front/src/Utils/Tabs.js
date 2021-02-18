@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import './Tabs.css'
+import './Utils.css'
 
 function Tabs() {
     const [active,] = useState()

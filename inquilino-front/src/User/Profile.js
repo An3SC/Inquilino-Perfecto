@@ -1,6 +1,7 @@
 import { Route, Switch, useHistory, useParams } from "react-router-dom"
 import useFetch from "../useFetch"
 import Tabs from "../Utils/Tabs"
+import './User.css'
 
 function Profile() {
     const { id } = useParams()

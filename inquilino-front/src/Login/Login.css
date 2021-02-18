@@ -1,0 +1,42 @@
+.loginContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .loginContainer .loginContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: 1px solid black;
+    height: 45vh;
+    width: 45vw;
+    box-shadow: 3px 2px 2px 2px rgba(0,0,0,0.5);
+  }
+  
+  .loginContent .loginTitulo {
+    font-size: 25px;
+    font-weight: bold;
+  }
+  
+  .loginContent input {
+    height: 3vh;
+    width: 30vw;
+    margin: 10px;
+  }
+  
+  .loginContent button {
+    background: url('../icons/enter1.png') no-repeat;
+    background-size: contain;
+    height: 30px;
+    width: 30px;
+    border: none;
+    margin: 5px;
+    cursor: pointer;
+    transition: all .3s;
+  }
+  .loginContent button:hover {
+    transform: scale(1.09);
+  }

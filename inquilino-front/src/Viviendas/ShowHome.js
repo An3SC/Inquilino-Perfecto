@@ -26,7 +26,7 @@ function ShowHome() {
     return (
         <div className='showHomeContainer'>
             {vivienda.map(v =>
-                <div>
+                <div key={v.id}>
                     <div>{v.ciudad}</div>
                     <div>{v.provincia}</div>
                     <div>{v.direccion}</div>

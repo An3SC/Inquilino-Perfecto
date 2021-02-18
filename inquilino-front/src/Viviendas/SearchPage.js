@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useHistory, useParams } from 'react-router-dom'
 import useFetch from '../useFetch'
+import './Viviendas.css'
 
 const queryString = require('query-string');
 
@@ -21,43 +22,31 @@ function SearchPage() {
 
     const [page, setPage] = useState(1)
 
-
     const { cityUrl } = useParams()
 
-    const parsedDates = queryString.parse(window.location.search)
-    const stringifiedDates = queryString.stringify(parsedDates)
+    const parsedData = queryString.parse(window.location.search)
+    const stringifiedDates = queryString.stringify(parsedData)
 
     const searchPage = useFetch(`http://localhost:9999/vivienda/busqueda?`
         + (cityUrl ? `ciudad=${cityUrl}` : '')
         + (`&${stringifiedDates}`)) || []
 
-    const firstResults = searchPage.data
+    const results = searchPage.data
 
-    const paginatedFirstResults = firstResults ? firstResults.slice(5 * (page - 1), 5 * page) : []
-    const maxFirst = firstResults ? Math.ceil(firstResults.length / 5) : []
+    const paginatedResults = results ? results.slice(5 * (page - 1), 5 * page) : []
+    const max = results ? Math.ceil(results.length / 5) : []
 
+    const history = useHistory()
 
-
-    const [results, setResults] = useState('')
-    const dataResults = results.data
-
-    // const history = useHistory()
-
-    const paginatedData = dataResults ? dataResults.slice(5 * (page - 1), 5 * page) : []
-    const max = dataResults ? Math.ceil(dataResults.length / 5) : []
-
-    const handleSubmit = async e => {
+    const handleSubmit = e => {
         e.preventDefault()
-        const url = `http://localhost:9999/vivienda/busqueda?`
-            + (city ? `ciudad=${city}` : '') + `&provincia=${provincia}` + `&nBanos=${nBanos}`
+        const url = `/search/`
+            + (city ? `${city}` : '') + `&provincia=${provincia}` + `&nBanos=${nBanos}`
             + `&nHabitaciones=${nHabitaciones}` + `&m2=${m2}` + `&precio1=${precio1}`
             + `&precio2=${precio2}` + `&fecha_entrada=${fechaEntrada}` + `&fecha_salida=${fechaSalida}` + `&ascensor=${ascensor ? 'si' : ''}` + `&garaje=${garaje ? 'si' : ''}`
             + `&balcon=${balcon ? 'si' : ''}` + `&jardin=${jardin ? 'si' : ''}`
-        const res = await fetch(url)
-        const data = await res.json()
-        setResults(data)
-        // history.push(url)
-        // setPage(1)
+        history.push(url)
+        setPage(1)
     }
 
     const handleReset = e => {
@@ -156,41 +145,22 @@ function SearchPage() {
                 </div>
             </div>
             <div className='searchResults'>
-                <ul>
-                    {dataResults && paginatedData.map(result =>
+                <div>
+                    {results && paginatedResults.map(result =>
                         <Link key={result.id} to={`/home/${result.id}`}>
-                            <li >
-                                <div>{result.ciudad}</div>
-                                <div>{result.provincia}</div>
-                                <div>{result.direccion}</div>
-                            </li>
+                            <ul className='result'>
+                                <li>{result.ciudad}</li>
+                                <li>{result.provincia}</li>
+                                <li>{result.direccion}</li>
+                            </ul>
                         </Link>
                     )}
-                </ul>
-                {dataResults &&
+                </div>
+                {results &&
                     <div>
                         <span onClick={() => setPage(page > 1 ? page - 1 : 1)}>◄</span>
                         <span>{page} / {max}</span>
                         <span onClick={() => setPage(page < max ? page + 1 : max)}>►</span>
-                    </div>}
-            </div>
-            <div className='searchResults'>
-                <ul>
-                    {!dataResults && firstResults && paginatedFirstResults.map(result =>
-                        <Link key={result.id} to={`/home/${result.id}`}>
-                            <li >
-                                <div>{result.ciudad}</div>
-                                <div>{result.provincia}</div>
-                                <div>{result.direccion}</div>
-                            </li>
-                        </Link>
-                    )}
-                </ul>
-                {!dataResults && firstResults &&
-                    <div>
-                        <span onClick={() => setPage(page > 1 ? page - 1 : 1)}>◄</span>
-                        <span>{page} / {maxFirst}</span>
-                        <span onClick={() => setPage(page < maxFirst ? page + 1 : maxFirst)}>►</span>
                     </div>}
             </div>
         </div >

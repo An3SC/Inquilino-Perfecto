@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useHistory, useParams } from "react-router-dom"
+import './Login.css'
 
 function Reset() {
     const [password, setPassword] = useState('')

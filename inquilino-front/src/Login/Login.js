@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Redirect } from "react-router-dom";
+import './Login.css'
 
 function Login() {
     const [email, setEmail] = useState('')

@@ -1,4 +1,5 @@
 import { useState } from "react"
+import './Login.css'
 
 function Recovery() {
     const [email, setEmail] = useState('')

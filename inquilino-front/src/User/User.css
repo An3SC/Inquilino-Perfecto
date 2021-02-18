@@ -5,3 +5,7 @@
     margin: auto;
     background-image: url('../icons/ava_0010-512.v1443724322.png');
 }
+
+.profileContainer img {
+    height: 25vh;
+  }

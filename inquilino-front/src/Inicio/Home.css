@@ -1,8 +1,67 @@
-.listHomes ul {
+.pageHome {
+    object-fit: contain;
     display: flex;
-    flex-direction: row;
-}
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'lobster_twobold_italic';
+  }
 
-.listHomes ul li {
-    margin: 10px;
-}
+  .firstSearch {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: whitesmoke;
+    background: rgba(0,0,0, 0.4);
+    font-size: 25px;
+  }
+  
+  .firstSearchForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .firstSearchForm input[type=text] {
+    font-size: 15px;
+    text-align: center;
+    height: 3vh;
+    width: 35vw;
+    border-radius: 5px;
+    margin: 20px;
+    background: whitesmoke;
+  }
+  
+  .firstSearchForm input[type=date] {
+    display: flex;
+    height: 3vh;
+    width: 25vw;
+    border-radius: 5px;
+    background: whitesmoke;
+  }
+  
+  .firstSearchForm button {
+    font-size: 15px;
+    height: 5vh;
+    width: 15vw;
+    margin: 15px;
+    cursor: pointer;
+    transition: all .2s;
+    box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.75);
+  }
+  .firstSearchForm button:hover {
+    box-shadow: 4px 4px 4px 4px rgba(0,0,0,0.75);
+    transform: scale(1.02);
+  }
+  
+  .firstSearchForm button:active {
+    box-shadow: 4px 4px 4px 4px rgba(0,0,0,0.75);
+    transform: scale(.9)
+  }
+
+  .videoHome {
+    object-fit: cover;
+    position: absolute;
+    z-index: -1;
+  }
