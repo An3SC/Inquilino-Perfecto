@@ -35,10 +35,10 @@ const homeValidator = Joi.object({
         .error(
             new Error('Debe proporcionar un número válido')
         ),
-    ascensor: Joi.number(),
-    garaje: Joi.number(),
-    balcon: Joi.number(),
-    jardin: Joi.number(),
+    // ascensor: Joi.number(),
+    // garaje: Joi.number(),
+    // balcon: Joi.number(),
+    // jardin: Joi.number(),
     m2: Joi.number()
         .required()
         .error(
