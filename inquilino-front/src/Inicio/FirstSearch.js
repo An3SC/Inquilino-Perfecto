@@ -10,7 +10,7 @@ function FirstSearch() {
 
     const handleSubmit = e => {
         e.preventDefault()
-        history.push(cityUrl ? `/search/${cityUrl}` : `/searchPage`)
+        history.push(`/search/` + (cityUrl ? `${cityUrl}?` : '?') + (fechaEntrada ? `fecha_entrada=${fechaEntrada}&` : '') + (fechaSalida ? `fecha_salida=${fechaSalida}` : ''))
     }
 
     return (
@@ -18,6 +18,7 @@ function FirstSearch() {
             <form onSubmit={handleSubmit} className='firstSearchForm'>
                 <input type='text' placeholder='¿En qué ciudad buscas?'
                     value={cityUrl} onChange={e => setCityUrl(e.target.value)}
+                    required
                 />
                 <label>
                     Fecha de entrada

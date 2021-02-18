@@ -1,6 +1,8 @@
 import { useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useHistory, useParams } from 'react-router-dom'
 import useFetch from '../useFetch'
+
+const queryString = require('query-string');
 
 function SearchPage() {
     const [city, setCity] = useState('')
@@ -17,22 +19,32 @@ function SearchPage() {
     const [balcon, setBalcon] = useState(false)
     const [jardin, setJardin] = useState(false)
 
-
     const [page, setPage] = useState(1)
 
-    const [results, setResults] = useState('')
-    const dataResults = results.data
-
-    const paginatedData = dataResults ? dataResults.slice(5 * (page - 1), 5 * page) : []
-    const max = dataResults ? Math.ceil(dataResults.length / 5) : []
 
     const { cityUrl } = useParams()
 
-    const searchPage = useFetch(`http://localhost:9999/vivienda/busqueda?` + (cityUrl ? `ciudad=${cityUrl}` : '')) || []
+    const parsedDates = queryString.parse(window.location.search)
+    const stringifiedDates = queryString.stringify(parsedDates)
+
+    const searchPage = useFetch(`http://localhost:9999/vivienda/busqueda?`
+        + (cityUrl ? `ciudad=${cityUrl}` : '')
+        + (`&${stringifiedDates}`)) || []
+
     const firstResults = searchPage.data
 
     const paginatedFirstResults = firstResults ? firstResults.slice(5 * (page - 1), 5 * page) : []
     const maxFirst = firstResults ? Math.ceil(firstResults.length / 5) : []
+
+
+
+    const [results, setResults] = useState('')
+    const dataResults = results.data
+
+    // const history = useHistory()
+
+    const paginatedData = dataResults ? dataResults.slice(5 * (page - 1), 5 * page) : []
+    const max = dataResults ? Math.ceil(dataResults.length / 5) : []
 
     const handleSubmit = async e => {
         e.preventDefault()
@@ -44,7 +56,8 @@ function SearchPage() {
         const res = await fetch(url)
         const data = await res.json()
         setResults(data)
-        setPage(1)
+        // history.push(url)
+        // setPage(1)
     }
 
     const handleReset = e => {
