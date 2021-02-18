@@ -20,6 +20,8 @@ function SearchPage() {
     const [balcon, setBalcon] = useState(false)
     const [jardin, setJardin] = useState(false)
 
+    const [open, setOpen] = useState(false)
+
     const [page, setPage] = useState(1)
 
     const { cityUrl } = useParams()
@@ -35,8 +37,8 @@ function SearchPage() {
 
     const results = searchPage.data
 
-    const paginatedResults = results ? results.slice(5 * (page - 1), 5 * page) : []
-    const max = results ? Math.ceil(results.length / 5) : []
+    const paginatedResults = results ? results.slice(7 * (page - 1), 7 * page) : []
+    const max = results ? Math.ceil(results.length / 7) : []
 
     const history = useHistory()
 
@@ -69,83 +71,96 @@ function SearchPage() {
         setPage(1)
     }
 
+    const handleOpen = e => {
+        e.preventDefault()
+        setOpen(!open)
+    }
+
     return (
         <div className='searchPage'>
-            <div>
+            <div className='searchFilters'>
                 <form onSubmit={handleSubmit}>
-                    <input name='ciudad' placeholder={city ? city : cityUrl} value={city} onChange={e => setCity(e.target.value)} />
-                    <input name='provincia' placeholder='Provincia...' value={provincia} onChange={e => setProvincia(e.target.value)} />
-                    <label>
-                        Baños
-                        <select name='banos' value={nBanos} onChange={e => setNBanos(e.target.value)}>
-                            <option value='' >Baños</option>
-                            <option value={0} >Todo</option>
-                            <option value={1} >1</option>
-                            <option value={2} >2</option>
-                            <option value={3} >3 o más</option>
-                        </select>
-                    </label>
-                    <label>
-                        Habitaciones
-                        <select name='habitaciones' value={nHabitaciones} onChange={e => setNHabitaciones(e.target.value)}>
-                            <option value='' >Habitaciones</option>
-                            <option value={0} >Todo</option>
-                            <option value={1} >1</option>
-                            <option value={2} >2</option>
-                            <option value={3} >3</option>
-                            <option value={4} >4 o más</option>
-                        </select>
-                    </label>
-                    <label>
-                        Metros cuadrados
-                        <select name='m2' value={m2} onChange={e => setM2(e.target.value)}>
-                            <option value='' hidden>m2</option>
-                            <option value={0} >Todo</option>
-                            <option value={60} >50</option>
-                            <option value={80} >70</option>
-                            <option value={100} >90</option>
-                            <option value={120} >110 o más</option>
-                        </select>
-                    </label>
-                    <label>
-                        Precio
-                        <select name='' value={precio1} onChange={e => setPrecio1(e.target.value)}>
-                            <option value='' hidden>Min</option>
-                            <option value={200}>400</option>
-                            <option value={300}>500</option>
-                            <option value={400}>600</option>
-                            <option value={500}>700</option>
-                        </select>
-                        <select value={precio2} onChange={e => setPrecio2(e.target.value)}>
-                            <option value='' hidden>Max</option>
-                            <option value={700}>700</option>
-                            <option value={800}>800</option>
-                            <option value={900}>900</option>
-                            <option value={1000}>1000</option>
-                        </select>
-                    </label>
-                    <label>
-                        Fecha de entrada
-                        <input type='date' name='fechaEntrada' value={fechaEntrada} onChange={e => setFechaEntrada(e.target.value)} />
-                        Fecha de salida
-                        <input type='date' name='fechaSalida' value={fechaSalida} onChange={e => setFechaSalida(e.target.value)} />
-                    </label>
-                    <label>
-                        Ascensor
-                        <input type='checkbox' name='ascensor' checked={ascensor} onChange={e => setAscensor(e.target.checked)} />
-                        Garaje
-                        <input type='checkbox' name='garaje' checked={garaje} onChange={e => setGaraje(e.target.checked)} />
-                        Balcón
-                        <input type='checkbox' name='balcon' checked={balcon} onChange={e => setBalcon(e.target.checked)} />
-                        Jardín
-                        <input type='checkbox' name='jardin' checked={jardin} onChange={e => setJardin(e.target.checked)} />
-                    </label>
-                    <button>Buscar</button>
+                    <input type='text' name='ciudad' placeholder={city ? city : cityUrl} value={city} onChange={e => setCity(e.target.value)} />
+                    <input type='text' name='provincia' placeholder='Provincia...' value={provincia} onChange={e => setProvincia(e.target.value)} />
+                    {open &&
+                        <div className='filterContainer'>
+                            <label>
+                                Baños
+                                <select name='banos' value={nBanos} onChange={e => setNBanos(e.target.value)}>
+                                    <option value='' >Baños</option>
+                                    <option value={0} >Todo</option>
+                                    <option value={1} >1</option>
+                                    <option value={2} >2</option>
+                                    <option value={3} >3 o más</option>
+                                </select>
+                            </label>
+                            <label>
+                                Habitaciones
+                                <select name='habitaciones' value={nHabitaciones} onChange={e => setNHabitaciones(e.target.value)}>
+                                    <option value='' >Habitaciones</option>
+                                    <option value={0} >Todo</option>
+                                    <option value={1} >1</option>
+                                    <option value={2} >2</option>
+                                    <option value={3} >3</option>
+                                    <option value={4} >4 o más</option>
+                                </select>
+                            </label>
+                            <label>
+                                Metros cuadrados
+                                <select name='m2' value={m2} onChange={e => setM2(e.target.value)}>
+                                    <option value='' hidden>m2</option>
+                                    <option value={0} >Todo</option>
+                                    <option value={60} >50</option>
+                                    <option value={80} >70</option>
+                                    <option value={100} >90</option>
+                                    <option value={120} >110 o más</option>
+                                </select>
+                            </label>
+                            <label>
+                                Precio
+                                <select name='' value={precio1} onChange={e => setPrecio1(e.target.value)}>
+                                    <option value='' hidden>Min</option>
+                                    <option value={200}>400</option>
+                                    <option value={300}>500</option>
+                                    <option value={400}>600</option>
+                                    <option value={500}>700</option>
+                                </select>
+                                <select value={precio2} onChange={e => setPrecio2(e.target.value)}>
+                                    <option value='' hidden>Max</option>
+                                    <option value={700}>700</option>
+                                    <option value={800}>800</option>
+                                    <option value={900}>900</option>
+                                    <option value={1000}>1000</option>
+                                </select>
+                            </label>
+                            <label className='searchDate'>
+                                Fecha de entrada
+                                <input type='date' name='fechaEntrada' value={fechaEntrada} onChange={e => setFechaEntrada(e.target.value)} />
+                                Fecha de salida
+                                <input type='date' name='fechaSalida' value={fechaSalida} onChange={e => setFechaSalida(e.target.value)} />
+                            </label>
+                            <label>
+                                Ascensor
+                                <input type='checkbox' name='ascensor' checked={ascensor} onChange={e => setAscensor(e.target.checked)} />
+                                Garaje
+                                <input type='checkbox' name='garaje' checked={garaje} onChange={e => setGaraje(e.target.checked)} />
+                                Balcón
+                                <input type='checkbox' name='balcon' checked={balcon} onChange={e => setBalcon(e.target.checked)} />
+                                Jardín
+                                <input type='checkbox' name='jardin' checked={jardin} onChange={e => setJardin(e.target.checked)} />
+                            </label>
+                        </div>}
+                    <button className='searchButton' />
                 </form>
-                <div>
-                    <button onClick={handleReset}>Borrar</button>
-                </div>
+                <span className='moreFilters' onClick={handleOpen}>Más filtros</span>
+                <span className='moreFilters' onClick={handleReset}>Despejar</span>
             </div>
+            {results &&
+                <div className='pagination'>
+                    <span onClick={() => setPage(page > 1 ? page - 1 : 1)}>◄</span>
+                    <span>{page} / {max}</span>
+                    <span onClick={() => setPage(page < max ? page + 1 : max)}>►</span>
+                </div>}
             <div className='searchResults'>
                 <div>
                     {results && paginatedResults.map(result =>
@@ -158,12 +173,6 @@ function SearchPage() {
                         </Link>
                     )}
                 </div>
-                {results &&
-                    <div>
-                        <span onClick={() => setPage(page > 1 ? page - 1 : 1)}>◄</span>
-                        <span>{page} / {max}</span>
-                        <span onClick={() => setPage(page < max ? page + 1 : max)}>►</span>
-                    </div>}
             </div>
         </div >
     )

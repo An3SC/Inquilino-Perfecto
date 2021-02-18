@@ -31,6 +31,14 @@
   display: flex;
   flex-direction: column;
   font-family: 'quicksandlight';
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  padding-bottom: 200px;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 .App-header {
@@ -51,13 +59,17 @@
 .createHomeContainer, .profileContainer,
 .myHomesContainer, .updateContainer,
 .myBookingsContainer, .updateHomeContainer {
-  height: 80vh;
-  min-height: 65vh;
+  min-height: 100vh;
   width: 100%;
-  
 }
 
-.headerContainer, .loginContainer,
+.headerContainer {
+  position:relative;
+  z-index: 1;
+  background: whitesmoke;
+}
+
+.loginContainer,
 .recoveryContainer, .registerContainer,
 .pageHome, .searchPage, .resetContainer,
 .validateContainer, .showHomeContainer,
@@ -67,6 +79,7 @@
   position:relative;
   z-index: 1;
   background: whitesmoke;
+  box-shadow: 2px 3px 5px 2px rgba(0, 0, 0, 0.75);
 }
 
 .headerContainer {
@@ -102,7 +115,7 @@
   position: absolute;
   background-color: whitesmoke;
   padding: 5px;
-  box-shadow: 1px 2px 1px 2px rgba(0,0,0,0.75);
+  box-shadow: 1px 2px 3px 2px rgba(150, 150, 150, 0.75);
 }
 
 .logo {
@@ -116,10 +129,10 @@
 .footerContainer {
   background: #F5C634;
   bottom: 0;
-  right: 0;
   left:0;
-  height: 100vh;
-  position: absolute;
+  height: 200px;
+  width: 100%;
+  position: fixed;
   z-index: -1;
 }
 
