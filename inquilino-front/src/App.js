@@ -53,7 +53,7 @@ function App() {
         <Route path='/userBookings' exact>
           <MyBookings />
         </Route>
-        <Route path='/search/:cityUrl' exact>
+        <Route path='/search/:cityUrl?'>
           <SearchPage />
         </Route>
         <Route path='/createHome' exact>
