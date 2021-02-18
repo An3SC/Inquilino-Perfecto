@@ -25,11 +25,13 @@ function SearchPage() {
     const { cityUrl } = useParams()
 
     const parsedData = queryString.parse(window.location.search)
-    const stringifiedDates = queryString.stringify(parsedData)
+
+    const stringifiedData = queryString.stringify(parsedData)
+    console.log(stringifiedData)
 
     const searchPage = useFetch(`http://localhost:9999/vivienda/busqueda?`
         + (cityUrl ? `ciudad=${cityUrl}` : '')
-        + (`&${stringifiedDates}`)) || []
+        + (`&${stringifiedData}`)) || []
 
     const results = searchPage.data
 
