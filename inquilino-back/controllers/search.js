@@ -117,9 +117,8 @@ const search = async (req, res, next) => {
                 ` and `
             )} group by piso.id order by ${orderBy} ${orderDirection}`;
 
-            console.log(query, params)
-
         }
+        console.log(query, params)
         const [result] = await connection.query(query, params)
         res.send({
             data: result
