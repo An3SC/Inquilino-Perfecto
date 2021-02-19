@@ -16,6 +16,7 @@ import MyHomes from './Viviendas/MyHomes';
 import Update from './User/Update';
 import MyBookings from './Bookings/MyBookings';
 import UpdateHome from './Viviendas/UpdateHome';
+import BookingId from './Bookings/BookingId';
 
 function App() {
   return (
@@ -52,6 +53,9 @@ function App() {
         </Route>
         <Route path='/userBookings' exact>
           <MyBookings />
+        </Route>
+        <Route path='/booking/:id' exact>
+          <BookingId />
         </Route>
         <Route path='/search/:cityUrl?'>
           <SearchPage />
