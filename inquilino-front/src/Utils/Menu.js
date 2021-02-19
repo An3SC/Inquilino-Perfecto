@@ -23,9 +23,10 @@ function Menu({ children }) {
             <button>{children}</button>
             {open &&
                 <div className='userLinks'>
+                    <Link to='/createHome'>Publicar vivienda</Link>
                     <Link to={`/user/${login.id}`}>Mi perfil</Link>
                     <Link to={`/user/homes/${login.id}`}>Mis pisos</Link>
-                    <Link to={`/userBookings`}>Mis reservas</Link>
+                    <Link to='/userBookings'>Mis reservas</Link>
                     <button onClick={handleLogout}>Logout</button>
                 </div>
             }
