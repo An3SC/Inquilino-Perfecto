@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 import './Utils.css'
 
 function Menu({ children }) {
@@ -14,20 +14,23 @@ function Menu({ children }) {
         setOpen(!open)
     }
 
+    const history = useHistory()
+
     const handleLogout = () => {
         dispatch({ type: 'logout' })
+        history.push('/')
     }
 
     return (
         <div onClick={handleOpen}>
-            <button>{children}</button>
+            <button className='burgerUser'>{children}</button>
             {open &&
                 <div className='userLinks'>
                     <Link to='/createHome'>Publicar vivienda</Link>
                     <Link to={`/user/${login.id}`}>Mi perfil</Link>
                     <Link to={`/user/homes/${login.id}`}>Mis pisos</Link>
                     <Link to='/userBookings'>Mis reservas</Link>
-                    <button onClick={handleLogout}>Logout</button>
+                    <button className='logout' onClick={handleLogout}>Logout</button>
                 </div>
             }
 

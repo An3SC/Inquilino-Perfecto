@@ -34,7 +34,16 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  padding-bottom: 200px;
+  padding-bottom: 1000px;
+}
+
+.App h1 {
+  font-family: 'lobster_twobold_italic';
+  font-size: 45px;
+}
+
+.App a {
+  text-decoration: none;
 }
 
 html {
@@ -80,7 +89,7 @@ html {
 .bookingIdContainer {
   position:relative;
   z-index: 1;
-  background: whitesmoke;
+  background: linear-gradient(-340deg, #F5C634 50%, whitesmoke 0%);
   box-shadow: 2px 3px 5px 2px rgba(0, 0, 0, 0.75);
 }
 
@@ -100,6 +109,27 @@ html {
   margin-right: 15vw
 }
 
+.burgerUser {
+  margin-left: 5px;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 5px;
+  width: 10vw;
+  height: 5vh;
+  transition: all .3s;
+  cursor: pointer;
+}
+
+.burgerUser:hover {
+  background: #F5C634;
+}
+
+.burgerUser:active {
+  background: whitesmoke;
+  transform: scale(0.99);
+}
+
+
 .linksContainer .userMenu {
   display: flex;
   justify-content: center;
@@ -115,15 +145,34 @@ html {
 }
 
 .userLinks {
-  width: 150px;
+  width: 25vw;
   display: flex;
   flex-direction: column;
   position: absolute;
   background-color: whitesmoke;
-  padding: 5px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid black;
   box-shadow: 1px 2px 3px 2px rgba(150, 150, 150, 0.75);
   right: 15vw;
-  top: 10vh;
+  top: 8vh;
+}
+
+.userLinks a:hover {
+  color: #d8ad2e;
+}
+
+.logout {
+  border-radius: 5px;
+}
+
+.logout:hover {
+  background: #F5C634;
+}
+
+.logout:active {
+  background: whitesmoke;
+  transform: scale(0.99);
 }
 
 .logo {
@@ -136,10 +185,10 @@ html {
 }
 
 .footerContainer {
-  background: #F5C634;
+  background: linear-gradient(340deg, #F5C634 40%, #d8ad2e 0%);
   bottom: 0;
   left:0;
-  height: 200px;
+  height: 1000px;
   width: 100%;
   position: fixed;
   z-index: -1;

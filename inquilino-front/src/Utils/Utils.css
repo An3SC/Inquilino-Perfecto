@@ -1,19 +1,26 @@
 .tabs {
+    width: 30vw;
     display: flex;
     margin: 20px 10px 50px;
     position: relative;
 }
 
 .tabs a {
-    border: 1px solid #aaa;
-    border-radius: 6px 6px 6px 6px;
+    border: 1px solid black;
+    border-radius: 5px;
     padding: 8px 5px;
     margin-right: 6px;
-    background-color: #ccc;
+    background-color: whitesmoke;
+    transition: all .3s;
+}
+
+.tabs a:hover {
+    color: #d8ad2e;
 }
 
 .tabs .active {
-    background-color: white;
+    background-color: #F5C634;
+    transform: scale(1.1);
 }
 
 .tabs::after {
@@ -23,5 +30,16 @@
     left: -10px;
     right: -10px;
     top: 35px;
+}
 
+.tabsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tabOption {
+    background: whitesmoke;
+    border: 1px solid black;
+    border-radius: 5px;
 }

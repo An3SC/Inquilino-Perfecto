@@ -48,45 +48,54 @@ function CreateHome() {
 
     return (
         <div className='createHomeContainer'>
-            <form onSubmit={handleSubmit}>
-                {/* <label>
+            <h1>¿Quieres publicar un anuncio?</h1>
+            <div className='createHomeForm'>
+                <h3>Rellena los datos</h3>
+                <form onSubmit={handleSubmit}>
+                    {/* <label>
                     <span>Foto del piso:</span>
                     <div >
                         <div className="pisoImagen" />
                         <input name="pisoImagen" type="file" accept="image/*" />
                     </div>
                 </label> */}
-                <input name='ciudad' placeholder='Ciudad...' value={ciudad} onChange={e => setCiudad(e.target.value)} />
-                <input name='provincia' placeholder='Provincia...' value={provincia} onChange={e => setProvincia(e.target.value)} />
-                <input name='direccion' placeholder='Direccion...' value={direccion} onChange={e => setDireccion(e.target.value)} />
-                <input name='banos' type='number' placeholder='Baños...' value={nBanos} onChange={e => setNBanos(e.target.value)} />
-                <input name='habitaciones' type='number' placeholder='Habitaciones...' value={nHabitaciones} onChange={e => setNHabitaciones(e.target.value)} />
-                <input name='m2' type='number' placeholder='m2...' value={m2} onChange={e => setM2(e.target.value)} />
-                <input name='precio' type='number' placeholder='Precio...' value={precio_piso} onChange={e => setPrecio_piso(e.target.value)} />
-                <div>
-                    <label>
-                        Ascensor
-                <input type='checkbox' name='ascensor' checked={ascensor} onChange={e => setAscensor(e.target.checked)} />
-                    </label>
-                    <label>
-                        Garaje
-                <input type='checkbox' name='garaje' checked={garaje} onChange={e => setGaraje(e.target.checked)} />
-                    </label>
-                    <label>
-                        Balcón
-                <input type='checkbox' name='balcon' checked={balcon} onChange={e => setBalcon(e.target.checked)} />
-                    </label>
-                    <label>
-                        Jardín
-                <input type='checkbox' name='jardin' checked={jardin} onChange={e => setJardin(e.target.checked)} />
-                    </label>
-                    <textarea name='descripcion' value={descripcion} onChange={e => setDescripcion(e.target.value)} />
-                </div>
-                {error &&
-                    <div>Error en la creación</div>
-                }
-                <button>Publicar</button>
-            </form>
+                    <input name='ciudad' type='text' placeholder='Ciudad...' value={ciudad} onChange={e => setCiudad(e.target.value)} />
+                    <input name='provincia' type='text' placeholder='Provincia...' value={provincia} onChange={e => setProvincia(e.target.value)} />
+                    <input name='direccion' type='text' placeholder='Direccion...' value={direccion} onChange={e => setDireccion(e.target.value)} />
+                    <input name='banos' type='number' placeholder='Baños...' value={nBanos} onChange={e => setNBanos(e.target.value)} />
+                    <input name='habitaciones' type='number' placeholder='Habitaciones...' value={nHabitaciones} onChange={e => setNHabitaciones(e.target.value)} />
+                    <input name='m2' type='number' placeholder='m2...' value={m2} onChange={e => setM2(e.target.value)} />
+                    <input name='precio' type='number' placeholder='Precio...' value={precio_piso} onChange={e => setPrecio_piso(e.target.value)} />
+                    <div className='homeFormOptions'>
+                        <label>
+                            <span>
+                                Ascensor
+                                <input type='checkbox' name='ascensor' checked={ascensor} onChange={e => setAscensor(e.target.checked)} />
+                            </span>
+                            <span>
+                                Garaje
+                                <input type='checkbox' name='garaje' checked={garaje} onChange={e => setGaraje(e.target.checked)} />
+                            </span>
+                        </label>
+                        <label>
+                            <span>
+                                Balcón
+                                <input type='checkbox' name='balcon' checked={balcon} onChange={e => setBalcon(e.target.checked)} />
+                            </span>
+                            <span>
+                                Jardín
+                                <input type='checkbox' name='jardin' checked={jardin} onChange={e => setJardin(e.target.checked)} />
+                            </span>
+                        </label>
+                    </div>
+                    <textarea name='descripcion' rows='3' cols='25' placeholder='¡Cuéntanos lo que te gusta de tu casa!' value={descripcion} onChange={e => setDescripcion(e.target.value)} />
+                    {error &&
+                        <div className='errorCreacion'>Error en la creación</div>
+                    }
+                    <button className='publicarHome'>Publicar</button>
+                </form>
+            </div>
+
         </div>
 
     )

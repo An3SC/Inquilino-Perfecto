@@ -3,7 +3,9 @@ import './App.css';
 function Footer() {
     return (
         <div className='footerContainer'>
-            <div className='footerContent'>Soy un footer horrendo</div>
+            <div className='footerContent'>
+                Aquí irá la información de contacto, links a mis redes sociales, etc
+            </div>
         </div>
     )
 }

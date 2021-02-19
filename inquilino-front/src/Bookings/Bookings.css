@@ -1,0 +1,35 @@
+.myBookingsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.myBookingsContent {
+    border: 1px solid black;
+    border-radius: 5px;
+    background: whitesmoke;
+    width: 65vw;
+}
+
+.myBookingsContainer ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.bookingIdContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bookingIdContent {
+    background: whitesmoke;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 40vw;
+}
+
+.bookingIdContent ul {
+    list-style: none;
+    padding-left: 0;
+}

@@ -56,37 +56,36 @@ function Update({ data }) {
 
     }
 
-    const avatarUrl = data.imagen && (`http://localhost:9999/images/${data.imagen}.jpg`)
-    const avatarStyle = login && data.imagen && { backgroundImage: 'url(' + avatarUrl + ')' }
+    const avatarUrl = login && login.imagen && (`http://localhost:9999/images/${login.imagen}.jpg`)
+    const avatarStyle = login && login.imagen && { backgroundImage: 'url(' + avatarUrl + ')' }
 
     return (
         <div className='updateContainer'>
-            <h2>Edita tu perfil</h2>
-            <form onSubmit={handleSubmit}>
-                <label className='avatarPicker'>
-                    <span>Foto de perfil:</span>
-                    <div className='value'>
-                        <div className="avatar" style={avatarStyle} />
+            <h1>Edita tu perfil</h1>
+            <div className='updateContent'>
+                <form onSubmit={handleSubmit}>
+                    <label className='avatarPicker'>
+                        <span>Foto actual:</span>
+                        <div className="avatarEdit" style={avatarStyle} />
                         <input name="userImage" type="file" accept="image/*" />
-                    </div>
-                </label>
-                <label>
-                    Nombre:
-                    <input value={nombre} onChange={e => setNombre(e.target.value)} />
-                </label>
-                <label>
-                    Apellidos:
-                    <input value={apellidos} onChange={e => setApellidos(e.target.value)} />
-                </label>
-                <label>
-                    Provincia:
-                    <input value={provincia} onChange={e => setProvincia(e.target.value)} />
-                </label>
-                <label>
-                    Ciudad:
-                    <input value={ciudad} onChange={e => setCiudad(e.target.value)} />
-                </label>
-                {/* <label>
+                    </label>
+                    <label>
+                        Nombre:
+                    <input type='text' value={nombre} onChange={e => setNombre(e.target.value)} />
+                    </label>
+                    <label>
+                        Apellidos:
+                    <input type='text' value={apellidos} onChange={e => setApellidos(e.target.value)} />
+                    </label>
+                    <label>
+                        Provincia:
+                    <input type='text' value={provincia} onChange={e => setProvincia(e.target.value)} />
+                    </label>
+                    <label>
+                        Ciudad:
+                    <input type='text' value={ciudad} onChange={e => setCiudad(e.target.value)} />
+                    </label>
+                    {/* <label>
                     Email:
                     <input type='email' value={email} onChange={e => setEmail(e.target.value)} />
                 </label>
@@ -94,20 +93,22 @@ function Update({ data }) {
                     Password:
                     <input type='password' value={password} onChange={e => setPassword(e.target.value)} />
                 </label> */}
-                <label>
-                    Fecha de nacimiento:
+                    <label>
+                        Fecha de nacimiento:
                     <input type='date' value={fechaNacimiento} onChange={e => setFechaNacimiento(e.target.value)} />
-                </label>
-                <label>
-                    Descripcion:
-                    <textarea value={descripcion} onChange={e => setDescripcion(e.target.value)} />
-                </label>
-                <label>
-                    Teléfono:
+                    </label>
+                    <label>
+                        Descripcion:
+                    <textarea rows='3' cols='25' value={descripcion} onChange={e => setDescripcion(e.target.value)} />
+                    </label>
+                    <label>
+                        Teléfono:
                     <input type='number' value={telefono} onChange={e => setTelefono(e.target.value)} />
-                </label>
-                <button>Guardar</button>
-            </form>
+                    </label>
+                    <button className='updateButton'>Guardar</button>
+                </form>
+            </div>
+
         </div>
     )
 }

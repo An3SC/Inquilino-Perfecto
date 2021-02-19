@@ -26,16 +26,20 @@ function BookingId() {
 
     return (
         <div className='bookingIdContainer'>
-            <ul key={reserva.id}>
-                <li>{reserva.ciudad}</li>
-                <li>{reserva.direccion}</li>
-                <li>{reserva.fecha_entrada}</li>
-                <li>{reserva.fecha_salida}</li>
-                <li>{reserva.precio_reserva}</li>
-            </ul>
-            <div>
-                <button onClick={handleDelete}>Eliminar</button>
+            <h1>Mi reserva</h1>
+            <div className='bookingIdContent'>
+                <ul key={reserva.id}>
+                    <li>{reserva.ciudad}</li>
+                    <li>{reserva.direccion}</li>
+                    <li>{reserva.fecha_entrada}</li>
+                    <li>{reserva.fecha_salida}</li>
+                    <li>{reserva.precio_reserva}</li>
+                </ul>
+                <div>
+                    <button onClick={handleDelete}>Eliminar</button>
+                </div>
             </div>
+
         </div>
     )
 }

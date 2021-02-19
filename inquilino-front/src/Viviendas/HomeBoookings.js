@@ -18,7 +18,7 @@ function HomeBoookings() {
     return (
         <div>
             {reservas && reservas.map(r =>
-                <div key={r.id}>
+                <div className='homeBookingsContent' key={r.id}>
                     <ul>
                         <li>Nombre: {r.nombre}</li>
                         <li>Email: {r.email}</li>

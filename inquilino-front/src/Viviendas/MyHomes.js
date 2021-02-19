@@ -8,12 +8,14 @@ function MyHomes() {
 
     return (
         <div className='myHomesContainer'>
+            <h1>Mis pisos</h1>
             {homesData && homesData.map(h =>
-                <div key={h.id} >
+                <div className='myHomes' key={h.id} >
                     <ul>
-                        <li>{h.provincia}</li>
-                        <li>{h.ciudad}</li>
-                        <li>{h.direccion}</li>
+                        <li>Provincia: {h.provincia}</li>
+                        <li>Ciudad: {h.ciudad}</li>
+                        <li>Dirección: {h.direccion}</li>
+                        <li>Precio: {h.precio_piso}</li>
                     </ul>
                     <Link to={`/updateHome/${h.id}`}>Ver más</Link>
                 </div>

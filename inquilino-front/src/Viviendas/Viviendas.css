@@ -18,7 +18,7 @@
   }
   
   .result:hover {
-    background: #F5C634;;
+    transform: scale(1.02);
   }
 
   .result:active {
@@ -109,3 +109,142 @@
     display: flex;
     flex-direction: column;
   }
+
+  .createHomeContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .createHomeContainer h1 {
+    font-family: 'lobster_twobold_italic';
+    font-size: 45px;
+  }
+
+  .createHomeForm {
+    border: 1px solid black;
+    border-radius: 5px;
+    min-height: 55vh;
+    max-height: 90vh;
+    min-width: 50vw;
+    max-width: 90vw;
+    box-shadow: 1px 2px 3px 2px rgba(150, 150, 150, 0.75);
+    background: whitesmoke;
+  }
+
+  .createHomeForm form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .createHomeForm input:not([type=checkbox]) {
+    height: 3vh;
+    width: 30vw;
+    margin: 5px;
+  }
+
+  .homeFormOptions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+.publicarHome {
+  margin-top: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 5px;
+  width: 15vw;
+  height: 5vh;
+  transition: all .3s;
+  cursor: pointer;
+}
+
+.publicarHome:hover {
+  background: #F5C634;
+}
+
+.publicarHome:active {
+  background: whitesmoke;
+  transform: scale(0.99);
+}
+
+.myHomesContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.myHomes {
+  background: whitesmoke;
+  border: 1px solid black;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 50vw;
+}
+
+.myHomesContainer ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+.myHomesContainer a {
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 3vh;
+  width: 10vw;
+  padding: 5px;
+  transition: all .3s;
+}
+
+.myHomesContainer a:hover {
+  background: #F5C634;
+}
+
+.myHomesContainer a:active {
+  background: whitesmoke;
+  transform: scale(0.99);
+}
+
+.updateHomeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.updateHomeContent {
+  background: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80vw;
+  height: 60vh;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 1px 2px 3px 2px rgba(150, 150, 150, 0.75);
+}
+
+.updateHomeContent ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.homeBookingsContent {
+  background: whitesmoke;
+}
+
+.homeBookingsContent ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.errorCreacion {
+  color: #781D0C;
+  font-weight: bold;
+
+}

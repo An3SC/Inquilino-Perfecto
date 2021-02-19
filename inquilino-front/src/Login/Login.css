@@ -13,7 +13,11 @@
     border: 1px solid black;
     height: 45vh;
     width: 45vw;
-    box-shadow: 3px 2px 2px 2px rgba(0,0,0,0.5);
+    box-shadow: 1px 2px 3px 2px rgba(150, 150, 150, 0.75);
+  }
+
+  .loginContent {
+    background: whitesmoke;
   }
   
   .loginContent .loginTitulo {

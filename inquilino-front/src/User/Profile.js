@@ -20,33 +20,42 @@ function Profile() {
 
     return (
         <div className='profileContainer'>
-            {user &&
-                <div>
-                    <ul>
-                        <img alt='avatar' src={userUrl} />
-                        <li>{user.nombre}</li>
-                        <li>{user.provincia}</li>
-                        <li>{user.ciudad}</li>
-                        <li>{user.descripcion}</li>
-                    </ul>
-                </div>}
-            <div onClick={handleUpdate}>
-                <button>Actualizar mis datos</button>
+            <h1>Mi perfil</h1>
+            <div className='profileUser'>
+                {user &&
+                    <div className='userDataContainer'>
+                        <ul>
+                            <img alt='avatar' src={userUrl} />
+                            <li>{user.nombre}</li>
+                            <li>Provincia: {user.provincia}</li>
+                            <li>Ciudad: {user.ciudad}</li>
+                            <li>Sobre mí: {user.descripcion}</li>
+                        </ul>
+                        <button onClick={handleUpdate}>Actualizar mis datos</button>
+                    </div>}
+                <div className='tabsContainer'>
+                    <div>
+                        <Tabs />
+                    </div>
+                    <Switch>
+                        <Route path={`/user/${id}/Viviendas`}>
+                            <div className='tabOption'>
+                                Aquí van las viviendas
+                            </div>
+                        </Route>
+                        <Route path={`/user/${id}/Opiniones`}>
+                            <div className='tabOption'>
+                                Aquí van las opiniones
+                            </div>
+                        </Route>
+                        <Route path={`/user/${id}/Reservas`}>
+                            <div className='tabOption'>
+                                Aquí van las reservas
+                            </div>
+                        </Route>
+                    </Switch>
+                </div>
             </div>
-            <div>
-                <Tabs />
-            </div>
-            <Switch>
-                <Route path={`/user/${id}/Viviendas`}>
-                    Aquí van las viviendas
-                </Route>
-                <Route path={`/user/${id}/Opiniones`}>
-                    Aquí van las opiniones
-                </Route>
-                <Route path={`/user/${id}/Reservas`}>
-                    Aquí van las reservas
-                </Route>
-            </Switch>
         </div>
     )
 }
