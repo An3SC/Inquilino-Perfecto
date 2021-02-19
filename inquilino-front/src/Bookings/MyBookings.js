@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import useFetch from "../useFetch"
 
 function MyBookings() {
@@ -8,13 +9,15 @@ function MyBookings() {
         <div className='myBookingsContainer'>
             Mis reservas
             {bookingsData && bookingsData.map(b =>
-                <ul>
-                    <li>{b.ciudad}</li>
-                    <li>{b.direccion}</li>
-                    <li>{b.fecha_entrada}</li>
-                    <li>{b.fecha_salida}</li>
-                    <li>{b.precio_reserva}</li>
-                </ul>
+                <Link key={b.id} to={`/booking/${b.id_reserva}`}>
+                    <ul>
+                        <li>{b.ciudad}</li>
+                        <li>{b.direccion}</li>
+                        <li>{b.fecha_entrada}</li>
+                        <li>{b.fecha_salida}</li>
+                        <li>{b.precio_reserva}</li>
+                    </ul>
+                </Link>
             )}
         </div>
     )
