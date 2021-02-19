@@ -37,7 +37,8 @@ const {
     deleteBooking,
     getListOfBookings,
     getBooking,
-    scoreBooking
+    scoreBooking,
+    homeBookings
 } = require('./controllers/bookings')
 
 const {
@@ -88,6 +89,7 @@ app.get('/vivienda/imagen/:uuid', getImage)
 app.post('/vivienda/:id/reserva', isAuthenticated, booking)
 app.get('/reserva', isAuthenticated, isSameUserOrAdmin, getListOfBookings)
 app.get('/reserva/:id', haveBooking, getBooking)
+app.get('/vivienda/reservas/:id', homeBookings)
 app.delete('/reserva/:id', isAuthenticated, isSameUserOrAdmin, deleteBooking)
 app.put('/reserva/:id/score', haveBooking, scoreBooking)
 

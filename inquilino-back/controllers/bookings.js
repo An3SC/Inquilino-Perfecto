@@ -20,13 +20,14 @@ const booking = async (req, res) => {
         const decodedToken = jwt.verify(authorization, process.env.SECRET);
         const id_usuario = await db.getUser(decodedToken.email)
         console.log(id_usuario.id)
-        await db.createBooking(id, id_usuario.id, fecha_entrada, fecha_salida)
+        const result = await db.createBooking(id, id_usuario.id, fecha_entrada, fecha_salida)
+        const resultId = result.insertId
+
+        res.send({ resultId })
     } catch (e) {
         console.log(e)
         res.status(402).send()
     }
-
-    res.send()
 }
 
 const deleteBooking = async (req, res) => {
@@ -34,9 +35,8 @@ const deleteBooking = async (req, res) => {
 
     try {
         const booking = await db.getBooking(id)
-        console.log(booking)
 
-        if (!booking.length) {
+        if (!booking) {
             res.status(404).send()
             return
         }
@@ -44,6 +44,7 @@ const deleteBooking = async (req, res) => {
         await db.deleteBooking(id)
 
     } catch (e) {
+        console.log(e)
         if (e.message === 'unknown-id') {
             res.status(404).send()
 
@@ -74,6 +75,23 @@ const getBooking = async (req, res) => {
 
     try {
         const booking = await db.getBooking(id)
+
+        if (!booking) {
+            console.log('Es este ')
+            res.status(404).send()
+        } else {
+            res.send(booking)
+        }
+    } catch (e) {
+        res.status(500).send()
+    }
+}
+
+const homeBookings = async (req, res) => {
+    const { id } = req.params
+
+    try {
+        const booking = await db.homeBookings(id)
 
         if (!booking) {
             console.log('Es este ')
@@ -127,5 +145,6 @@ module.exports = {
     deleteBooking,
     getListOfBookings,
     getBooking,
-    scoreBooking
+    scoreBooking,
+    homeBookings
 }

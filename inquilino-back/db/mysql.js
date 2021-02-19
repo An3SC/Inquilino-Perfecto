@@ -228,14 +228,37 @@ const createBooking = async (id_piso, id_usuario, fecha_entrada, fecha_salida) =
     const query = `insert into reserva(id_piso, id_usuario, fecha_entrada, fecha_salida, precio_reserva) values(?,?,?,?,(select precio_piso from piso where id = ?))`
     const params = [id_piso, id_usuario, fecha_entrada, fecha_salida, id_piso]
 
-    await performQuery(query, params)
+    const result = await performQuery(query, params)
+    return result
 }
 
 const getBooking = async (id) => {
-    const query = `select * from reserva where id_reserva = ?`
+    const query = `select r.id_reserva,
+                    r.id_usuario,
+                    p.id 'id_piso',
+                    p.direccion,
+                    p.ciudad,
+                    r.precio_reserva,
+                    r.fecha_entrada,
+                    r.fecha_salida
+                    from reserva r join piso p on r.id_piso =p.id where r.id_reserva = ?`
     const params = [id]
 
     const [result] = await performQuery(query, params)
+    return result
+}
+
+const homeBookings = async (id) => {
+    const query = `select u.nombre 'nombre',
+                    u.email 'email',
+                    r.id_reserva 'id',
+                    r.precio_reserva 'precio',
+                    r.fecha_reserva 'fecha_reserva',
+                    r.fecha_entrada 'fecha_entrada',
+                    r.fecha_salida 'fecha_salida'  from reserva r join usuario u on r.id_usuario = u.id where id_piso = ?`
+    const params = [id]
+
+    const [...result] = await performQuery(query, params)
     return result
 }
 
@@ -319,6 +342,7 @@ module.exports = {
     saveHomeImage,
     createBooking,
     getBooking,
+    homeBookings,
     deleteBooking,
     getListBookings,
     haveBooking,

@@ -125,7 +125,7 @@ const updateHome = async (req, res) => {
     const { id } = req.params
 
     try {
-        await homeValidator.validateAsync(req.body)
+        // await homeValidator.validateAsync(req.body)
         await db.updateHome(provincia, ciudad, direccion, precio_piso, nBanos, nHabitaciones, ascensor, garaje, balcon, jardin, m2, descripcion, id_usuario, id)
     } catch (e) {
         console.log(e)
