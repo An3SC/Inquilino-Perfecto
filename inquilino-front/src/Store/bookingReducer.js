@@ -1,6 +1,6 @@
-export default function registerReducer(state = null, action) {
+export default function bookingReducer(state = null, action) {
     switch (action.type) {
-        case 'register':
+        case 'booking':
             return action.data
         default:
             return state
