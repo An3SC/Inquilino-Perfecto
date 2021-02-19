@@ -33,11 +33,6 @@ function Header() {
                         <Link to='/register'>Registro</Link>
                     }
                 </div>
-                <div>
-                    {login &&
-                        <Link to='/createHome'>Publicar vivienda</Link>
-                    }
-                </div>
             </div>
 
         </header>
