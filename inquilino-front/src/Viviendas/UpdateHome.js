@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom"
 import useFetch from "../useFetch"
+import HomeBoookings from "./HomeBoookings"
 
 function UpdateHomeWrapper() {
     const { id } = useParams()
@@ -78,46 +79,67 @@ function UpdateHome({ data }) {
         history.push(`/user/homes/${id_usuario}`)
     }
 
+    const [open, setOpen] = useState(false)
+
+    const handleEdit = e => {
+        e.preventDefault()
+        setOpen(!open)
+    }
+
 
     return (
         <div className='updateHomeContainer'>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    <span>Subir más fotos</span>
-                    <div >
-                        <div className="pisoImagen" /*style={homeStyle}*/ />
-                        <input name="pisoImagen" type="file" accept="image/*" />
-                    </div>
-                </label>
-                <input name='ciudad' placeholder='Ciudad...' value={ciudad} onChange={e => setCiudad(e.target.value)} />
-                <input name='provincia' placeholder='Provincia...' value={provincia} onChange={e => setProvincia(e.target.value)} />
-                <input name='direccion' placeholder='Direccion...' value={direccion} onChange={e => setDireccion(e.target.value)} />
-                <input name='banos' type='number' placeholder='Baños...' value={nBanos} onChange={e => setNBanos(e.target.value)} />
-                <input name='habitaciones' type='number' placeholder='Habitaciones...' value={nHabitaciones} onChange={e => setNHabitaciones(e.target.value)} />
-                <input name='m2' type='number' placeholder='m2...' value={m2} onChange={e => setM2(e.target.value)} />
-                <input name='precio' type='number' placeholder='Precio...' value={precio_piso} onChange={e => setPrecio_piso(e.target.value)} />
-                <div>
+            {!open && <div>
+                <ul>
+                    <li>{data.provincia}</li>
+                    <li>{data.ciudad}</li>
+                    <li>{data.direccion}</li>
+                    <li>{data.precio_piso}</li>
+                </ul>
+            </div>}
+            <button onClick={handleEdit}>Editar</button>
+            {open && <div>
+                <form onSubmit={handleSubmit}>
                     <label>
-                        Ascensor
+                        <span>Subir más fotos</span>
+                        <div >
+                            <div className="pisoImagen" /*style={homeStyle}*/ />
+                            <input name="pisoImagen" type="file" accept="image/*" />
+                        </div>
+                    </label>
+                    <input name='ciudad' placeholder='Ciudad...' value={ciudad} onChange={e => setCiudad(e.target.value)} />
+                    <input name='provincia' placeholder='Provincia...' value={provincia} onChange={e => setProvincia(e.target.value)} />
+                    <input name='direccion' placeholder='Direccion...' value={direccion} onChange={e => setDireccion(e.target.value)} />
+                    <input name='banos' type='number' placeholder='Baños...' value={nBanos} onChange={e => setNBanos(e.target.value)} />
+                    <input name='habitaciones' type='number' placeholder='Habitaciones...' value={nHabitaciones} onChange={e => setNHabitaciones(e.target.value)} />
+                    <input name='m2' type='number' placeholder='m2...' value={m2} onChange={e => setM2(e.target.value)} />
+                    <input name='precio' type='number' placeholder='Precio...' value={precio_piso} onChange={e => setPrecio_piso(e.target.value)} />
+                    <div>
+                        <label>
+                            Ascensor
                 <input type='checkbox' name='ascensor' checked={ascensor} onChange={e => setAscensor(e.target.checked)} />
-                    </label>
-                    <label>
-                        Garaje
+                        </label>
+                        <label>
+                            Garaje
                 <input type='checkbox' name='garaje' checked={garaje} onChange={e => setGaraje(e.target.checked)} />
-                    </label>
-                    <label>
-                        Balcón
+                        </label>
+                        <label>
+                            Balcón
                 <input type='checkbox' name='balcon' checked={balcon} onChange={e => setBalcon(e.target.checked)} />
-                    </label>
-                    <label>
-                        Jardín
+                        </label>
+                        <label>
+                            Jardín
                 <input type='checkbox' name='jardin' checked={jardin} onChange={e => setJardin(e.target.checked)} />
-                    </label>
-                    <textarea name='descripcion' value={descripcion} onChange={e => setDescripcion(e.target.value)} />
-                </div>
-                <button>Editar</button>
-            </form>
-            <button onClick={handleDelete}>ELIMINAR</button>
+                        </label>
+                        <textarea name='descripcion' value={descripcion} onChange={e => setDescripcion(e.target.value)} />
+                    </div>
+                    <button>Guardar</button>
+                </form>
+                <button onClick={handleDelete}>Borrar</button>
+            </div>}
+            <div>
+                <HomeBoookings />
+            </div>
         </div>
     )
 }

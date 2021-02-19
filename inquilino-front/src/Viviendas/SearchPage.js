@@ -80,7 +80,7 @@ function SearchPage() {
         <div className='searchPage'>
             <div className='searchFilters'>
                 <form onSubmit={handleSubmit}>
-                    <input type='text' name='ciudad' placeholder={city ? city : cityUrl} value={city} onChange={e => setCity(e.target.value)} />
+                    <input type='text' name='ciudad' placeholder={'Ciudad...'} value={city} onChange={e => setCity(e.target.value)} />
                     <input type='text' name='provincia' placeholder='Provincia...' value={provincia} onChange={e => setProvincia(e.target.value)} />
                     {open &&
                         <div className='filterContainer'>

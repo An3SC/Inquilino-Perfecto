@@ -15,7 +15,7 @@ function MyHomes() {
                         <li>{h.ciudad}</li>
                         <li>{h.direccion}</li>
                     </ul>
-                    <Link to={`/updateHome/${h.id}`}>Editar</Link>
+                    <Link to={`/updateHome/${h.id}`}>Ver más</Link>
                 </div>
             )}
         </div>
