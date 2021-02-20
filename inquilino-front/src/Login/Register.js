@@ -40,7 +40,6 @@ function Register() {
                 {!registered &&
                     <form onSubmit={handleSubmit}>
                         <input name='nombre' placeholder='Nombre...' value={user.nombre || ''} onChange={e => setUser({ ...user, nombre: e.target.value })} required />
-                        <input name='provincia' placeholder='Provincia...' value={user.provincia || ''} onChange={e => setUser({ ...user, provincia: e.target.value })} required />
                         <input name='ciudad' placeholder='Ciudad...' value={user.ciudad || ''} onChange={e => setUser({ ...user, ciudad: e.target.value })} />
                         <input name='email' type='email' placeholder='Email...' value={user.email || ''} onChange={e => setUser({ ...user, email: e.target.value })} required />
                         <input name='password' type='password' placeholder='Contraseña...' value={user.password || ''} onChange={e => setUser({ ...user, password: e.target.value })} required />

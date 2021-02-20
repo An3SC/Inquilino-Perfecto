@@ -27,14 +27,19 @@ function Reset() {
 
     return (
         <div className='resetContainer'>
-            <form onSubmit={handleReset}>
-                Introduce tu nueva contraseña
-                <input name='password' placeholder='Nueva contraseña' type='password' value={password} onChange={e => setPassword(e.target.value)} required />
-                <button>Cambiar</button>
-                {error &&
-                    <div>Error en el reseteo</div>
-                }
-            </form>
+            <h1>Cambia tu contraseña</h1>
+            <div className='resetContent'>
+                <form onSubmit={handleReset}>
+                    <h1>Introduce tu nueva contraseña</h1>
+                    <input name='password' placeholder='Nueva contraseña' type='password' value={password} onChange={e => setPassword(e.target.value)} required />
+                    {error &&
+                        <div>Error en el reseteo</div>
+                    }
+                    <button />
+                    <div className='pikachuRunning' />
+                </form>
+            </div>
+
         </div>
     )
 }

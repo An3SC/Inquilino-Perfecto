@@ -22,17 +22,26 @@ function Recovery() {
 
     return (
         <div className='recoveryContainer'>
-            <form onSubmit={handleSubmit}>
-                Introduce tu email para que te enviemos las instrucciones
+            <h1>Recupera tu contraseña</h1>
+            <div className='recoveryContent'>
+                <form onSubmit={handleSubmit}>
+                    <h1>Introduce tu email</h1>
                     <div>
-                    <input placeholder='Email...' type='email' required
-                        value={email} onChange={e => setEmail(e.target.value)} />
-                </div>
-                {sent &&
-                    <div>Revisa tu email</div>
-                }
-                <button>Enviar</button>
-            </form>
+                        <input placeholder='Email...' type='email' required
+                            value={email} onChange={e => setEmail(e.target.value)} />
+                    </div>
+                    {sent &&
+                        <div>Revisa tu email</div>
+                    }
+                    <button />
+                    {!sent &&
+                        <div className='pikachuRunning' />
+                    }
+                    {sent &&
+                        <div className='pikachuSent' />
+                    }
+                </form>
+            </div>
         </div>
     )
 }

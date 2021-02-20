@@ -34,9 +34,7 @@ function Login() {
         <form onSubmit={handleSubmit} className='loginContainer'>
             <h1>¡Saludos!</h1>
             <div className='loginContent'>
-                <div className='loginTitulo'>
-                    <h1>Inicia sesión</h1>
-                </div>
+                <h1>Inicia sesión</h1>
                 <input
                     type='email'
                     className='email'
