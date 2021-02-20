@@ -18,6 +18,8 @@ function useFetch(url, key) {
             })
     }, [url, key, login])
 
+    console.log(url)
+
     return data
 }
 

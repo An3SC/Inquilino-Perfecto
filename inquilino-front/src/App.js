@@ -1,4 +1,4 @@
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Footer from './Footer';
 import Header from './Header';
@@ -17,8 +17,12 @@ import Update from './User/Update';
 import MyBookings from './Bookings/MyBookings';
 import UpdateHome from './Viviendas/UpdateHome';
 import BookingId from './Bookings/BookingId';
+import { useSelector } from 'react-redux';
 
 function App() {
+
+  const login = useSelector(s => s.login)
+
   return (
     <div className="App">
       <Header />
@@ -43,28 +47,42 @@ function App() {
           <Reset />
         </Route>
         <Route path='/user/update/:id' exact>
-          <Update />
+          {login ?
+            <Update />
+            : <Redirect to='/' />}
         </Route>
-        <Route path='/user/homes/:id_usuario' exact>
-          <MyHomes />
+        <Route path='/user/homes/:id' exact>
+          {login ?
+            <MyHomes />
+            : <Redirect to='/' />}
         </Route>
         <Route path='/user/:id'>
-          <Profile />
+          {login ?
+            <Profile />
+            : <Redirect to='/' />}
         </Route>
         <Route path='/userBookings' exact>
-          <MyBookings />
+          {login ?
+            <MyBookings />
+            : <Redirect to='/' />}
         </Route>
         <Route path='/booking/:id' exact>
-          <BookingId />
+          {login ?
+            <BookingId />
+            : <Redirect to='/' />}
         </Route>
         <Route path='/search/:cityUrl?'>
           <SearchPage />
         </Route>
         <Route path='/createHome' exact>
-          <CreateHome />
+          {login ?
+            <CreateHome />
+            : <Redirect to='/' />}
         </Route>
         <Route path='/updateHome/:id' exact>
-          <UpdateHome />
+          {login ?
+            <UpdateHome />
+            : <Redirect to='/' />}
         </Route>
         <Route path='/searchPage' exact>
           <div className='searchPage'>
@@ -83,3 +101,8 @@ function App() {
 }
 
 export default App;
+
+
+// {login ?
+
+// : <Redirect to='/' />}
