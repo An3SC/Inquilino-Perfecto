@@ -9,6 +9,7 @@ function HomeBoookings() {
 
     const handleAccept = e => {
         e.preventDefault()
+        console.log(handleAccept)
     }
 
     const handleDecline = e => {
@@ -27,7 +28,7 @@ function HomeBoookings() {
                         <li>Fecha de entrada: {r.fecha_entrada}</li>
                         <li>Fecha de salida: {r.fecha_salida}</li>
                     </ul>
-                    <button onClick={handleAccept}>Aceptar</button>
+                    <button onClick={handleAccept}> Aceptar</button>
                     <button onClick={handleDecline}>Declinar</button>
                 </div>
             )}
