@@ -1,6 +1,8 @@
 import { Route, Switch, useHistory, useParams } from "react-router-dom"
+import MyBookings from "../Bookings/MyBookings"
 import useFetch from "../useFetch"
 import Tabs from "../Utils/Tabs"
+import MyHomes from "../Viviendas/MyHomes"
 import './User.css'
 
 function Profile() {
@@ -38,19 +40,19 @@ function Profile() {
                         <Tabs />
                     </div>
                     <Switch>
-                        <Route path={`/user/${id}/Viviendas`}>
+                        <Route path={`/user/:id/Viviendas`}>
                             <div className='tabOption'>
-                                Aquí van las viviendas
+                                <MyHomes />
                             </div>
                         </Route>
-                        <Route path={`/user/${id}/Opiniones`}>
+                        <Route path={`/user/:id/Opiniones`}>
                             <div className='tabOption'>
                                 Aquí van las opiniones
                             </div>
                         </Route>
                         <Route path={`/user/${id}/Reservas`}>
                             <div className='tabOption'>
-                                Aquí van las reservas
+                                <MyBookings />
                             </div>
                         </Route>
                     </Switch>

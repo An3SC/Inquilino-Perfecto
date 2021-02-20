@@ -26,7 +26,7 @@ function Update({ data }) {
 
     const history = useHistory()
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault()
         const userImage = e.target.userImage.files[0]
         console.log(userImage)
@@ -43,7 +43,7 @@ function Update({ data }) {
         fd.append('descripcion', descripcion)
         fd.append('telefono', telefono)
 
-        const ret = fetch(`http://localhost:9999/usuario/${id}`, {
+        const ret = await fetch(`http://localhost:9999/usuario/${id}`, {
             method: 'PUT',
             headers: { 'Authorization': login.token },
             body: fd
