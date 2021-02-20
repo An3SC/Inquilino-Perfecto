@@ -27,7 +27,7 @@ async function main() {
                 id int unsigned auto_increment primary key,
                 nombre varchar(100) not null,
                 apellidos varchar(100),
-                provincia varchar(100) not null,
+                provincia varchar(100),
                 ciudad varchar(100),
                 email varchar(200) not null,
                 password varchar(100) not null,
@@ -159,6 +159,7 @@ async function main() {
             const garaje = random(0, 1)
             const balcon = random(0, 1)
             const jardin = random(0, 1)
+            const score = random(0, 5)
             const id_usuario = random(1, 100);
             await connection.query(`
                 insert into piso(
@@ -173,6 +174,7 @@ async function main() {
                     garaje,
                     balcon,
                     jardin,
+                    score,
                     id_usuario) values (
                         "${provincia}",
                         "${ciudad}",
@@ -185,6 +187,7 @@ async function main() {
                         "${garaje}",
                         '${balcon}',
                         "${jardin}",
+                        "${score}",
                         "${id_usuario}"
                     )
             `);

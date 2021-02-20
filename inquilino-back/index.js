@@ -38,7 +38,9 @@ const {
     getListOfBookings,
     getBooking,
     scoreBooking,
-    homeBookings
+    homeBookings,
+    acceptBooking,
+    declineBooking
 } = require('./controllers/bookings')
 
 const {
@@ -90,6 +92,8 @@ app.post('/vivienda/:id/reserva', isAuthenticated, booking)
 app.get('/reserva', isAuthenticated, isSameUserOrAdmin, getListOfBookings)
 app.get('/reserva/:id', haveBooking, getBooking)
 app.get('/vivienda/reservas/:id', homeBookings)
+app.put('/reserva/accept/:id', acceptBooking)
+app.put('/reserva/decline/:id', declineBooking)
 app.delete('/reserva/:id', isAuthenticated, isSameUserOrAdmin, deleteBooking)
 app.put('/reserva/:id/score', haveBooking, scoreBooking)
 
