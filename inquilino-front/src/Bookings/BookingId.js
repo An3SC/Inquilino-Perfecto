@@ -38,6 +38,9 @@ function BookingId() {
                 <div>
                     <button onClick={handleDelete}>Eliminar</button>
                 </div>
+                <div>
+                    <button>Valorar</button>
+                </div>
             </div>
 
         </div>
