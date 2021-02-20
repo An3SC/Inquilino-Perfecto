@@ -104,6 +104,30 @@ const homeBookings = async (req, res) => {
     }
 }
 
+const acceptBooking = async (req, res) => {
+    const { id_reserva } = req.params
+
+    try {
+        await db.acceptBooking(id_reserva)
+        res.send()
+    } catch (e) {
+        console.log(e)
+        res.status(500).send()
+    }
+}
+
+const declineBooking = async (req, res) => {
+    const { id_reserva } = req.params
+
+    try {
+        await db.declineBooking(id_reserva)
+        res.send()
+    } catch (e) {
+        console.log(e)
+        res.status(500).send()
+    }
+}
+
 const scoreBooking = async (req, res) => {
     const { score } = req.body
     const { authorization } = req.headers
@@ -145,6 +169,8 @@ module.exports = {
     deleteBooking,
     getListOfBookings,
     getBooking,
+    acceptBooking,
+    declineBooking,
     scoreBooking,
     homeBookings
 }

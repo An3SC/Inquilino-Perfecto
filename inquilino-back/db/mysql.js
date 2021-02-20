@@ -304,6 +304,25 @@ const haveBooking = async (id_reserva) => {
     return result
 }
 
+const acceptBooking = async (id_reserva) => {
+    const query = `update reserva
+                set estado = 'aceptado'
+                where id_reserva = ?`
+    const params = [id_reserva]
+
+    await performQuery(query, params)
+}
+
+const declineBooking = async (id_reserva) => {
+    const query = `update reserva
+                set estado = 'declinado'
+                where id_reserva = ?`
+    const params = [id_reserva]
+
+    await performQuery(query, params)
+}
+
+
 const scoreUser = async (score, id_reserva) => {
     const query = `update reserva set score_usuario = ? where id_reserva = ?`
     const params = [score, id_reserva]
@@ -346,6 +365,8 @@ module.exports = {
     deleteBooking,
     getListBookings,
     haveBooking,
+    acceptBooking,
+    declineBooking,
     scoreUser,
     scoreHome
 }
