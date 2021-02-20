@@ -8,7 +8,10 @@
     border: 1px solid black;
     border-radius: 5px;
     background: whitesmoke;
-    width: 65vw;
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .myBookingsContainer ul {
