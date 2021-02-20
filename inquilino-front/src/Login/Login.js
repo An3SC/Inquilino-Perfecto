@@ -32,10 +32,11 @@ function Login() {
 
     return (
         <form onSubmit={handleSubmit} className='loginContainer'>
+            <h1>¡Saludos!</h1>
             <div className='loginContent'>
                 <div className='loginTitulo'>
-                    Inicia sesión
-            </div>
+                    <h1>Inicia sesión</h1>
+                </div>
                 <input
                     type='email'
                     className='email'
@@ -56,6 +57,9 @@ function Login() {
                 <button />
                 <p>
                     <Link to="/recovery">¿No recuerdas tu contraseña?</Link>
+                </p>
+                <p>
+                    <Link to='/register'>¿No tienes una cuenta?</Link>
                 </p>
             </div>
 
