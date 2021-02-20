@@ -9,7 +9,7 @@ const { authValidator } = require('../validators/auth')
 
 const register = async (req, res) => {
     try {
-        await authValidator.validateAsync(req.body)
+        // await authValidator.validateAsync(req.body)
         /**
          * Cuando cambiemos a NOT NULL los demás parámetros habrá que
          * meterlos al lado de email y password
