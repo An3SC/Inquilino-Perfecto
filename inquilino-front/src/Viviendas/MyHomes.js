@@ -2,9 +2,9 @@ import { Link, useParams } from "react-router-dom"
 import useFetch from "../useFetch"
 
 function MyHomes() {
-    const { id_usuario } = useParams()
+    const { id } = useParams()
 
-    const homesData = useFetch(`http://localhost:9999/usuario/vivienda/${id_usuario}`) || []
+    const homesData = useFetch(`http://localhost:9999/usuario/vivienda/${id}`) || []
 
     return (
         <div className='myHomesContainer'>

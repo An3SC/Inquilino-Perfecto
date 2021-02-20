@@ -37,8 +37,8 @@ function SearchPage() {
 
     const results = searchPage.data
 
-    const paginatedResults = results ? results.slice(7 * (page - 1), 7 * page) : []
-    const max = results ? Math.ceil(results.length / 7) : []
+    const paginatedResults = results ? results.slice(3 * (page - 1), 3 * page) : []
+    const max = results ? Math.ceil(results.length / 3) : []
 
     const history = useHistory()
 
@@ -79,13 +79,15 @@ function SearchPage() {
     return (
         <div className='searchPage'>
             <div className='searchFilters'>
+                <button className='moreFilters' onClick={handleReset}>Despejar</button>
+                <button className='moreFilters' onClick={handleOpen}>Más filtros</button>
                 <form onSubmit={handleSubmit}>
                     <input type='text' name='ciudad' placeholder={'Ciudad...'} value={city} onChange={e => setCity(e.target.value)} />
                     <input type='text' name='provincia' placeholder='Provincia...' value={provincia} onChange={e => setProvincia(e.target.value)} />
                     {open &&
                         <div className='filterContainer'>
                             <label>
-                                Baños
+                                <p>Baños</p>
                                 <select name='banos' value={nBanos} onChange={e => setNBanos(e.target.value)}>
                                     <option value='' >Baños</option>
                                     <option value={0} >Todo</option>
@@ -95,7 +97,7 @@ function SearchPage() {
                                 </select>
                             </label>
                             <label>
-                                Habitaciones
+                                <p>Habitaciones</p>
                                 <select name='habitaciones' value={nHabitaciones} onChange={e => setNHabitaciones(e.target.value)}>
                                     <option value='' >Habitaciones</option>
                                     <option value={0} >Todo</option>
@@ -106,7 +108,7 @@ function SearchPage() {
                                 </select>
                             </label>
                             <label>
-                                Metros cuadrados
+                                <p>Metros cuadrados</p>
                                 <select name='m2' value={m2} onChange={e => setM2(e.target.value)}>
                                     <option value='' hidden>m2</option>
                                     <option value={0} >Todo</option>
@@ -117,7 +119,7 @@ function SearchPage() {
                                 </select>
                             </label>
                             <label>
-                                Precio
+                                <p>Precio</p>
                                 <select name='' value={precio1} onChange={e => setPrecio1(e.target.value)}>
                                     <option value='' hidden>Min</option>
                                     <option value={200}>400</option>
@@ -134,9 +136,9 @@ function SearchPage() {
                                 </select>
                             </label>
                             <label className='searchDate'>
-                                Fecha de entrada
+                                <p>Fecha de entrada</p>
                                 <input type='date' name='fechaEntrada' value={fechaEntrada} onChange={e => setFechaEntrada(e.target.value)} />
-                                Fecha de salida
+                                <p>Fecha de salida</p>
                                 <input type='date' name='fechaSalida' value={fechaSalida} onChange={e => setFechaSalida(e.target.value)} />
                             </label>
                             <label>
@@ -152,24 +154,27 @@ function SearchPage() {
                         </div>}
                     <button className='searchButton' />
                 </form>
-                <span className='moreFilters' onClick={handleOpen}>Más filtros</span>
-                <span className='moreFilters' onClick={handleReset}>Despejar</span>
             </div>
             {results &&
                 <div className='pagination'>
-                    <span onClick={() => setPage(page > 1 ? page - 1 : 1)}>◄</span>
+                    <button className='back' onClick={() => setPage(page > 1 ? page - 1 : 1)} />
                     <span>{page} / {max}</span>
-                    <span onClick={() => setPage(page < max ? page + 1 : max)}>►</span>
+                    <button className='forward' onClick={() => setPage(page < max ? page + 1 : max)} />
                 </div>}
             <div className='searchResults'>
                 <div>
                     {results && paginatedResults.map(result =>
                         <Link key={result.id} to={`/home/${result.id}`}>
-                            <ul className='result'>
-                                <li>{result.ciudad}</li>
-                                <li>{result.provincia}</li>
-                                <li>{result.direccion}</li>
-                            </ul>
+                            <div className='result'>
+                                <div className='resultImage' />
+                                <div>{result.score}</div>
+                                <ul>
+                                    <li>Ciudad: {result.ciudad}</li>
+                                    <li>Provincia: {result.provincia}</li>
+                                    <li>Dirección: {result.direccion}</li>
+                                    <li>Precio: {result.precio_piso}€</li>
+                                </ul>
+                            </div>
                         </Link>
                     )}
                 </div>
