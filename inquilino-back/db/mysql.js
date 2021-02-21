@@ -176,7 +176,7 @@ const getHome = async (id) => {
                 p.balcon "balcon",
                 p.jardin "jardin",
                 avg(r.score_piso) "score_piso"
-	from piso p left join reserva r on p.id = r.id_piso where p.id =  ?`
+	from piso p left join reserva r on p.id = r.id_piso where p.id =  ? group by p.id`
     const params = [id]
 
     const result = await performQuery(query, params)
