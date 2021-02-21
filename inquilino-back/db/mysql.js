@@ -164,7 +164,19 @@ const myHomes = async (id) => {
 }
 
 const getHome = async (id) => {
-    const query = `select * from piso where id = ?`
+    const query = `select p.provincia "provincia",
+                p.ciudad "ciudad",
+                p.direccion "direccion",
+                p.nBanos "nBanos",
+                p.nHabitaciones "nHabitaciones",
+                p.m2 "m2",
+                p.precio_piso "precio_piso",
+                p.ascensor "ascensor",
+                p.garaje "garaje",
+                p.balcon "balcon",
+                p.jardin "jardin",
+                avg(r.score_piso) "score_piso"
+	from piso p left join reserva r on p.id = r.id_piso where p.id =  ?`
     const params = [id]
 
     const result = await performQuery(query, params)
@@ -255,6 +267,7 @@ const homeBookings = async (id) => {
                     r.precio_reserva 'precio',
                     r.fecha_reserva 'fecha_reserva',
                     r.fecha_entrada 'fecha_entrada',
+                    r.estado 'estado',
                     r.fecha_salida 'fecha_salida'  from reserva r join usuario u on r.id_usuario = u.id where id_piso = ?`
     const params = [id]
 
