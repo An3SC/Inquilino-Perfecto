@@ -8,12 +8,10 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux';
 import loginReducer from './Store/loginReducer';
 import ErrorBoundary from './ErrorBoundary';
-import bookingReducer from './Store/bookingReducer';
 
 
 const rootReducer = combineReducers({
   login: loginReducer,
-  booking: bookingReducer
 })
 
 const localStorageMiddleware = store => next => action => {

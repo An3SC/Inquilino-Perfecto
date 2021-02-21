@@ -5,26 +5,30 @@ import Reservar from "../Bookings/Reservar"
 import useFetch from "../useFetch"
 import Rating from "../Utils/Rating"
 
-function ShowHome() {
+function ShowHomeWrapper() {
+    const { id } = useParams()
+    const vivienda = useFetch(`http://localhost:9999/vivienda/${id}`)
+    return vivienda ? <ShowHome vivienda={vivienda} /> : false
+}
+
+function ShowHome({ vivienda }) {
     const { id } = useParams()
 
     const [sameUser, setSameUser] = useState(false)
 
-    const vivienda = useFetch(`http://localhost:9999/vivienda/${id}`) || []
-
-    console.log(vivienda)
+    // const vivienda = useFetch(`http://localhost:9999/vivienda/${id}`) || []
 
     const login = useSelector(s => s.login)
 
-    // const viviendaUsuario = vivienda[0].id_usuario
+    const viviendaUsuario = vivienda.id_usuario
 
-    // console.log(viviendaUsuario)
+    console.log(viviendaUsuario)
 
-    // if (login.id === viviendaUsuario) {
-    //     setSameUser(true)
-    // } else {
-    //     console.log('No es el mismo usuario')
-    // }
+    if (login.id === viviendaUsuario) {
+        setSameUser(true)
+    } else {
+        console.log('No es el mismo usuario')
+    }
 
     return (
         <div >
@@ -58,4 +62,4 @@ function ShowHome() {
     )
 }
 
-export default ShowHome
+export default ShowHomeWrapper

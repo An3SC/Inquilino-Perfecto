@@ -49,7 +49,8 @@ function SearchPage() {
         const url = `/search/`
             + (city ? `${city}` : '') + `&provincia=${provincia}` + `&nBanos=${nBanos}`
             + `&nHabitaciones=${nHabitaciones}` + `&m2=${m2}` + `&precio1=${precio1}`
-            + `&precio2=${precio2}` + `&fecha_entrada=${fechaEntrada}` + `&fecha_salida=${fechaSalida}` + `&ascensor=${ascensor ? 'si' : ''}` + `&garaje=${garaje ? 'si' : ''}`
+            + `&precio2=${precio2}` + `&fecha_entrada=${fechaEntrada}` + `&fecha_salida=${fechaSalida}`
+            + `&ascensor=${ascensor ? 'si' : ''}` + `&garaje=${garaje ? 'si' : ''}`
             + `&balcon=${balcon ? 'si' : ''}` + `&jardin=${jardin ? 'si' : ''}`
         history.push(url)
         setPage(1)
