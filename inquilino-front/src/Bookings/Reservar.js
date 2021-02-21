@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom"
 
 function Reservar() {
@@ -7,13 +7,10 @@ function Reservar() {
 
     const login = useSelector(s => s.login)
 
-    const booking = useSelector(s => s.booking)
-    const dispatch = useDispatch()
-
     const [fecha_entrada, setFechaEntrada] = useState('')
     const [fecha_salida, setFechaSalida] = useState('')
 
-    // const history = useHistory()
+    const history = useHistory()
 
     const handleBooking = async e => {
         e.preventDefault()
@@ -26,13 +23,10 @@ function Reservar() {
                 body: JSON.stringify({ fecha_entrada, fecha_salida }),
                 method: 'POST'
             })
-            console.log(ret)
             const data = await ret.json()
-            dispatch({ type: 'booking', data })
 
-            console.log(booking.resultId)
             if (ret.ok) {
-                // history.push('/booking/:id')
+                history.push(`/booking/${data.resultId}`)
             }
         } catch (e) {
             console.log(e)
