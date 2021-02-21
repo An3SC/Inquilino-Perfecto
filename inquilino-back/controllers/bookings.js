@@ -105,10 +105,12 @@ const homeBookings = async (req, res) => {
 }
 
 const acceptBooking = async (req, res) => {
-    const { id_reserva } = req.params
+    const { id } = req.params
+
+    console.log(id)
 
     try {
-        await db.acceptBooking(id_reserva)
+        await db.acceptBooking(id)
         res.send()
     } catch (e) {
         console.log(e)
@@ -117,10 +119,10 @@ const acceptBooking = async (req, res) => {
 }
 
 const declineBooking = async (req, res) => {
-    const { id_reserva } = req.params
+    const { id } = req.params
 
     try {
-        await db.declineBooking(id_reserva)
+        await db.declineBooking(id)
         res.send()
     } catch (e) {
         console.log(e)
@@ -132,9 +134,8 @@ const scoreBooking = async (req, res) => {
     const { score } = req.body
     const { authorization } = req.headers
 
-    console.log(score)
     try {
-        await scoreValidator.validateAsync(req.body)
+        // await scoreValidator.validateAsync(req.body)
 
         const bookingId = parseInt(req.params.id)
 
@@ -152,7 +153,7 @@ const scoreBooking = async (req, res) => {
             await db.scoreUser(score, bookingId)
             console.log('Ha puntuado al usuario')
         } else {
-            console.log('Error')
+            console.log('Da error aquí')
             res.status(403).send()
         }
 
