@@ -2,13 +2,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 30vw;
 }
 
 .myBookingsContent {
     border: 1px solid black;
     border-radius: 5px;
     background: whitesmoke;
-    width: 50vw;
+    width: 30vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,4 +36,36 @@
 .bookingIdContent ul {
     list-style: none;
     padding-left: 0;
+}
+
+.reservarContainer {
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 25vw;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.reservarLabel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.reservarLabel input {
+    height: 3vh;
+    width: 7vw;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.reservarContainer button {
+    font-weight: bold;
+    border-radius: 5px;
+    height: 3vh;
+    width: 5vw;
+    margin: 15px;
+    cursor: pointer;
+    transition: all .3s;
 }

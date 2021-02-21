@@ -40,15 +40,21 @@ function Reservar() {
     }
 
     return (
-        <form onSubmit={handleBooking}>
-            <label>
-                Fecha de entrada
+        <div className='reservarContainer'>
+            <form onSubmit={handleBooking}>
+                <label className='reservarLabel'>
+                    <label>
+                        Fecha de entrada
                 <input type='date' name='fechaEntrada' value={fecha_entrada} onChange={e => setFechaEntrada(e.target.value)} required />
-                Fecha de salida
+                    </label>
+                    <label>
+                        Fecha de salida
                 <input type='date' name='fechaSalida' value={fecha_salida} onChange={e => setFechaSalida(e.target.value)} required />
-            </label>
-            <button>Reservar</button>
-        </form>
+                    </label>
+                </label>
+                <button>Reservar</button>
+            </form>
+        </div>
     )
 }
 
