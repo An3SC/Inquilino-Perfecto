@@ -3,6 +3,7 @@ import MyBookings from "../Bookings/MyBookings"
 import useFetch from "../useFetch"
 import Tabs from "../Utils/Tabs"
 import MyHomes from "../Viviendas/MyHomes"
+import Opiniones from "./Opiniones"
 import './User.css'
 
 function Profile() {
@@ -26,12 +27,12 @@ function Profile() {
             <div className='profileUser'>
                 {user &&
                     <div className='userDataContainer'>
+                        <img alt='avatar' src={userUrl} />
                         <ul>
-                            <img alt='avatar' src={userUrl} />
-                            <li>{user.nombre}</li>
-                            <li>Provincia: {user.provincia}</li>
-                            <li>Ciudad: {user.ciudad}</li>
-                            <li>Sobre mí: {user.descripcion}</li>
+                            <li><b>{user.nombre}</b></li>
+                            <li>Provincia: <b>{user.provincia}</b></li>
+                            <li>Ciudad: <b>{user.ciudad}</b></li>
+                            <li>Sobre mí: <b>{user.descripcion}</b></li>
                         </ul>
                         <button onClick={handleUpdate}>Actualizar mis datos</button>
                     </div>}
@@ -47,7 +48,7 @@ function Profile() {
                         </Route>
                         <Route path={`/user/:id/Opiniones`}>
                             <div className='tabOption'>
-                                Aquí van las opiniones
+                                <Opiniones />
                             </div>
                         </Route>
                         <Route path={`/user/${id}/Reservas`}>
