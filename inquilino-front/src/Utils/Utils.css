@@ -39,6 +39,23 @@
 }
 
 .tabOption {
-    background: whitesmoke;
     border-radius: 5px;
+}
+
+.ratingsContainer {
+    display: flex;
+}
+
+.ratingsContainer .fullStar {
+    background: url('../icons/estrella.png') no-repeat;
+    background-size: cover;
+    width: 18px;
+    height: 18px;
+}
+
+.ratingsContainer .emptyStar {
+    background: url('../icons/estrella2.png') no-repeat;
+    background-size: cover;
+    width: 18px;
+    height: 18px;
 }

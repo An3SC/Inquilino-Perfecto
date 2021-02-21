@@ -28,8 +28,8 @@ function Menu({ children }) {
                 <div className='userLinks'>
                     <Link to='/createHome'>Publicar vivienda</Link>
                     <Link to={`/user/${login.id}`}>Mi perfil</Link>
-                    <Link to={`/user/homes/${login.id}`}>Mis pisos</Link>
-                    <Link to='/userBookings'>Mis reservas</Link>
+                    <Link to={`/user/${login.id}/Viviendas`}>Mis pisos</Link>
+                    <Link to={`/user/${login.id}/Reservas`}>Mis reservas</Link>
                     <button className='logout' onClick={handleLogout}>Logout</button>
                 </div>
             }
