@@ -25,6 +25,7 @@
   
   .result:hover {
     transform: scale(1.02);
+    color: black;
   }
 
   .result:active {
@@ -54,9 +55,9 @@
     background: url('../icons/houseIreneFlorentina.jpg') no-repeat;
     background-size: contain;
     width: 10vw;
-    height: 20vh;
+    height: 18vh;
     border: 1px solid rgb(150, 150, 150);
-    box-shadow: 2px 2px 1px 1px rgba(150, 150, 150, 0.75);
+    box-shadow: inset 2px 3px 5px 0 rgba(150, 150, 150, 0.75);
   }
 
   .searchFilters {
@@ -85,11 +86,21 @@
 
   .filterContainer label {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: flex-start;
   }
 
+  .filterContainer label p {
+    margin: 10px;
+  }
 
+  .filterContainer .otrosFiltros {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-top: 15px;
+  }
 
   .searchButton {
     background: url('../icons/magnifying-glass.png') no-repeat;
@@ -197,6 +208,21 @@
     background: whitesmoke;
   }
 
+  .createHomeForm, .updateHomeContent, .showHomeContent {
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items: center;
+    border-radius: 5px;
+    border: 1px solid black;
+    min-height: 55vh;
+    max-height: 80vh;
+    min-width: 50vw;
+    max-width: 70vw;
+    box-shadow: 1px 2px 3px 2px rgba(150, 150, 150, 0.75);
+    background: whitesmoke;
+  }
+
   .createHomeForm form {
     display: flex;
     flex-direction: column;
@@ -241,6 +267,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 30vw;
 }
 
 .myHomes {
@@ -250,7 +277,7 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  width: 50vw;
+  width: 30vw;
 }
 
 .myHomesContainer ul {
@@ -282,18 +309,6 @@
   align-items: center;
 }
 
-.updateHomeContent {
-  background: whitesmoke;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 80vw;
-  height: 60vh;
-  border: 1px solid black;
-  border-radius: 5px;
-  box-shadow: 1px 2px 3px 2px rgba(150, 150, 150, 0.75);
-}
-
 .updateHomeContent ul {
   list-style: none;
   padding-left: 0;
@@ -312,4 +327,29 @@
   color: #781D0C;
   font-weight: bold;
 
+}
+
+.showHomeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.showHomeContent ul {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.showHomeContent .showHomeStars {
+  margin: 20px 0 10px 0;
+}
+
+.showHomeData {
+  display: flex;
+  margin-top: 35px;
 }

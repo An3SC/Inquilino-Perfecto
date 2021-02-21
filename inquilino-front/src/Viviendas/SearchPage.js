@@ -37,6 +37,7 @@ function SearchPage() {
         + (`&${stringifiedData}`)) || []
 
     const results = searchPage.data
+    console.log(results)
 
     const paginatedResults = results ? results.slice(3 * (page - 1), 3 * page) : []
     const max = results ? Math.ceil(results.length / 3) : []
@@ -112,28 +113,46 @@ function SearchPage() {
                                 <p>Metros cuadrados</p>
                                 <select name='m2' value={m2} onChange={e => setM2(e.target.value)}>
                                     <option value='' hidden>m2</option>
-                                    <option value={0} >Todo</option>
-                                    <option value={60} >50</option>
-                                    <option value={80} >70</option>
-                                    <option value={100} >90</option>
-                                    <option value={120} >110 o más</option>
+                                    <option value={0} >Indiferente</option>
+                                    <option value={50} >50</option>
+                                    <option value={60} >60</option>
+                                    <option value={70} >70</option>
+                                    <option value={80} >80</option>
+                                    <option value={100} >100</option>
+                                    <option value={120} >120 o más</option>
                                 </select>
                             </label>
                             <label>
                                 <p>Precio</p>
                                 <select name='' value={precio1} onChange={e => setPrecio1(e.target.value)}>
                                     <option value='' hidden>Min</option>
-                                    <option value={200}>400</option>
-                                    <option value={300}>500</option>
-                                    <option value={400}>600</option>
-                                    <option value={500}>700</option>
+                                    <option value={0}>Indiferente</option>
+                                    <option value={200}>200€</option>
+                                    <option value={300}>300€</option>
+                                    <option value={400}>400€</option>
+                                    <option value={500}>500€</option>
+                                    <option value={600}>600€</option>
+                                    <option value={700}>700€</option>
+                                    <option value={800}>800€</option>
+                                    <option value={900}>900€</option>
+                                    <option value={1000}>1000€</option>
+                                    <option value={1100}>1100€</option>
+                                    <option value={1200}>1200€</option>
                                 </select>
                                 <select value={precio2} onChange={e => setPrecio2(e.target.value)}>
                                     <option value='' hidden>Max</option>
-                                    <option value={700}>700</option>
-                                    <option value={800}>800</option>
-                                    <option value={900}>900</option>
-                                    <option value={1000}>1000</option>
+                                    <option value={999999}>Indiferente</option>
+                                    <option value={200}>200€</option>
+                                    <option value={300}>300€</option>
+                                    <option value={400}>400€</option>
+                                    <option value={500}>500€</option>
+                                    <option value={600}>600€</option>
+                                    <option value={700}>700€</option>
+                                    <option value={800}>800€</option>
+                                    <option value={900}>900€</option>
+                                    <option value={1000}>1000€</option>
+                                    <option value={1100}>1100€</option>
+                                    <option value={1200}>1200€</option>
                                 </select>
                             </label>
                             <label className='searchDate'>
@@ -142,15 +161,19 @@ function SearchPage() {
                                 <p>Fecha de salida</p>
                                 <input type='date' name='fechaSalida' value={fechaSalida} onChange={e => setFechaSalida(e.target.value)} />
                             </label>
-                            <label>
-                                Ascensor
+                            <label className='otrosFiltros'>
+                                <label>
+                                    Ascensor
                                 <input type='checkbox' name='ascensor' checked={ascensor} onChange={e => setAscensor(e.target.checked)} />
                                 Garaje
                                 <input type='checkbox' name='garaje' checked={garaje} onChange={e => setGaraje(e.target.checked)} />
-                                Balcón
+                                </label>
+                                <label>
+                                    Balcón
                                 <input type='checkbox' name='balcon' checked={balcon} onChange={e => setBalcon(e.target.checked)} />
                                 Jardín
                                 <input type='checkbox' name='jardin' checked={jardin} onChange={e => setJardin(e.target.checked)} />
+                                </label>
                             </label>
                         </div>}
                     <button className='searchButton' />
@@ -169,7 +192,7 @@ function SearchPage() {
                             <div className='result'>
                                 <div className='resultImage' />
                                 <div>
-                                    <label>{result.score}</label>
+                                    <Rating value={result.score} />
                                 </div>
                                 <ul>
                                     <li>Ciudad: {result.ciudad}</li>
