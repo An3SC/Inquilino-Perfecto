@@ -21,14 +21,16 @@ function FirstSearch() {
                     value={cityUrl} onChange={e => setCityUrl(e.target.value)}
                     required
                 />
-                <label>
-                    Fecha de entrada
+                <div className='firstDatesContainer'>
+                    <label>
+                        Fecha de entrada
                     <input type='date' value={fechaEntrada} onChange={e => setFechaEntrada(e.target.value)} />
-                </label>
-                <label>
-                    Fecha de salida
+                    </label>
+                    <label>
+                        Fecha de salida
                     <input type='date' value={fechaSalida} onChange={e => setFechaSalida(e.target.value)} />
-                </label>
+                    </label>
+                </div>
                 <button>Buscar</button>
             </form>
         </div>

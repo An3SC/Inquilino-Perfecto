@@ -9,7 +9,7 @@ function Home() {
         <div className='pageHome'>
             <video className='videoHome' src={video1} autoPlay loop muted />
             <div className='firstSearch'>
-                <h1>Encuentra tu hogar ideal</h1>
+                <h1 id='titulo'>Encuentra tu hogar ideal</h1>
                 <ErrorBoundary>
                     <FirstSearch />
                 </ErrorBoundary>

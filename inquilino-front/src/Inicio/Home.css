@@ -10,7 +10,7 @@
   .firstSearch {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     color: whitesmoke;
     background: rgba(0,0,0, 0.4);
     font-size: 25px;
@@ -27,7 +27,7 @@
     font-size: 15px;
     text-align: center;
     height: 3vh;
-    width: 35vw;
+    width: 20vw;
     border-radius: 5px;
     margin: 20px;
     background: whitesmoke;
@@ -36,33 +36,33 @@
   .firstSearchForm input[type=date] {
     display: flex;
     height: 3vh;
-    width: 25vw;
+    width: 10vw;
     border-radius: 5px;
     background: whitesmoke;
   }
   
   .firstSearchForm button {
-    font-size: 20px;
+    font-size: 17px;
     font-weight: bold;
     border-radius: 5px;
     height: 5vh;
-    width: 20vw;
-    max-width: ;
+    width: 8vw;
     margin: 15px;
     cursor: pointer;
     transition: all .3s;
   }
-  .firstSearchForm button:hover {
-    background: #F5C634;
-  }
-  
-  .firstSearchForm button:active {
-    background: whitesmoke;
-    transform: scale(0.99);
+
+  #titulo {
+    margin-top: 20vh;
+    font-size: 65px;
   }
 
   .videoHome {
     object-fit: cover;
     position: absolute;
     z-index: -1;
+  }
+
+  .firstDatesContainer {
+    display: flex;
   }
