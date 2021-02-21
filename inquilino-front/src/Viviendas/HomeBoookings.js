@@ -1,20 +1,12 @@
 import { useParams } from "react-router-dom"
+import AcceptBooking from "../Bookings/AcceptBooking"
+import DeclineBooking from "../Bookings/DeclineBooking"
 import useFetch from "../useFetch"
 
 function HomeBoookings() {
-
     const { id } = useParams()
 
     const reservas = useFetch(`http://localhost:9999/vivienda/reservas/${id}`) || []
-
-    const handleAccept = e => {
-        e.preventDefault()
-        console.log(handleAccept)
-    }
-
-    const handleDecline = e => {
-        e.preventDefault()
-    }
 
     return (
         <div>
@@ -28,8 +20,8 @@ function HomeBoookings() {
                         <li>Fecha de entrada: {r.fecha_entrada}</li>
                         <li>Fecha de salida: {r.fecha_salida}</li>
                     </ul>
-                    <button onClick={handleAccept}> Aceptar</button>
-                    <button onClick={handleDecline}>Declinar</button>
+                    <AcceptBooking id={r.id} />
+                    <DeclineBooking id={r.id} />
                 </div>
             )}
         </div>

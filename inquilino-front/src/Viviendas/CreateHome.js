@@ -50,7 +50,7 @@ function CreateHome() {
         <div className='createHomeContainer'>
             <h1>¿Quieres publicar un anuncio?</h1>
             <div className='createHomeForm'>
-                <h3>Rellena los datos</h3>
+                <h1>Rellena los datos</h1>
                 <form onSubmit={handleSubmit}>
                     {/* <label>
                     <span>Foto del piso:</span>

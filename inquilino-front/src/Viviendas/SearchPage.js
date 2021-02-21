@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useHistory, useParams } from 'react-router-dom'
 import useFetch from '../useFetch'
+import Rating from '../Utils/Rating';
 import './Viviendas.css'
 
 const queryString = require('query-string');
@@ -167,7 +168,9 @@ function SearchPage() {
                         <Link key={result.id} to={`/home/${result.id}`}>
                             <div className='result'>
                                 <div className='resultImage' />
-                                <div>{result.score}</div>
+                                <div>
+                                    <label>{result.score}</label>
+                                </div>
                                 <ul>
                                     <li>Ciudad: {result.ciudad}</li>
                                     <li>Provincia: {result.provincia}</li>
