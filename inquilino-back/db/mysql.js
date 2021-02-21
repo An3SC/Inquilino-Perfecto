@@ -175,6 +175,7 @@ const getHome = async (id) => {
                 p.garaje "garaje",
                 p.balcon "balcon",
                 p.jardin "jardin",
+                p.id_usuario "id_usuario",
                 avg(r.score_piso) "score_piso"
 	from piso p left join reserva r on p.id = r.id_piso where p.id =  ? group by p.id`
     const params = [id]
