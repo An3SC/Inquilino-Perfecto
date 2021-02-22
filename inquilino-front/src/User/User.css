@@ -75,8 +75,12 @@
     align-items: center;
 }
 
-.profileContainer img {
-    height: 25vh;
+.userDataContainer .avatar {
+    height: 35vh;
+    width: 13vw;
+    background-size: cover;
+    border: 1px solid black;
+    border-radius: 5px;
 }
 
 .profileUser {

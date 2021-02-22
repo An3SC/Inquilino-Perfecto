@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux"
 import { Route, Switch, useHistory, useParams } from "react-router-dom"
 import MyBookings from "../Bookings/MyBookings"
 import useFetch from "../useFetch"
@@ -12,6 +13,8 @@ function Profile() {
     const userData = useFetch(`http://localhost:9999/usuario/${id}`) || []
     const user = userData[0]
 
+    const login = useSelector(s => s.login)
+
     const history = useHistory()
 
     const handleUpdate = e => {
@@ -19,22 +22,21 @@ function Profile() {
         history.push(`/user/update/${id}`)
     }
 
-    const userUrl = user && (`http://localhost:9999/images/${user.imagen}.jpg`)
-
     return (
         <div className='profileContainer'>
             <h1>Mi perfil</h1>
             <div className='profileUser'>
                 {user &&
                     <div className='userDataContainer'>
-                        <img alt='avatar' src={userUrl} />
+                        <div className='avatar' style={user && user.imagen && { backgroundImage: 'url(' + `http://localhost:9999/images/${user.imagen}.jpg` + ')' }} />
                         <ul>
                             <li><b>{user.nombre}</b></li>
                             <li>Provincia: <b>{user.provincia}</b></li>
                             <li>Ciudad: <b>{user.ciudad}</b></li>
                             <li>Sobre mí: <b>{user.descripcion}</b></li>
                         </ul>
-                        <button onClick={handleUpdate}>Actualizar mis datos</button>
+                        {(user.id === login.id) &&
+                            <button onClick={handleUpdate}>Actualizar mis datos</button>}
                     </div>}
                 <div className='tabsContainer'>
                     <div>
