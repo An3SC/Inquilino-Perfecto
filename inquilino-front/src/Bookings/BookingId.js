@@ -1,30 +1,16 @@
-import { useSelector } from "react-redux"
-import { useHistory, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import useFetch from "../useFetch"
-import Rating from "../Utils/Rating"
 import Valorar from "../Utils/Valorar"
+import DeleteBooking from "./DeleteBooking"
 
-function BookingId() {
+function BookingIdWrapper() {
     const { id } = useParams()
+    const reserva = useFetch(`http://localhost:9999/reserva/${id}`)
+    return reserva ? <BookingId reserva={reserva} /> : false
+}
 
-    const reserva = useFetch(`http://localhost:9999/reserva/${id}`) || []
-
-    const login = useSelector(s => s.login)
-
-    const history = useHistory()
-
-    const handleDelete = async e => {
-        e.preventDefault()
-        const res = await fetch(`http://localhost:9999/reserva/${id}`, {
-            method: 'DELETE',
-            headers: { 'Authorization': login.token }
-        })
-        if (res.ok) {
-            history.push(`/userBookings`)
-        } else {
-            console.log('Ha habido un error')
-        }
-    }
+function BookingId({ reserva }) {
+    const { id } = useParams()
 
     return (
         <div className='bookingIdContainer'>
@@ -37,11 +23,9 @@ function BookingId() {
                     <li>{reserva.fecha_salida}</li>
                     <li>{reserva.precio_reserva}</li>
                 </ul>
+                <DeleteBooking id={id} />
                 <div>
-                    <button onClick={handleDelete}>Eliminar</button>
-                </div>
-                <div>
-                    <Valorar id={reserva.id_reserva} />
+                    <Valorar previousScore={reserva.score_piso} id={reserva.id_reserva} />
                 </div>
             </div>
 
@@ -49,4 +33,4 @@ function BookingId() {
     )
 }
 
-export default BookingId
+export default BookingIdWrapper
