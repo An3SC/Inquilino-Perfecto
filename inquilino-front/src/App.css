@@ -42,15 +42,9 @@
   font-weight: bold;
 }
 
-.App button:hover {
-  background: #F5C634;
-}
-
 .App button:active {
   background: whitesmoke;
 }
-
-
 
 .App h1 {
   font-family: 'lobster_twobold_italic';
