@@ -43,12 +43,12 @@ function Update({ data }) {
         fd.append('descripcion', descripcion)
         fd.append('telefono', telefono)
 
-        const ret = await fetch(`http://localhost:9999/usuario/${id}`, {
+        const res = await fetch(`http://localhost:9999/usuario/${id}`, {
             method: 'PUT',
             headers: { 'Authorization': login.token },
             body: fd
         })
-        if (ret.ok) {
+        if (res.ok) {
             history.push(`/user/${id}`)
         } else {
             console.log('Ha habido un error')
