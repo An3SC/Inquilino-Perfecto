@@ -26,7 +26,7 @@ const search = async (req, res, next) => {
             direction } = req.query;
 
         //NOMBRAMOS LA QUERY BASE
-        let query = `select piso.id, piso.precio_piso, piso.score, piso.provincia, piso.ciudad, piso.m2, piso.direccion from piso
+        let query = `select piso.id, piso.precio_piso, avg(reserva.score_piso) 'scare_piso', avg(reserva.score_usuario) 'score_usuario', piso.imagen 'imagen', piso.provincia, piso.ciudad, piso.m2, piso.direccion from piso
                     left outer join reserva on reserva.id_piso = piso.id`;
 
         //ESTABLECEMOS LOS PARÁMETROS DE BÚSQUEDA

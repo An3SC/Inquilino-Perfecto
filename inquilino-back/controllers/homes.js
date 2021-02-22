@@ -1,6 +1,9 @@
 const db = require('../db/mysql');
 const jwt = require('jsonwebtoken');
 
+const fsPromises = require('fs').promises
+const uuid = require('uuid')
+
 const { homeValidator } = require('../validators/homes')
 
 const createHome = async (req, res) => {
@@ -23,11 +26,31 @@ const createHome = async (req, res) => {
 
     try {
         const decodedToken = jwt.verify(authorization, process.env.SECRET);
-        // const id_usuario = await db.getUser(decodedToken.email)
         const id_usuario = decodedToken.id
-        // await homeValidator.validateAsync(req.body)
 
-        await db.createHome(fechaPublicacion, provincia, ciudad, direccion, precio_piso, nBanos, nHabitaciones, ascensor, garaje, balcon, jardin, m2, descripcion, id_usuario)
+        const data = await db.createHome(fechaPublicacion, provincia, ciudad, direccion, precio_piso, nBanos, nHabitaciones, ascensor, garaje, balcon, jardin, m2, descripcion, id_usuario);
+
+        res.send(data)
+
+        console.log(data)
+
+        if (req.files) {
+            await fsPromises.mkdir(process.env.TARGET_FOLDER, { recursive: true })
+
+            try {
+                const fileID = uuid.v4()
+                const outputFileName = `${process.env.TARGET_FOLDER}/${fileID}.jpg`
+
+                await fsPromises.writeFile(outputFileName, req.files.imagen.data)
+
+                await db.saveHomeImage(fileID, data.insertId)
+
+                res.send()
+            } catch (e) {
+                console.log('Error: ', e)
+                res.status(500).send()
+            }
+        }
 
     } catch (e) {
         console.log(e)
@@ -38,6 +61,7 @@ const createHome = async (req, res) => {
         res.status(statusCode).send(e.message)
         return
     }
+
     res.send()
 }
 
@@ -120,9 +144,25 @@ const updateHome = async (req, res) => {
         descripcion,
         id_usuario } = req.body
 
-    console.log(req.body)
-
     const { id } = req.params
+
+    if (req.files) {
+        await fsPromises.mkdir(process.env.TARGET_FOLDER, { recursive: true })
+
+        try {
+            const fileID = uuid.v4()
+            const outputFileName = `${process.env.TARGET_FOLDER}/${fileID}.jpg`
+
+            await fsPromises.writeFile(outputFileName, req.files.imagen.data)
+
+            await db.saveHomeImage(fileID, id)
+
+            res.send()
+        } catch (e) {
+            console.log('Error: ', e)
+            res.status(500).send()
+        }
+    }
 
     try {
         // await homeValidator.validateAsync(req.body)

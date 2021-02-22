@@ -134,6 +134,8 @@ const scoreBooking = async (req, res) => {
     const { score } = req.body
     const { authorization } = req.headers
 
+    console.log(score)
+
     try {
         // await scoreValidator.validateAsync(req.body)
 
