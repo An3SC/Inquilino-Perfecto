@@ -30,11 +30,14 @@ function UpdateHome({ data }) {
 
     const history = useHistory()
 
+    console.log(data)
+
     const handleSubmit = e => {
         e.preventDefault()
-        // const homeImage = e.target.homeImage.files[0]
+        const pisoImagen = e.target.pisoImagen.files[0]
 
         const fd = new FormData()
+        fd.append('imagen', pisoImagen)
         fd.append('ciudad', ciudad)
         fd.append('provincia', provincia)
         fd.append('direccion', direccion)
@@ -42,10 +45,10 @@ function UpdateHome({ data }) {
         fd.append('m2', m2)
         fd.append('nBanos', nBanos)
         fd.append('precio_piso', precio_piso)
-        fd.append('ascensor', ascensor)
-        fd.append('garaje', garaje)
-        fd.append('balcon', balcon)
-        fd.append('jardin', jardin)
+        fd.append('ascensor', ascensor ? 1 : 0)
+        fd.append('garaje', garaje ? 1 : 0)
+        fd.append('balcon', balcon ? 1 : 0)
+        fd.append('jardin', jardin ? 1 : 0)
         fd.append('descripcion', descripcion)
         fd.append('id_usuario', id_usuario)
 
@@ -61,9 +64,8 @@ function UpdateHome({ data }) {
         }
     }
 
-    // const homeUrl = data.imagen && (`http://localhost:9999/images/${data.imagen}.jpg`)
-    // const homeStyle = login && data.imagen && { backgroundImage: 'url(' + homeUrl + ')' }
-
+    const homeUrl = data.imagen && (`http://localhost:9999/images/${data.imagen}.jpg`)
+    const homeStyle = login && data.imagen && { backgroundImage: 'url(' + homeUrl + ')' }
 
     const handleDelete = e => {
         e.preventDefault()
@@ -76,7 +78,7 @@ function UpdateHome({ data }) {
         } else {
             console.log('Ha habido un error')
         }
-        history.push(`/user/homes/${id_usuario}`)
+        history.push(`/user/${login.id}/Viviendas`)
     }
 
     const [open, setOpen] = useState(false)
@@ -105,9 +107,9 @@ function UpdateHome({ data }) {
                 {open && <div>
                     <form onSubmit={handleSubmit}>
                         <label>
-                            <span>Subir más fotos</span>
+                            <span>Subir foto:</span>
                             <div >
-                                <div className="pisoImagen" /*style={homeStyle}*/ />
+                                <div className="pisoImagen" style={homeStyle} />
                                 <input name="pisoImagen" type="file" accept="image/*" />
                             </div>
                         </label>

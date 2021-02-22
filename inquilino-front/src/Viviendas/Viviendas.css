@@ -353,3 +353,9 @@
   display: flex;
   margin-top: 35px;
 }
+
+.pisoImagen {
+  width: 15vw;
+  height: 25vh;
+  background-size: cover;
+}

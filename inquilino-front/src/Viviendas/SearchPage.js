@@ -85,7 +85,7 @@ function SearchPage() {
                 <button className='moreFilters' onClick={handleReset}>Despejar</button>
                 <button className='moreFilters' onClick={handleOpen}>Más filtros</button>
                 <form onSubmit={handleSubmit}>
-                    <input type='text' name='ciudad' placeholder={'Ciudad...'} value={city} onChange={e => setCity(e.target.value)} />
+                    <input type='text' name='ciudad' placeholder={'Ciudad...'} value={city} onChange={e => setCity(e.target.value)} required />
                     <input type='text' name='provincia' placeholder='Provincia...' value={provincia} onChange={e => setProvincia(e.target.value)} />
                     {open &&
                         <div className='filterContainer'>
@@ -191,7 +191,7 @@ function SearchPage() {
                     {results && paginatedResults.map(result =>
                         <Link key={result.id} to={`/home/${result.id}`}>
                             <div className='result'>
-                                <div className='resultImage' />
+                                <div className='resultImage' style={result.imagen && { backgroundImage: 'url(' + `http://localhost:9999/images/${result.imagen}.jpg` + ')' }} />
                                 <div>
                                     <Rating value={result.score} />
                                 </div>

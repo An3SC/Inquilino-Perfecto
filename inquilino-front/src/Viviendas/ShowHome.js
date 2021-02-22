@@ -7,22 +7,20 @@ import Rating from "../Utils/Rating"
 
 function ShowHomeWrapper() {
     const { id } = useParams()
-    const vivienda = useFetch(`http://localhost:9999/vivienda/${id}`)
-    return vivienda ? <ShowHome vivienda={vivienda} /> : false
+    const data = useFetch(`http://localhost:9999/vivienda/${id}`)
+    return data ? <ShowHome data={data} /> : false
 }
 
-function ShowHome({ vivienda }) {
+function ShowHome({ data }) {
     const { id } = useParams()
 
     const [sameUser, setSameUser] = useState(false)
 
-    // const vivienda = useFetch(`http://localhost:9999/vivienda/${id}`) || []
+    console.log(data)
 
     const login = useSelector(s => s.login)
 
-    const viviendaUsuario = vivienda.id_usuario
-
-    console.log(viviendaUsuario)
+    const viviendaUsuario = data.id_usuario
 
     if (login.id === viviendaUsuario) {
         setSameUser(true)
@@ -30,14 +28,17 @@ function ShowHome({ vivienda }) {
         console.log('No es el mismo usuario')
     }
 
+    const homeUrl = data[0].imagen && (`http://localhost:9999/images/${data[0].imagen}.jpg`)
+    const homeStyle = login && data[0].imagen && { backgroundImage: 'url(' + homeUrl + ')' }
+
     return (
         <div >
-            {vivienda.map(v =>
+            {data.map(v =>
                 <div className='showHomeContainer'>
                     <h1 id='direccionShow'>{v.direccion}</h1>
                     <div className='showHomeContent'>
                         <div className='showHomeData'>
-                            <div className='resultImage' />
+                            <div className='resultImage' style={homeStyle} />
                             <ul key={v.id}>
                                 <li><b>{v.ciudad}</b></li>
                                 <li><b>{v.provincia}</b></li>

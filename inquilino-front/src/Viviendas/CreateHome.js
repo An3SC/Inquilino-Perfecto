@@ -24,22 +24,30 @@ function CreateHome() {
 
     const handleSubmit = async e => {
         e.preventDefault()
-        const headers = { 'Content-Type': 'application/json' }
-        if (login) headers['Authorization'] = login.token
-        const ret = await fetch('http://localhost:9999/vivienda', {
-            headers,
-            body: JSON.stringify({
-                provincia, ciudad, direccion, precio_piso,
-                nBanos, nHabitaciones, ascensor, garaje,
-                balcon, jardin, m2, descripcion: descripcion ? descripcion : []
-            }),
+        const pisoImagen = e.target.pisoImagen.files[0]
+
+        const fd = new FormData()
+        fd.append('imagen', pisoImagen)
+        fd.append('ciudad', ciudad)
+        fd.append('provincia', provincia)
+        fd.append('direccion', direccion)
+        fd.append('nHabitaciones', nHabitaciones)
+        fd.append('m2', m2)
+        fd.append('nBanos', nBanos)
+        fd.append('precio_piso', precio_piso)
+        fd.append('ascensor', ascensor ? 1 : 0)
+        fd.append('garaje', garaje ? 1 : 0)
+        fd.append('balcon', balcon ? 1 : 0)
+        fd.append('jardin', jardin ? 1 : 0)
+        fd.append('descripcion', descripcion ? descripcion : [])
+
+        const res = await fetch('http://localhost:9999/vivienda', {
+            headers: { 'Authorization': login.token },
+            body: fd,
             method: 'POST'
         })
-        if (ret.ok) {
-            // console.log(ret.body)
-            // const data = await ret.json()
-            // console.log(data)
-            history.push(`/user/homes/${login.id}`)
+        if (res.ok) {
+            history.push(`/user/${login.id}/Viviendas`)
         } else {
             console.log('Error')
             setError(true)
@@ -52,13 +60,13 @@ function CreateHome() {
             <div className='createHomeForm'>
                 <h1>Rellena los datos</h1>
                 <form onSubmit={handleSubmit}>
-                    {/* <label>
-                    <span>Foto del piso:</span>
-                    <div >
-                        <div className="pisoImagen" />
-                        <input name="pisoImagen" type="file" accept="image/*" />
-                    </div>
-                </label> */}
+                    <label>
+                        <span>Foto del piso:</span>
+                        <div >
+                            <div className="pisoImagen" />
+                            <input name="pisoImagen" type="file" accept="image/*" />
+                        </div>
+                    </label>
                     <input name='ciudad' type='text' placeholder='Ciudad...' value={ciudad} onChange={e => setCiudad(e.target.value)} />
                     <input name='provincia' type='text' placeholder='Provincia...' value={provincia} onChange={e => setProvincia(e.target.value)} />
                     <input name='direccion' type='text' placeholder='Direccion...' value={direccion} onChange={e => setDireccion(e.target.value)} />
