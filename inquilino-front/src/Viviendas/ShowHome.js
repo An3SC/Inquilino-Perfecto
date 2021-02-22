@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { useSelector } from "react-redux"
 import { Link, useParams } from "react-router-dom"
 import Reservar from "../Bookings/Reservar"
@@ -14,22 +13,9 @@ function ShowHomeWrapper() {
 function ShowHome({ data }) {
     const { id } = useParams()
 
-    const [sameUser, setSameUser] = useState(false)
-
-    console.log(data)
-
     const login = useSelector(s => s.login)
 
     const viviendaUsuario = data.id_usuario
-
-    if (login.id === viviendaUsuario) {
-        setSameUser(true)
-    } else {
-        console.log('No es el mismo usuario')
-    }
-
-    const homeUrl = data[0].imagen && (`http://localhost:9999/images/${data[0].imagen}.jpg`)
-    const homeStyle = login && data[0].imagen && { backgroundImage: 'url(' + homeUrl + ')' }
 
     return (
         <div >
@@ -38,7 +24,7 @@ function ShowHome({ data }) {
                     <h1 id='direccionShow'>{v.direccion}</h1>
                     <div className='showHomeContent'>
                         <div className='showHomeData'>
-                            <div className='resultImage' style={homeStyle} />
+                            <div className='resultImage' style={data[0].imagen && { backgroundImage: 'url(' + `http://localhost:9999/images/${data[0].imagen}.jpg` + ')' }} />
                             <ul key={v.id}>
                                 <li><b>{v.ciudad}</b></li>
                                 <li><b>{v.provincia}</b></li>
@@ -50,10 +36,14 @@ function ShowHome({ data }) {
                         <label className='showHomeStars'>
                             <Rating value={v.score_piso} />
                         </label>
-                        {!sameUser &&
+                        <div>
+                            <p>Este piso pertece a</p>
+                            <Link to={`/user/${v.id_usuario}`}><p>{v.nombre}</p></Link>
+                        </div>
+                        {!(login.id === viviendaUsuario) &&
                             <Reservar />
                         }
-                        {sameUser &&
+                        {(login.id === viviendaUsuario) &&
                             <Link to={`/updateHome/${id}`}>Editar</Link>
                         }
                     </div>
