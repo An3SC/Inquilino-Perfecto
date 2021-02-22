@@ -1,9 +1,10 @@
 import { useState } from "react"
 import { useSelector } from "react-redux"
+import Rating from "./Rating"
 
-function Valorar({ id }) {
+function Valorar({ previousScore, id }) {
     const [score, setScore] = useState()
-    const [voted, setVoted] = useState(false)
+    const [voted, setVoted] = useState(previousScore)
 
     const login = useSelector(s => s.login)
 
@@ -11,8 +12,11 @@ function Valorar({ id }) {
         e.preventDefault()
         console.log(score)
         const res = await fetch(`http://localhost:9999/reserva/${id}`, {
-            headers: { 'Authorization': login.token },
-            body: score,
+            headers: {
+                'Authorization': login.token,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ score }),
             method: 'PUT',
         })
         if (res.ok) {
@@ -33,7 +37,7 @@ function Valorar({ id }) {
                 <button>Valorar</button>
             </form>}
             {voted &&
-                <p>Ya has valorado esta reserva</p>
+                <Rating value={previousScore} />
             }
         </div>
 
