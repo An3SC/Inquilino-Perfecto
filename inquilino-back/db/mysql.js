@@ -178,8 +178,10 @@ const getHome = async (id) => {
                 p.jardin "jardin",
                 p.id_usuario "id_usuario",
                 p.imagen 'imagen',
+                u.nombre 'nombre',
+                p.score 'piso_score',
                 avg(r.score_piso) "score_piso"
-	from piso p left join reserva r on p.id = r.id_piso where p.id =  ? group by p.id`
+	from piso p left join reserva r on p.id = r.id_piso right join usuario u on p.id_usuario= u.id where p.id =  ? group by p.id`
     const params = [id]
 
     const result = await performQuery(query, params)
@@ -273,10 +275,19 @@ const homeBookings = async (id) => {
                     r.fecha_reserva 'fecha_reserva',
                     r.fecha_entrada 'fecha_entrada',
                     r.estado 'estado',
-                    r.fecha_salida 'fecha_salida'  from reserva r join usuario u on r.id_usuario = u.id where id_piso = ?`
+                    r.fecha_salida 'fecha_salida' from reserva r join usuario u on r.id_usuario = u.id where id_piso = ?`
     const params = [id]
 
     const [...result] = await performQuery(query, params)
+    return result
+}
+
+const existBooking = async (fecha_entrada, fecha_salida, id) => {
+    const query = `select * from reserva where (fecha_entrada between ? and ?
+    and fecha_salida between ? and ?) and id_piso = ?`
+    const params = [fecha_entrada, fecha_salida, fecha_entrada, fecha_salida, id]
+
+    const [result] = await performQuery(query, params)
     return result
 }
 
@@ -380,6 +391,7 @@ module.exports = {
     createBooking,
     getBooking,
     homeBookings,
+    existBooking,
     deleteBooking,
     getListBookings,
     haveBooking,
