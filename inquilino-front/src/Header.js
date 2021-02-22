@@ -6,9 +6,6 @@ import Menu from './Utils/Menu';
 function Header() {
     const login = useSelector(s => s.login)
 
-    const avatarUrl = login && login.imagen && (`http://localhost:9999/images/${login.imagen}.jpg`)
-    const avatarStyle = login && login.imagen && { backgroundImage: 'url(' + avatarUrl + ')' }
-
     return (
         <header className='headerContainer'>
             <div>
@@ -23,7 +20,7 @@ function Header() {
                 <div>
                     {login &&
                         <div className='userMenu'>
-                            <div className='avatar' style={avatarStyle} />
+                            <div className='avatar' style={login.imagen && { backgroundImage: 'url(' + `http://localhost:9999/images/${login.imagen}.jpg` + ')' }} />
                             <Menu>{login.username}</Menu>
                         </div>
                     }
