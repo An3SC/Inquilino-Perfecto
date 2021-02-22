@@ -14,7 +14,7 @@ function DeleteBooking({ id }) {
             headers: { 'Authorization': login.token }
         })
         if (res.ok) {
-            history.push(`/userBookings`)
+            history.push(`/user/${login.id}/Reservas`)
         } else {
             console.log('Ha habido un error')
         }

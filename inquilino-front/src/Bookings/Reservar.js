@@ -10,6 +10,8 @@ function Reservar() {
     const [fecha_entrada, setFechaEntrada] = useState('')
     const [fecha_salida, setFechaSalida] = useState('')
 
+    const [error, setError] = useState()
+
     const history = useHistory()
 
     const handleBooking = async e => {
@@ -23,10 +25,11 @@ function Reservar() {
                 body: JSON.stringify({ fecha_entrada, fecha_salida }),
                 method: 'POST'
             })
-            const data = await res.json()
-
             if (res.ok) {
+                const data = await res.json()
                 history.push(`/booking/${data.resultId}`)
+            } else {
+                setError(true)
             }
         } catch (e) {
             console.log(e)
@@ -47,6 +50,9 @@ function Reservar() {
                     </label>
                 </label>
                 <button>Reservar</button>
+                {error &&
+                    <div>No puede reservar en las fechas seleccionadas</div>
+                }
             </form>
         </div>
     )
