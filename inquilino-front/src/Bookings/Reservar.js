@@ -15,7 +15,7 @@ function Reservar() {
     const handleBooking = async e => {
         e.preventDefault()
         try {
-            const ret = await fetch(`http://localhost:9999/vivienda/${id}/reserva`, {
+            const res = await fetch(`http://localhost:9999/vivienda/${id}/reserva`, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': login.token
@@ -23,9 +23,9 @@ function Reservar() {
                 body: JSON.stringify({ fecha_entrada, fecha_salida }),
                 method: 'POST'
             })
-            const data = await ret.json()
+            const data = await res.json()
 
-            if (ret.ok) {
+            if (res.ok) {
                 history.push(`/booking/${data.resultId}`)
             }
         } catch (e) {

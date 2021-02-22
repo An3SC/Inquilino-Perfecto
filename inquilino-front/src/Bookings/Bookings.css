@@ -69,3 +69,7 @@
     cursor: pointer;
     transition: all .3s;
 }
+
+.reservarContainer button:hover {
+    background: #F5C634;
+}

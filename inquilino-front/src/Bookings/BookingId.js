@@ -1,6 +1,8 @@
 import { useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom"
 import useFetch from "../useFetch"
+import Rating from "../Utils/Rating"
+import Valorar from "../Utils/Valorar"
 
 function BookingId() {
     const { id } = useParams()
@@ -28,7 +30,7 @@ function BookingId() {
         <div className='bookingIdContainer'>
             <h1>Mi reserva</h1>
             <div className='bookingIdContent'>
-                <ul key={reserva.id}>
+                <ul key={reserva.id_reserva}>
                     <li>{reserva.ciudad}</li>
                     <li>{reserva.direccion}</li>
                     <li>{reserva.fecha_entrada}</li>
@@ -39,7 +41,7 @@ function BookingId() {
                     <button onClick={handleDelete}>Eliminar</button>
                 </div>
                 <div>
-                    <button>Valorar</button>
+                    <Valorar id={reserva.id_reserva} />
                 </div>
             </div>
 
