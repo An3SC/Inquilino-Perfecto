@@ -47,11 +47,11 @@ function SearchPage() {
     const handleSubmit = e => {
         e.preventDefault()
         const url = `/search/`
-            + (city ? `${city}` : '') + `&provincia=${provincia}` + `&nBanos=${nBanos}`
-            + `&nHabitaciones=${nHabitaciones}` + `&m2=${m2}` + `&precio1=${precio1}`
-            + `&precio2=${precio2}` + `&fecha_entrada=${fechaEntrada}` + `&fecha_salida=${fechaSalida}`
-            + `&ascensor=${ascensor ? 'si' : ''}` + `&garaje=${garaje ? 'si' : ''}`
-            + `&balcon=${balcon ? 'si' : ''}` + `&jardin=${jardin ? 'si' : ''}`
+            + (city ? `${city}` : '') + `&provincia=${provincia}&nBanos=${nBanos}`
+            + `&nHabitaciones=${nHabitaciones}&m2=${m2}&precio1=${precio1}`
+            + `&precio2=${precio2}&fecha_entrada=${fechaEntrada}&fecha_salida=${fechaSalida}`
+            + `&ascensor=${ascensor ? 'si' : ''}&garaje=${garaje ? 'si' : ''}`
+            + `&balcon=${balcon ? 'si' : ''}&jardin=${jardin ? 'si' : ''}`
         history.push(url)
         setPage(1)
     }
@@ -193,7 +193,7 @@ function SearchPage() {
                             <div className='result'>
                                 <div className='resultImage' style={result.imagen && { backgroundImage: 'url(' + `http://localhost:9999/images/${result.imagen}.jpg` + ')' }} />
                                 <div>
-                                    <Rating value={result.score} />
+                                    <Rating value={result.score_piso} />
                                 </div>
                                 <ul>
                                     <li>Ciudad: {result.ciudad}</li>
