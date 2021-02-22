@@ -61,6 +61,7 @@ async function main() {
                 jardin tinyint(1) not null ,
                 estado enum('activo', 'inactivo') default 'activo' not null,
                 score float,
+                imagen varchar(500),
                 descripcion varchar(500),
                 fechaPublicacion timestamp default current_timestamp,
                 fechaActualizacion timestamp default current_timestamp on update current_timestamp,
@@ -72,17 +73,6 @@ async function main() {
 
         console.log('***CREADA TABLA DE PISOS')
 
-        await connection.query(`
-        create table if not exists imagenesPiso(
-            id int unsigned auto_increment primary key,
-            imagen varchar(500),
-            id_piso int unsigned not null,
-            constraint imagenes_piso_id_piso_fk1
-                foreign key (id_piso) references piso(id)
-        )
-        `)
-
-        console.log('****CREADA TABLA DE IMÁGENES')
 
         await connection.query(`
         create table if not exists reserva(
@@ -104,7 +94,7 @@ async function main() {
         `)
 
 
-        console.log('*****CREADA TABLA DE RESERVA')
+        console.log('****CREADA TABLA DE RESERVA')
 
         const passwordBcrypt = await bcrypt.hash(process.env.DEFAULT_ADMIN_PASSWORD, 10);
         await connection.query(
@@ -143,7 +133,7 @@ async function main() {
                 `)
         }
 
-        console.log('******USUARIOS CREADOS')
+        console.log('*****USUARIOS CREADOS')
 
         let pisos = 500;
 
@@ -193,7 +183,7 @@ async function main() {
             `);
         }
 
-        console.log('*******PISOS CREADOS')
+        console.log('******PISOS CREADOS')
 
         let reserva = 75;
 
@@ -229,7 +219,7 @@ async function main() {
                 `)
         }
 
-        console.log('******** RESERVAS CREADAS')
+        console.log('******* RESERVAS CREADAS')
 
     } catch (e) {
         console.log('Some error ocurred: ', e)

@@ -146,7 +146,8 @@ const createHome = async (fechaPublicacion, provincia, ciudad, direccion, precio
     const query = `insert into piso(fechaPublicacion, provincia, ciudad, direccion, precio_piso, nBanos, nHabitaciones, ascensor, garaje, balcon, jardin, m2, descripcion, id_usuario)
     VALUES(UTC_TIMESTAMP, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
     const params = [provincia, ciudad, direccion, precio_piso, nBanos, nHabitaciones, ascensor, garaje, balcon, jardin, m2, descripcion, id_usuario]
-    await performQuery(query, params)
+    const result = await performQuery(query, params)
+    return result
 }
 
 const listHomes = async () => {
@@ -176,6 +177,7 @@ const getHome = async (id) => {
                 p.balcon "balcon",
                 p.jardin "jardin",
                 p.id_usuario "id_usuario",
+                p.imagen 'imagen',
                 avg(r.score_piso) "score_piso"
 	from piso p left join reserva r on p.id = r.id_piso where p.id =  ? group by p.id`
     const params = [id]
@@ -225,9 +227,9 @@ const saveUserImage = async (imagen, id) => {
     await performQuery(query, params)
 }
 
-const saveHomeImage = async (imagen, id_piso) => {
-    const query = `insert into imagenesPiso (imagen, id_piso) values (?, ?)`
-    const params = [imagen, id_piso]
+const saveHomeImage = async (imagen, id) => {
+    const query = `update piso set imagen = ? where id = ?`
+    const params = [imagen, id]
 
     console.log(query, params)
     await performQuery(query, params)
@@ -253,7 +255,9 @@ const getBooking = async (id) => {
                     p.ciudad,
                     r.precio_reserva,
                     r.fecha_entrada,
-                    r.fecha_salida
+                    r.fecha_salida,
+                    r.score_piso,
+                    r.score_usuario
                     from reserva r join piso p on r.id_piso =p.id where r.id_reserva = ?`
     const params = [id]
 
