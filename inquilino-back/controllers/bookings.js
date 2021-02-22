@@ -16,6 +16,13 @@ const booking = async (req, res) => {
         authorization
     } = req.headers
 
+    const booking = await db.existBooking(fecha_entrada, fecha_salida, id)
+
+    if (booking) {
+        res.status(403).send()
+        return
+    }
+
     try {
         const decodedToken = jwt.verify(authorization, process.env.SECRET);
         const id_usuario = await db.getUser(decodedToken.email)
