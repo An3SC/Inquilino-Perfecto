@@ -20,7 +20,7 @@ function Header() {
                 <div>
                     {login &&
                         <div className='userMenu'>
-                            <div className='avatar' style={login.imagen && { backgroundImage: 'url(' + `http://localhost:9999/images/${login.imagen}.jpg` + ')' }} />
+                            <div className='avatar' style={login.imagen && { backgroundImage: `url(http://localhost:9999/images/${login.imagen}.jpg)` }} />
                             <Menu>{login.username}</Menu>
                         </div>
                     }

@@ -79,7 +79,7 @@ function App() {
             <CreateHome />
             : <Redirect to='/' />}
         </Route>
-        <Route path='/updateHome/:id' exact>
+        <Route path='/myHome/:id' exact>
           {login ?
             <UpdateHome />
             : <Redirect to='/' />}
@@ -91,8 +91,6 @@ function App() {
         </Route>
         <Route path='/home/:id' exact>
           <ShowHome />
-          {/* <Contacto />
-          <Reserva /> */}
         </Route>
       </Switch>
       <Footer />
