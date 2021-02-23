@@ -3,6 +3,11 @@
     flex-direction: column;
     align-items: center;
     width: 30vw;
+    height: 80vh;
+}
+
+.myBookingsContainer h1 {
+    margin-bottom: 0;
 }
 
 .myBookingsContent {
@@ -13,11 +18,61 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 15px;
+    box-shadow: 1px 2px 3px 2px rgba(150, 150, 150, 0.75);
 }
 
-.myBookingsContainer ul {
+.myBookingsContent a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bookingImagen {
+    background: url('../icons/houseIreneFlorentina.jpg') no-repeat;
+    width: 125px;
+    height: 125px;
+    background-size: cover;
+    border: 1px solid rgb(150, 150, 150);
+    box-shadow: inset 2px 3px 5px 0 rgba(150, 150, 150, 0.75);
+  }
+
+  .aceptada, .declinada, .pendiente {
+      margin-right: 40px;
+  }
+
+.myBookingsContent .pendiente {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.myBookingsContent .aceptada {
+    background: #717E4D;
+    height: 140px;
+    width: 140px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.myBookingsContent .declinada {
+    background: #781D0C;
+    height: 140px;
+    width: 140px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.myBookingsContent ul {
     list-style: none;
     padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .bookingIdContainer {
