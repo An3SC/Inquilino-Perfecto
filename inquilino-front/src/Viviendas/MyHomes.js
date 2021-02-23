@@ -17,7 +17,7 @@ function MyHomes() {
                         <li>Dirección: {h.direccion}</li>
                         <li>Precio: {h.precio_piso}</li>
                     </ul>
-                    <Link to={`/updateHome/${h.id}`}>Ver más</Link>
+                    <Link to={`/myHome/${h.id}`}>Ver más</Link>
                 </div>
             )}
         </div>

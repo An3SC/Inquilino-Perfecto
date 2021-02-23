@@ -24,7 +24,7 @@ function ShowHome({ data }) {
                     <h1 id='direccionShow'>{v.direccion}</h1>
                     <div className='showHomeContent'>
                         <div className='showHomeData'>
-                            <div className='resultImage' style={data[0].imagen && { backgroundImage: 'url(' + `http://localhost:9999/images/${data[0].imagen}.jpg` + ')' }} />
+                            <div className='resultImage' style={data[0].imagen && { backgroundImage: `url(http://localhost:9999/images/${data[0].imagen}.jpg)` }} />
                             <ul key={v.id}>
                                 <li><b>{v.ciudad}</b></li>
                                 <li><b>{v.provincia}</b></li>

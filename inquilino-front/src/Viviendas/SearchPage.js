@@ -191,7 +191,7 @@ function SearchPage() {
                     {results && paginatedResults.map(result =>
                         <Link key={result.id} to={`/home/${result.id}`}>
                             <div className='result'>
-                                <div className='resultImage' style={result.imagen && { backgroundImage: 'url(' + `http://localhost:9999/images/${result.imagen}.jpg` + ')' }} />
+                                <div className='resultImage' style={result.imagen && { backgroundImage: `url(http://localhost:9999/images/${result.imagen}.jpg)` }} />
                                 <div>
                                     <Rating value={result.score_piso} />
                                 </div>
