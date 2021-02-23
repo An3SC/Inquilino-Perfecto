@@ -4,7 +4,6 @@ import MyBookings from "../Bookings/MyBookings"
 import useFetch from "../useFetch"
 import Tabs from "../Utils/Tabs"
 import MyHomes from "../Viviendas/MyHomes"
-import Opiniones from "./Opiniones"
 import './User.css'
 
 function Profile() {
@@ -28,7 +27,7 @@ function Profile() {
             <div className='profileUser'>
                 {user &&
                     <div className='userDataContainer'>
-                        <div className='avatar' style={user && user.imagen && { backgroundImage: 'url(' + `http://localhost:9999/images/${user.imagen}.jpg` + ')' }} />
+                        <div className='avatar' style={user && user.imagen && { backgroundImage: `url(http://localhost:9999/images/${user.imagen}.jpg)` }} />
                         <ul>
                             <li><b>{user.nombre}</b></li>
                             <li>Provincia: <b>{user.provincia}</b></li>
@@ -46,11 +45,6 @@ function Profile() {
                         <Route path={`/user/:id/Viviendas`}>
                             <div className='tabOption'>
                                 <MyHomes />
-                            </div>
-                        </Route>
-                        <Route path={`/user/:id/Opiniones`}>
-                            <div className='tabOption'>
-                                <Opiniones />
                             </div>
                         </Route>
                         <Route path={`/user/${id}/Reservas`}>

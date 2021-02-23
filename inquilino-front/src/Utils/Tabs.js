@@ -8,7 +8,7 @@ function Tabs() {
 
     const login = useSelector(s => s.login)
 
-    const tabList = ['Viviendas', 'Opiniones', 'Reservas']
+    const tabList = ['Viviendas', 'Reservas']
 
     return (
         <div className='tabs '>
