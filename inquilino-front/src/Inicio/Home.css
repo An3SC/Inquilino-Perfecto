@@ -52,6 +52,14 @@
     transition: all .3s;
   }
 
+  .firstSearchForm button:hover {
+    background: #F5C634;
+  }
+
+  .firstSearchForm button:active {
+    background: whitesmoke;
+  }
+
   #titulo {
     margin-top: 20vh;
     font-size: 65px;
