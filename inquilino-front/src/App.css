@@ -86,14 +86,8 @@ html {
 .myHomesContainer, .updateContainer,
 .myBookingsContainer, .updateHomeContainer,
 .bookingIdContainer, .resetContainer {
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
-}
-
-.headerContainer {
-  position:relative;
-  z-index: 1;
-  background: whitesmoke;
 }
 
 .loginContainer,
@@ -110,6 +104,8 @@ html {
 }
 
 .headerContainer {
+  position:relative;
+  background: whitesmoke;
   display: flex;
   height: 10vh;
   justify-content: space-between;

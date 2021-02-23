@@ -1,7 +1,7 @@
 .tabs {
     width: 30vw;
     display: flex;
-    margin: 20px 10px 50px;
+    margin: 0 0 10px 0;
     position: relative;
 }
 
