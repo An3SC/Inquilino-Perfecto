@@ -1,23 +1,35 @@
+import { useState } from "react"
 import { useParams } from "react-router-dom"
 import AcceptOrDeclineBooking from "../Bookings/AcceptOrDeclineBooking"
 import useFetch from "../useFetch"
+import moment from 'moment'
 
 function HomeBoookings() {
     const { id } = useParams()
+    const [page, setPage] = useState(1)
 
     const reservas = useFetch(`http://localhost:9999/vivienda/reservas/${id}`) || []
 
+    const paginatedResults = reservas ? reservas.slice(2 * (page - 1), 2 * page) : []
+    const max = reservas ? Math.ceil(reservas.length / 2) : []
+
     return (
-        <div>
-            {reservas && reservas.map(r =>
+        <div className='homeBookingsContainer'>
+            {reservas &&
+                <div className='pagination'>
+                    <button className='back' onClick={() => setPage(page > 1 ? page - 1 : 1)} />
+                    <span>{page} / {max}</span>
+                    <button className='forward' onClick={() => setPage(page < max ? page + 1 : max)} />
+                </div>}
+            {reservas && paginatedResults.map(r =>
                 <div className='homeBookingsContent' key={r.id}>
                     <ul>
-                        <li>Nombre: {r.nombre}</li>
-                        <li>Email: {r.email}</li>
-                        <li>Precio: {r.precio}</li>
-                        <li>Fecha de reserva: {r.fecha_reserva}</li>
-                        <li>Fecha de entrada: {r.fecha_entrada}</li>
-                        <li>Fecha de salida: {r.fecha_salida}</li>
+                        <li>Nombre: <b>{r.nombre}</b></li>
+                        <li>Email: <b>{r.email}</b></li>
+                        <li>Precio: <b>{r.precio}€</b></li>
+                        <li>Realizó la petición: <b>{moment(r.fecha_reserva).format("DD-MM-YYYY")}</b></li>
+                        <li>Fecha de entrada: <b>{moment(r.fecha_entrada).format("DD-MM-YYYY")}</b></li>
+                        <li>Fecha de salida: <b>{moment(r.fecha_salida).format("DD-MM-YYYY")}</b></li>
                     </ul>
                     {r.estado === 'pendiente' &&
                         <div>

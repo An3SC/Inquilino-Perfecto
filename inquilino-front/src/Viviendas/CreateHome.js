@@ -62,8 +62,7 @@ function CreateHome() {
                 <form onSubmit={handleSubmit}>
                     <label>
                         <span>Foto del piso:</span>
-                        <div >
-                            <div className="pisoImagen" />
+                        <div>
                             <input name="pisoImagen" type="file" accept="image/*" />
                         </div>
                     </label>
@@ -96,7 +95,7 @@ function CreateHome() {
                             </span>
                         </label>
                     </div>
-                    <textarea name='descripcion' rows='3' cols='25' placeholder='¡Cuéntanos lo que te gusta de tu casa!' value={descripcion} onChange={e => setDescripcion(e.target.value)} />
+                    <textarea name='descripcion' rows='4' cols='45' placeholder='¡Cuéntanos lo que te gusta de tu casa!' value={descripcion} onChange={e => setDescripcion(e.target.value)} />
                     {error &&
                         <div className='errorCreacion'>Error en la creación</div>
                     }

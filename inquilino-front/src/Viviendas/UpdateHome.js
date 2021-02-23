@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useSelector } from "react-redux"
 import { Link, useHistory, useParams } from "react-router-dom"
 import useFetch from "../useFetch"
+import Rating from "../Utils/Rating"
 import HomeBoookings from "./HomeBoookings"
 
 function UpdateHomeWrapper() {
@@ -91,7 +92,7 @@ function UpdateHome({ data }) {
 
     return (
         <div className='updateHomeContainer'>
-            {data && (id_usuario === data.id_usuario) && <h1>Mi piso</h1>}
+            {data && (id_usuario === data.id_usuario) && <h1>Mi vivienda</h1>}
             {data && (id_usuario !== data.id_usuario) &&
                 <div>
                     <div className='obiWanBanner' />
@@ -102,15 +103,18 @@ function UpdateHome({ data }) {
                 <div className='updateHomeContent'>
                     {!open &&
                         <div className='myHomeData' >
+                            <div className='pisoImagen' style={data.imagen && { backgroundImage: `url(http://localhost:9999/images/${data.imagen}.jpg)` }} />
                             <ul>
-                                <li>Mi piso:</li>
-                                <li>Provincia: {data.provincia}</li>
-                                <li>Ciudad: {data.ciudad}</li>
-                                <li>Dirección: {data.direccion}</li>
-                                <li>Precio: {data.precio_piso}</li>
+                                <li>Provincia: <b>{data.provincia}</b></li>
+                                <li>Ciudad: <b>{data.ciudad}</b></li>
+                                <li>Dirección: <b>{data.direccion}</b></li>
+                                <li>Precio: <b>{data.precio_piso}€</b></li>
+                                <li>Habitaciones: <b>{data.nHabitaciones}</b></li>
+                                <li>Baños: <b>{data.nBanos}</b></li>
+                                <label><Rating value={data.avg_score} />
+                                ({data.countScore})</label>
                             </ul>
                         </div>}
-                    <button onClick={handleEdit}>Editar</button>
                     {open && <div>
                         <form onSubmit={handleSubmit}>
                             <label>
@@ -150,6 +154,7 @@ function UpdateHome({ data }) {
                         </form>
                         <button onClick={handleDelete}>Borrar</button>
                     </div>}
+                    <button onClick={handleEdit}>Editar</button>
                     <div>
                         <HomeBoookings />
                     </div>

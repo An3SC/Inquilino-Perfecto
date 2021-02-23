@@ -1,21 +1,31 @@
+import { useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import useFetch from "../useFetch"
 
 function MyHomes() {
     const { id } = useParams()
+    const [page, setPage] = useState(1)
 
     const homesData = useFetch(`http://localhost:9999/usuario/vivienda/${id}`) || []
 
+    const paginatedResults = homesData ? homesData.slice(3 * (page - 1), 3 * page) : []
+    const max = homesData ? Math.ceil(homesData.length / 3) : []
+
     return (
         <div className='myHomesContainer'>
-            <h1>Mis pisos</h1>
-            {homesData && homesData.map(h =>
+            <h1>Mis viviendas</h1>
+            {homesData &&
+                <div className='pagination'>
+                    <button className='back' onClick={() => setPage(page > 1 ? page - 1 : 1)} />
+                    <span>{page} / {max}</span>
+                    <button className='forward' onClick={() => setPage(page < max ? page + 1 : max)} />
+                </div>}
+            {homesData && paginatedResults.map(h =>
                 <div className='myHomes' key={h.id} >
                     <ul>
-                        <li>Provincia: {h.provincia}</li>
-                        <li>Ciudad: {h.ciudad}</li>
-                        <li>Dirección: {h.direccion}</li>
-                        <li>Precio: {h.precio_piso}</li>
+                        <li>Ciudad: <b>{h.ciudad}</b></li>
+                        <li>Dirección: <b>{h.direccion}</b></li>
+                        <li>Precio: <b>{h.precio_piso}€</b></li>
                     </ul>
                     <Link to={`/myHome/${h.id}`}>Ver más</Link>
                 </div>
