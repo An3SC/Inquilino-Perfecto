@@ -180,7 +180,8 @@ const getHome = async (id) => {
                 p.imagen 'imagen',
                 u.nombre 'nombre',
                 p.score 'piso_score',
-                avg(r.score_piso) "score_piso"
+                avg(r.score_piso) "avg_score",
+                count (score_piso) as countScore
 	from piso p left join reserva r on p.id = r.id_piso right join usuario u on p.id_usuario= u.id where p.id =  ? group by p.id`
     const params = [id]
 
@@ -328,9 +329,11 @@ const getListBookings = async (id_usuario) => {
                 p.id 'id_piso',
                 p.direccion,
                 p.ciudad,
+                p.imagen,
                 r.precio_reserva,
                 r.fecha_entrada,
-                r.fecha_salida
+                r.fecha_salida,
+                r.estado
                 from reserva r join piso p on r.id_piso =p.id where r.id_usuario = ?`
     const params = [id_usuario]
 

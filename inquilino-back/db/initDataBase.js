@@ -83,7 +83,7 @@ async function main() {
             fecha_salida date,
             score_piso float,
             score_usuario float,
-            estado enum('aceptado', 'pendiente', 'declinado') default 'pendiente' not null,
+            estado enum('aceptada', 'pendiente', 'declinada') default 'pendiente' not null,
             id_piso int unsigned not null,
             id_usuario int unsigned not null,
             constraint reserva_id_piso_fk1
