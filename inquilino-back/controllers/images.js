@@ -2,11 +2,6 @@ const db = require('../db/mysql')
 
 const fsPromises = require('fs').promises
 const uuid = require('uuid')
-// const multer = require('multer')
-
-// const upload = multer({
-//     dest: `${process.env.TARGET_FOLDER}`
-// })
 
 const saveImage = async (req, res) => {
 
@@ -70,5 +65,3 @@ module.exports = {
     saveHomeImage,
     getImage
 }
-
-// meter el path en utils. MEter las funciones en utils

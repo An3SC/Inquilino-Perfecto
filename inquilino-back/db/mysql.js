@@ -188,6 +188,16 @@ const getHome = async (id) => {
     return result
 }
 
+const getOwner = async (id_piso) => {
+    const query = `select p.id "id_piso",
+    u.id "owner_id",
+    u.email "email" from piso p join usuario u on p.id_usuario = u.id where p.id= ?`
+    const params = [id_piso]
+
+    const [...result] = await performQuery(query, params)
+    return result
+}
+
 const deleteHome = async (id) => {
     const query = `delete from piso where id = ?`
     const params = [id]
@@ -262,6 +272,17 @@ const getBooking = async (id) => {
                     r.score_usuario
                     from reserva r join piso p on r.id_piso =p.id where r.id_reserva = ?`
     const params = [id]
+
+    const [result] = await performQuery(query, params)
+    return result
+}
+
+const getEmailBooking = async (resultId) => {
+    const query = `select u.email
+                    from usuario u
+                    left join piso p on p.id_usuario = u.id
+                    right join reserva r on p.id = r.id_piso where r.id_reserva = ? group by r.id_reserva`
+    const params = [resultId]
 
     const [result] = await performQuery(query, params)
     return result
@@ -366,7 +387,6 @@ const scoreHome = async (score, id_reserva) => {
     await performQuery(query, params)
 }
 
-
 module.exports = {
     register,
     getUser,
@@ -381,6 +401,7 @@ module.exports = {
     checkValidationCode,
     checkUpdateCode,
     createHome,
+    getOwner,
     listHomes,
     myHomes,
     getHome,
@@ -390,6 +411,7 @@ module.exports = {
     saveHomeImage,
     createBooking,
     getBooking,
+    getEmailBooking,
     homeBookings,
     existBooking,
     deleteBooking,

@@ -38,6 +38,24 @@ const isSameUserOrAdmin = async (req, res, next) => {
     }
 }
 
+const isOwner = async (req, res, next) => {
+    const { authorization } = req.headers;
+    try {
+        const id_piso = parseInt(req.params.id)
+        const decodedToken = jwt.verify(authorization, process.env.SECRET);
+        const { id } = await db.getUser(decodedToken.email)
+        const owner = await db.getOwner(id_piso)
+        const owner_id = owner[0].owner_id
+
+        if (id === owner_id) {
+            next()
+        }
+    } catch (e) {
+        console.log(e)
+        res.status(403).send()
+    }
+}
+
 const isAdmin = async (req, res, next) => {
     const { authorization } = req.headers;
     const decodedToken = jwt.verify(authorization, process.env.SECRET)
@@ -82,5 +100,6 @@ module.exports = {
     isAuthenticated,
     isAdmin,
     isSameUserOrAdmin,
+    isOwner,
     haveBooking
 };

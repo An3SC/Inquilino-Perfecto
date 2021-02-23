@@ -53,7 +53,8 @@ const {
     isAuthenticated,
     isAdmin,
     isSameUserOrAdmin,
-    haveBooking
+    haveBooking,
+    isOwner
 } = require('./middlewares/auth')
 
 const app = express()
@@ -91,10 +92,10 @@ app.get('/vivienda/imagen/:uuid', getImage)
 app.post('/vivienda/:id/reserva', isAuthenticated, booking)
 app.get('/reserva', isAuthenticated, isSameUserOrAdmin, getListOfBookings)
 app.get('/reserva/:id', haveBooking, getBooking)
-app.get('/vivienda/reservas/:id', homeBookings)
-app.put('/reserva/accept/:id', acceptBooking)
-app.put('/reserva/decline/:id', declineBooking)
-app.delete('/reserva/:id', isAuthenticated, isSameUserOrAdmin, deleteBooking)
+app.get('/vivienda/reservas/:id', isAuthenticated, isOwner, homeBookings)
+app.put('/reserva/accept/:id', isAuthenticated, haveBooking, acceptBooking)
+app.put('/reserva/decline/:id', isAuthenticated, haveBooking, declineBooking)
+app.delete('/reserva/:id', isAuthenticated, haveBooking, isOwner, deleteBooking)
 app.put('/reserva/:id', haveBooking, scoreBooking)
 
 app.get('/vivienda/busqueda', search)
@@ -103,8 +104,8 @@ app.get('/vivienda/:id', getHome)
 app.get('/usuario/vivienda/:id', getMyHomes)
 
 app.post('/vivienda', isAuthenticated, createHome)
-app.delete('/vivienda/:id', isAuthenticated, isSameUserOrAdmin, deleteHome)
-app.put('/vivienda/:id', isAuthenticated, isSameUserOrAdmin, updateHome)
+app.delete('/vivienda/:id', isAuthenticated, isOwner, deleteHome)
+app.put('/vivienda/:id', isAuthenticated, isOwner, updateHome)
 
 console.log(`Running on port ${currentPort}`)
 app.listen(currentPort)
