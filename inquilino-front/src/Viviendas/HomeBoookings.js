@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom"
-import AcceptBooking from "../Bookings/AcceptBooking"
-import DeclineBooking from "../Bookings/DeclineBooking"
+import AcceptOrDeclineBooking from "../Bookings/AcceptOrDeclineBooking"
 import useFetch from "../useFetch"
 
 function HomeBoookings() {
@@ -20,8 +19,21 @@ function HomeBoookings() {
                         <li>Fecha de entrada: {r.fecha_entrada}</li>
                         <li>Fecha de salida: {r.fecha_salida}</li>
                     </ul>
-                    <AcceptBooking id={r.id} />
-                    <DeclineBooking id={r.id} />
+                    {r.estado === 'pendiente' &&
+                        <div>
+                            <AcceptOrDeclineBooking id={r.id} />
+                        </div>
+                    }
+                    {r.estado === 'aceptado' &&
+                        <p>
+                            Ya has aceptado esta reserva.
+                        </p>
+                    }
+                    {r.estado === 'declinado' &&
+                        <p>
+                            Ya has rechazado esta reserva.
+                        </p>
+                    }
                 </div>
             )}
         </div>
