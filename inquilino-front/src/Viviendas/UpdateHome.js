@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useSelector } from "react-redux"
-import { useHistory, useParams } from "react-router-dom"
+import { Link, useHistory, useParams } from "react-router-dom"
 import useFetch from "../useFetch"
 import HomeBoookings from "./HomeBoookings"
 
@@ -32,7 +32,7 @@ function UpdateHome({ data }) {
 
     console.log(data)
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault()
         const pisoImagen = e.target.pisoImagen.files[0]
 
@@ -52,7 +52,7 @@ function UpdateHome({ data }) {
         fd.append('descripcion', descripcion)
         fd.append('id_usuario', id_usuario)
 
-        const ret = fetch(`http://localhost:9999/vivienda/${id}`, {
+        const ret = await fetch(`http://localhost:9999/vivienda/${id}`, {
             method: 'PUT',
             headers: { 'Authorization': login.token },
             body: fd
@@ -91,62 +91,69 @@ function UpdateHome({ data }) {
 
     return (
         <div className='updateHomeContainer'>
-            <h1>Reservas</h1>
-            <div className='updateHomeContent'>
-                {!open &&
-                    <div className='myHomeData' >
-                        <ul>
-                            <li>Mi piso:</li>
-                            <li>Provincia: {data.provincia}</li>
-                            <li>Ciudad: {data.ciudad}</li>
-                            <li>Dirección: {data.direccion}</li>
-                            <li>Precio: {data.precio_piso}</li>
-                        </ul>
-                    </div>}
-                <button onClick={handleEdit}>Editar</button>
-                {open && <div>
-                    <form onSubmit={handleSubmit}>
-                        <label>
-                            <span>Subir foto:</span>
-                            <div >
-                                <div className="pisoImagen" style={homeStyle} />
-                                <input name="pisoImagen" type="file" accept="image/*" />
-                            </div>
-                        </label>
-                        <input name='ciudad' placeholder='Ciudad...' value={ciudad} onChange={e => setCiudad(e.target.value)} />
-                        <input name='provincia' placeholder='Provincia...' value={provincia} onChange={e => setProvincia(e.target.value)} />
-                        <input name='direccion' placeholder='Direccion...' value={direccion} onChange={e => setDireccion(e.target.value)} />
-                        <input name='banos' type='number' placeholder='Baños...' value={nBanos} onChange={e => setNBanos(e.target.value)} />
-                        <input name='habitaciones' type='number' placeholder='Habitaciones...' value={nHabitaciones} onChange={e => setNHabitaciones(e.target.value)} />
-                        <input name='m2' type='number' placeholder='m2...' value={m2} onChange={e => setM2(e.target.value)} />
-                        <input name='precio' type='number' placeholder='Precio...' value={precio_piso} onChange={e => setPrecio_piso(e.target.value)} />
-                        <div>
-                            <label>
-                                Ascensor
-                <input type='checkbox' name='ascensor' checked={ascensor} onChange={e => setAscensor(e.target.checked)} />
-                            </label>
-                            <label>
-                                Garaje
-                <input type='checkbox' name='garaje' checked={garaje} onChange={e => setGaraje(e.target.checked)} />
-                            </label>
-                            <label>
-                                Balcón
-                <input type='checkbox' name='balcon' checked={balcon} onChange={e => setBalcon(e.target.checked)} />
-                            </label>
-                            <label>
-                                Jardín
-                <input type='checkbox' name='jardin' checked={jardin} onChange={e => setJardin(e.target.checked)} />
-                            </label>
-                            <textarea name='descripcion' value={descripcion} onChange={e => setDescripcion(e.target.value)} />
-                        </div>
-                        <button>Guardar</button>
-                    </form>
-                    <button onClick={handleDelete}>Borrar</button>
-                </div>}
+            {data && (id_usuario === data.id_usuario) && <h1>Mi piso</h1>}
+            {data && (id_usuario !== data.id_usuario) &&
                 <div>
-                    <HomeBoookings />
+                    <div className='obiWanBanner' />
+                    <Link to='/' >Este no es el sitio que buscabas</Link>
                 </div>
-            </div>
+            }
+            {data && (id_usuario === data.id_usuario) &&
+                <div className='updateHomeContent'>
+                    {!open &&
+                        <div className='myHomeData' >
+                            <ul>
+                                <li>Mi piso:</li>
+                                <li>Provincia: {data.provincia}</li>
+                                <li>Ciudad: {data.ciudad}</li>
+                                <li>Dirección: {data.direccion}</li>
+                                <li>Precio: {data.precio_piso}</li>
+                            </ul>
+                        </div>}
+                    <button onClick={handleEdit}>Editar</button>
+                    {open && <div>
+                        <form onSubmit={handleSubmit}>
+                            <label>
+                                <span>Subir foto:</span>
+                                <div >
+                                    <div className="pisoImagen" style={homeStyle} />
+                                    <input name="pisoImagen" type="file" accept="image/*" />
+                                </div>
+                            </label>
+                            <input name='ciudad' placeholder='Ciudad...' value={ciudad} onChange={e => setCiudad(e.target.value)} />
+                            <input name='provincia' placeholder='Provincia...' value={provincia} onChange={e => setProvincia(e.target.value)} />
+                            <input name='direccion' placeholder='Direccion...' value={direccion} onChange={e => setDireccion(e.target.value)} />
+                            <input name='banos' type='number' placeholder='Baños...' value={nBanos} onChange={e => setNBanos(e.target.value)} />
+                            <input name='habitaciones' type='number' placeholder='Habitaciones...' value={nHabitaciones} onChange={e => setNHabitaciones(e.target.value)} />
+                            <input name='m2' type='number' placeholder='m2...' value={m2} onChange={e => setM2(e.target.value)} />
+                            <input name='precio' type='number' placeholder='Precio...' value={precio_piso} onChange={e => setPrecio_piso(e.target.value)} />
+                            <div>
+                                <label>
+                                    Ascensor
+                <input type='checkbox' name='ascensor' checked={ascensor} onChange={e => setAscensor(e.target.checked)} />
+                                </label>
+                                <label>
+                                    Garaje
+                <input type='checkbox' name='garaje' checked={garaje} onChange={e => setGaraje(e.target.checked)} />
+                                </label>
+                                <label>
+                                    Balcón
+                <input type='checkbox' name='balcon' checked={balcon} onChange={e => setBalcon(e.target.checked)} />
+                                </label>
+                                <label>
+                                    Jardín
+                <input type='checkbox' name='jardin' checked={jardin} onChange={e => setJardin(e.target.checked)} />
+                                </label>
+                                <textarea name='descripcion' value={descripcion} onChange={e => setDescripcion(e.target.value)} />
+                            </div>
+                            <button>Guardar</button>
+                        </form>
+                        <button onClick={handleDelete}>Borrar</button>
+                    </div>}
+                    <div>
+                        <HomeBoookings />
+                    </div>
+                </div>}
         </div>
     )
 }

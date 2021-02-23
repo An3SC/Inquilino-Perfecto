@@ -359,3 +359,12 @@
   height: 25vh;
   background-size: cover;
 }
+
+.obiWanBanner {
+  background: url('../icons/obiWan.gif') no-repeat;
+  background-size: cover;
+  width: 35vw;
+  height: 30vh;
+  border-radius: 5px;
+  border: 3px black solid;
+}
