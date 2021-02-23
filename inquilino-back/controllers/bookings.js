@@ -2,6 +2,8 @@ const db = require('../db/mysql')
 const jwt = require('jsonwebtoken');
 const { scoreValidator } = require('../validators/score');
 
+const utils = require('../utils/utils')
+
 const booking = async (req, res) => {
     const {
         id
@@ -26,9 +28,13 @@ const booking = async (req, res) => {
     try {
         const decodedToken = jwt.verify(authorization, process.env.SECRET);
         const id_usuario = await db.getUser(decodedToken.email)
-        console.log(id_usuario.id)
+
         const result = await db.createBooking(id, id_usuario.id, fecha_entrada, fecha_salida)
         const resultId = result.insertId
+
+        const email = await db.getEmailBooking(resultId)
+
+        utils.sendBookingMail(email, `http://${process.env.FRONT_DOMAIN}/myHome/${id}`)
 
         res.send({ resultId })
     } catch (e) {

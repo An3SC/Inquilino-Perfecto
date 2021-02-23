@@ -1,5 +1,4 @@
 const sendgrid = require("@sendgrid/mail");
-const { link } = require("joi");
 
 const sendConfirmationMail = async (email, link) => {
   sendgrid.setApiKey(process.env.EMAIL_API_KEY);
@@ -66,8 +65,29 @@ const recoverPasswordMail = async (email, link) => {
   await sendgrid.send(message);
 }
 
+const sendBookingMail = async (email, link) => {
+  sendgrid.setApiKey(process.env.EMAIL_API_KEY);
+  const message = {
+    to: email,
+    from: 'sierracardalda@gmail.com',
+    subject: 'Alguien quiere reservar tu vivienda',
+    text: `Accede al siguiente enlace para consultar la reserva ${link}`,
+    html: `
+    <div style="background: linear-gradient(-340deg, #F5C634 50%, whitesmoke 0%)">
+      <h1> Alguien quiere reservar tu vivienda </h1>
+      <p style="font-size: 20px"> Accede al siguiente enlace para consultar la reserva </p>
+      <label style="font-size: 20px">
+        <a href="${link}">¡Llévame a mis reservas!</a>
+      </label>
+    </div>
+      `,
+  }
+  await sendgrid.send(message);
+}
+
 module.exports = {
   sendConfirmationMail,
   updateEmailMail,
-  recoverPasswordMail
+  recoverPasswordMail,
+  sendBookingMail
 }
