@@ -75,14 +75,6 @@
     align-items: center;
 }
 
-.userDataContainer .avatar {
-    height: 35vh;
-    width: 13vw;
-    background-size: cover;
-    border: 1px solid black;
-    border-radius: 5px;
-}
-
 .profileUser {
     display: flex;
     flex-direction: row;
@@ -93,7 +85,7 @@
     background: whitesmoke;
     border: 1px solid black;
     width: 20vw;
-    height: 50vh;
+    height: 55vh;
     padding: 10px;
     border-radius: 5px;
     box-shadow: 1px 2px 3px 2px rgba(150, 150, 150, 0.75);
@@ -103,10 +95,13 @@
     justify-content: center;
 }
 
-.userDataContainer img {
+.userDataContainer .avatar {
+    height: 250px;
+    width: 250px;
+    background: no-repeat;
+    background-size: cover;
     border: 3px solid black;
     border-radius: 5px;
-    box-shadow: inset 0 0 10px black;
 }
 
 .userDataContainer ul {
@@ -144,4 +139,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-    }
+}
+
+.ratingUser {
+    margin: 10px 0 20px 0;
+}

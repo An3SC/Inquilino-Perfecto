@@ -4,6 +4,7 @@ import MyBookings from "../Bookings/MyBookings"
 import useFetch from "../useFetch"
 import Tabs from "../Utils/Tabs"
 import MyHomes from "../Viviendas/MyHomes"
+import Rating from '../Utils/Rating'
 import './User.css'
 
 function Profile() {
@@ -34,6 +35,9 @@ function Profile() {
                             <li>Ciudad: <b>{user.ciudad}</b></li>
                             <li>Sobre mí: <b>{user.descripcion}</b></li>
                         </ul>
+                        <div className='ratingUser'>
+                            <Rating value={user.score_usuario} />
+                        </div>
                         {(user.id === login.id) &&
                             <button onClick={handleUpdate}>Actualizar mis datos</button>}
                     </div>}
