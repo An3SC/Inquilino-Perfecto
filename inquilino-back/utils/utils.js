@@ -6,7 +6,7 @@ const sendConfirmationMail = async (email, link) => {
   const message = {
     to: email,
     from: 'sierracardalda@gmail.com',
-    subject: 'Validate your account',
+    subject: 'Valida tu cuenta',
     text: `La dirección de verificación es: ${link}`,
     html: `
       <div style="background: linear-gradient(-340deg, #F5C634 50%, whitesmoke 0%)">
@@ -28,7 +28,7 @@ const updateEmailMail = async (email, link) => {
   const message = {
     to: email,
     from: 'sierracardalda@gmail.com',
-    subject: 'Validate your account',
+    subject: 'Confirma el cambio de email',
     text: `La dirección de verificación del nuevo email es: ${link}`,
     html: `
     <div style="background: linear-gradient(-340deg, #F5C634 50%, whitesmoke 0%)">
