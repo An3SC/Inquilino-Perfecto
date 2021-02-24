@@ -128,3 +128,7 @@
 .reservarContainer button:hover {
     background: #F5C634;
 }
+
+.reservarContainer button:active {
+    background: whitesmoke;
+  }
