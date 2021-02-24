@@ -1,10 +1,10 @@
-.loginContainer, .registerContainer, .recoveryContainer, .resetContainer {
+.loginContainer, .registerContainer, .recoveryContainer, .resetContainer, .changeEmailContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   
-  .loginContent, .registerContent, .recoveryContent, .resetContent {
+  .loginContent, .registerContent, .recoveryContent, .resetContent, .changeEmailContent {
     display: flex;
     flex-direction: column;
     justify-content:flex-start;
@@ -17,7 +17,7 @@
     background: whitesmoke;
   }
   
-  .loginContent input, .registerContent input, .recoveryContent input, .resetContent input {
+  .loginContent input, .registerContent input, .recoveryContent input, .resetContent input, .changeEmailContent input {
     height: 3vh;
     min-width: 20vw;
     margin: 10px;
@@ -57,12 +57,24 @@
     transition: all .3s;
   }
 
+  .changeEmailContent button {
+    background: url('../icons/refresh.png') no-repeat;
+    background-size: contain;
+    height: 5vh;
+    width: 3vw;
+    border: none;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: all .3s;
+  }
+
   .loginContent button:hover, .registerContent button:hover,
-  .recoveryContent button:hover, .resetContent button:hover {
+  .recoveryContent button:hover, .resetContent button:hover,
+  .changeEmailContent button:hover {
     transform: scale(1.09);
   }
 
-  .registerContent form, .recoveryContent form, .resetContent form {
+  .registerContent form, .recoveryContent form, .resetContent form, .changeEmailContent form {
       display: flex;
       flex-direction: column;
       align-items: center;
