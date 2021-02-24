@@ -1,3 +1,4 @@
+import React from 'react'
 import { useState } from "react"
 import { useSelector } from "react-redux"
 import { Link, useHistory, useParams } from "react-router-dom"
@@ -90,6 +91,21 @@ function UpdateHome({ data }) {
         setOpen(!open)
     }
 
+    const hiddenUpload = React.useRef(null)
+
+    const handleUpload = e => {
+        e.preventDefault()
+        hiddenUpload.current.click()
+    }
+
+    const [imageName, setImageName] = useState('')
+
+    const handleChange = e => {
+        e.preventDefault()
+        const uploadedFile = e.target.files[0]
+        setImageName(uploadedFile)
+    }
+
 
     return (
         <div className='updateHomeContainer'>
@@ -118,47 +134,83 @@ function UpdateHome({ data }) {
                         </div>}
                     {open && <div>
                         <form onSubmit={handleSubmit}>
-                            <label>
-                                <span>Subir foto:</span>
-                                <div >
-                                    <div className="pisoImagen" style={homeStyle} />
-                                    <input name="pisoImagen" type="file" accept="image/*" />
-                                </div>
-                            </label>
-                            <input name='ciudad' placeholder='Ciudad...' value={ciudad} onChange={e => setCiudad(e.target.value)} />
-                            <input name='provincia' placeholder='Provincia...' value={provincia} onChange={e => setProvincia(e.target.value)} />
-                            <input name='direccion' placeholder='Direccion...' value={direccion} onChange={e => setDireccion(e.target.value)} />
-                            <input name='banos' type='number' placeholder='Baños...' value={nBanos} onChange={e => setNBanos(e.target.value)} />
-                            <input name='habitaciones' type='number' placeholder='Habitaciones...' value={nHabitaciones} onChange={e => setNHabitaciones(e.target.value)} />
-                            <input name='m2' type='number' placeholder='m2...' value={m2} onChange={e => setM2(e.target.value)} />
-                            <input name='precio' type='number' placeholder='Precio...' value={precio_piso} onChange={e => setPrecio_piso(e.target.value)} />
-                            <div>
-                                <label>
-                                    Ascensor
-                <input type='checkbox' name='ascensor' checked={ascensor} onChange={e => setAscensor(e.target.checked)} />
-                                </label>
-                                <label>
-                                    Garaje
-                <input type='checkbox' name='garaje' checked={garaje} onChange={e => setGaraje(e.target.checked)} />
-                                </label>
-                                <label>
-                                    Balcón
-                <input type='checkbox' name='balcon' checked={balcon} onChange={e => setBalcon(e.target.checked)} />
-                                </label>
-                                <label>
-                                    Jardín
-                <input type='checkbox' name='jardin' checked={jardin} onChange={e => setJardin(e.target.checked)} />
-                                </label>
-                                <textarea name='descripcion' value={descripcion} onChange={e => setDescripcion(e.target.value)} />
+                            <div className='homePicker'>
+                                <span>Foto actual:</span>
+                                <div className="pisoImagen" style={homeStyle} />
+                                <input name="pisoImagen" type="file" accept="image/*" ref={hiddenUpload} onChange={handleChange} style={{ display: 'none' }} />
+                                <div>Has seleccionado: <b>{imageName.name}</b></div>
+                                <button onClick={handleUpload}>Sube una foto</button>
                             </div>
-                            <button>Guardar</button>
+                            <div className='firstInputs'>
+                                <div>
+                                    <fieldset>
+                                        <legend>Ciudad</legend>
+                                        <input name='ciudad' placeholder='Ciudad...' value={ciudad} onChange={e => setCiudad(e.target.value)} />
+                                    </fieldset>
+                                    <fieldset>
+                                        <legend>Provincia</legend>
+                                        <input name='provincia' placeholder='Provincia...' value={provincia} onChange={e => setProvincia(e.target.value)} />
+                                    </fieldset>
+                                    <fieldset>
+                                        <legend>Direccion</legend>
+                                        <input name='direccion' placeholder='Direccion...' value={direccion} onChange={e => setDireccion(e.target.value)} />
+                                    </fieldset>
+                                    <fieldset>
+                                        <legend>Baños</legend>
+                                        <input name='banos' type='number' placeholder='Baños...' value={nBanos} onChange={e => setNBanos(e.target.value)} />
+                                    </fieldset>
+                                </div>
+                                <div>
+                                    <fieldset>
+                                        <legend>Habitaciones</legend>
+                                        <input name='habitaciones' type='number' placeholder='Habitaciones...' value={nHabitaciones} onChange={e => setNHabitaciones(e.target.value)} />
+                                    </fieldset>
+                                    <fieldset>
+                                        <legend>Metros cuadrados</legend>
+                                        <input name='m2' type='number' placeholder='m2...' value={m2} onChange={e => setM2(e.target.value)} />
+                                    </fieldset>
+                                    <fieldset>
+                                        <legend>Precio</legend>
+                                        <input name='precio' type='number' placeholder='Precio...' value={precio_piso} onChange={e => setPrecio_piso(e.target.value)} />
+                                    </fieldset>
+                                    <div className='homeFormOptions'>
+                                        <div>
+                                            <label>
+                                                Ascensor
+                                                <input type='checkbox' name='ascensor' checked={ascensor} onChange={e => setAscensor(e.target.checked)} />
+                                            </label>
+                                            <label>
+                                                Garaje
+                                                <input type='checkbox' name='garaje' checked={garaje} onChange={e => setGaraje(e.target.checked)} />
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <label>
+                                                Balcón
+                                                <input type='checkbox' name='balcon' checked={balcon} onChange={e => setBalcon(e.target.checked)} />
+                                            </label>
+                                            <label>
+                                                Jardín
+                                                <input type='checkbox' name='jardin' checked={jardin} onChange={e => setJardin(e.target.checked)} />
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <textarea rows='5' cols='50' name='descripcion' value={descripcion} onChange={e => setDescripcion(e.target.value)} />
+                            </div>
+                            <div className='updateHomeButtons'>
+                                <div className='deleteHomeButton' onClick={(e) => { if (window.confirm('¿De veras quieres borrarlo?')) handleDelete(e) }}>Borrar</div>
+                                <button>Guardar</button>
+                            </div>
                         </form>
-                        <button onClick={handleDelete}>Borrar</button>
                     </div>}
-                    <button onClick={handleEdit}>Editar</button>
-                    <div>
+                    {!open && <button className='editButton1' onClick={handleEdit} />}
+                    {open && <button className='editButton2' onClick={handleEdit} />}
+                    {!open && <div>
                         <HomeBoookings />
-                    </div>
+                    </div>}
                 </div>}
             <div>
                 <Map />

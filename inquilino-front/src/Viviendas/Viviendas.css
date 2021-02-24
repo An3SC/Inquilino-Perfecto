@@ -51,13 +51,112 @@
     padding: 5px;
   }
 
+  .homePicker {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.updateHomeContent form input:not([type=checkbox]) {
+  height: 25px;
+  min-width: 150px;
+  margin-top: 15px;
+  border-radius: 5px;
+}
+
+.updateHomeContent form textarea {
+  margin-top: 15px;
+}
+
+.firstInputs {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.firstInputs fieldset {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+
+}
+
   .pisoImagen {
     background: url('../icons/houseIreneFlorentina.jpg') no-repeat;
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     background-size: cover;
     border: 1px solid rgb(150, 150, 150);
     box-shadow: inset 2px 3px 5px 0 rgba(150, 150, 150, 0.75);
+  }
+
+  .editButton1 {
+    background: url('../icons/edit.png') no-repeat;
+    background-size: contain;
+    width: 35px;
+    height: 35px;
+    border: none;
+    cursor: pointer;
+    transition: all .3s;
+  }
+
+  .editButton2 {
+    background: url('../icons/return.png') no-repeat;
+    background-size: contain;
+    width: 35px;
+    height: 35px;
+    border: none;
+    cursor: pointer;
+    transition: all .3s;
+  }
+
+  .editButton1:hover, .editButton2:hover  {
+    transform: scale(1.09);
+  }
+
+  .editButton1:active, .editButton2:active  {
+    transform: scale(0.97);
+  }
+
+  .deleteHomeButton {
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 60px;
+    height: 20px;
+    cursor: pointer;
+    background: #781D0C;
+    color: whitesmoke;
+    font-weight: bold;
+    transition: all .3s;
+  }
+
+  .updateHomeButtons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .updateHomeButtons button {
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 65px;
+    height: 25px;
+    font-weight: bold;
+    transition: all .3s;
+  }
+
+  .updateHomeButtons button:hover {
+    background: #F5C634;
+  }
+
+  .updateHomeButtons button:active {
+    background: whitesmoke;
+  }
+
+  .deleteHomeButton:hover {
+    transform: scale(1.1);
   }
 
   .searchFilters {
@@ -186,6 +285,12 @@
     transform: scale(1.1);
   }
 
+  .createHome {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
   .createHomeContainer {
     display: flex;
     flex-direction: column;
@@ -204,7 +309,7 @@
     border-radius: 5px;
     border: 1px solid black;
     width: 35vw;
-    height: 75vh;
+    min-height: 75vh;
     box-shadow: 1px 2px 3px 2px rgba(150, 150, 150, 0.75);
     background: whitesmoke;
   }
@@ -315,7 +420,7 @@
 .myHomeData {
   display: flex;
   align-items: flex-start;
-  padding: 25px;
+  padding: 25px 0 10px 0;
 }
 
 .myHomeData ul {
@@ -343,7 +448,54 @@
 .errorCreacion {
   color: #781D0C;
   font-weight: bold;
+}
 
+.showHomePage {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.showMap {
+  margin-top: 118px;
+  margin-bottom: auto;
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 500px;
+  width: 500px;
+  background: whitesmoke;
+  box-shadow: 1px 2px 3px 2px rgba(150, 150, 150, 0.75);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 30px;
+}
+
+.showMap h3 {
+  font-family: 'lobster_twobold_italic', sans-serif;
+  font-size: 20px;
+}
+
+.homeOwner {
+  color: black;
+  border: 1px solid black;
+  font-weight: bold;
+  border-radius: 5px;
+  height: 25px;
+  width: 90px;
+  margin: 15px;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.homeOwner:hover {
+  background: #F5C634;
+}
+
+.homeOwner:active {
+  background: whitesmoke;
 }
 
 .showHomeContainer {
@@ -356,7 +508,7 @@
 .showHomeContent ul {
   list-style: none;
   padding-left: 0;
-  margin-left: 150px;
+  margin-left: 60px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
