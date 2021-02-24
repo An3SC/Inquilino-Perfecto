@@ -3,12 +3,14 @@ import { useParams } from "react-router-dom"
 import AcceptOrDeclineBooking from "../Bookings/AcceptOrDeclineBooking"
 import useFetch from "../useFetch"
 import moment from 'moment'
+import Valorar from '../Utils/Valorar'
 
 function HomeBoookings() {
     const { id } = useParams()
     const [page, setPage] = useState(1)
 
     const reservas = useFetch(`http://localhost:9999/vivienda/reservas/${id}`) || []
+    console.log(reservas)
 
     const paginatedResults = reservas ? reservas.slice(2 * (page - 1), 2 * page) : []
     const max = reservas ? Math.ceil(reservas.length / 2) : []
@@ -35,6 +37,13 @@ function HomeBoookings() {
                         <div>
                             <AcceptOrDeclineBooking id={r.id} />
                         </div>
+                    }
+                    {r.estado === 'aceptado' &&
+                        <label>
+                            <Valorar previousScore={r.avg_scoreUsuario} id={r.id} />
+                            ({r.countScoreUsuario})
+                        </label>
+
                     }
                     {r.estado === 'aceptado' &&
                         <p>
