@@ -37,6 +37,7 @@ function Profile() {
                         </ul>
                         <div className='ratingUser'>
                             <Rating value={user.score_usuario} />
+                            ({user.count_score_usuario})
                         </div>
                         {(user.id === login.id) &&
                             <button onClick={handleUpdate}>Actualizar mis datos</button>}
