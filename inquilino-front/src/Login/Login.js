@@ -6,6 +6,7 @@ import './Login.css'
 function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [error, setError] = useState()
 
     const login = useSelector(s => s.login)
     const dispatch = useDispatch()
@@ -18,10 +19,12 @@ function Login() {
                 body: JSON.stringify({ email, password }),
                 method: 'POST'
             })
-            // console.log(res)
-            const data = await res.json()
-            // console.log(data)
-            dispatch({ type: 'login', data })
+            if (res.ok) {
+                const data = await res.json()
+                dispatch({ type: 'login', data })
+            } else {
+                setError(true)
+            }
         } catch (e) {
             console.warn(e)
         }
@@ -53,6 +56,9 @@ function Login() {
                     required
                 />
                 <button />
+                {error &&
+                    <div>Parece que ha habido un problema para iniciar sesión</div>
+                }
                 <p>
                     <Link to="/recovery">¿No recuerdas tu contraseña?</Link>
                 </p>

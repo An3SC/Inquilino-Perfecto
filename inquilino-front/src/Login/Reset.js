@@ -5,6 +5,7 @@ import './Login.css'
 function Reset() {
     const [password, setPassword] = useState('')
     const [error, setError] = useState()
+    const [sent, setSent] = useState(false)
 
     const { code } = useParams()
 
@@ -12,14 +13,15 @@ function Reset() {
 
     const handleReset = async e => {
         e.preventDefault()
-        const ret = await fetch('http://localhost:9999/usuario/password/reset/' + code, {
+        const res = await fetch('http://localhost:9999/usuario/password/reset/' + code, {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ password }),
             method: 'PUT'
         })
         setPassword('')
-        if (ret.ok) {
+        if (res.ok) {
             history.push('/')
+            setSent(!sent)
         } else {
             setError(true)
         }
@@ -36,10 +38,14 @@ function Reset() {
                         <div>Error en el reseteo</div>
                     }
                     <button />
-                    <div className='pikachuRunning' />
+                    {!sent &&
+                        <div className='pikachuRunning' />
+                    }
+                    {sent &&
+                        <div className='pikachuSent' />
+                    }
                 </form>
             </div>
-
         </div>
     )
 }
