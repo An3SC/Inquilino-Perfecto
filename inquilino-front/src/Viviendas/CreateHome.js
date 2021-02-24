@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
+import NewMap from "../Utils/NewMap"
 
 function CreateHome() {
     const [ciudad, setCiudad] = useState('')
@@ -102,7 +103,7 @@ function CreateHome() {
                     <button className='publicarHome'>Publicar</button>
                 </form>
             </div>
-
+            <NewMap />
         </div>
 
     )

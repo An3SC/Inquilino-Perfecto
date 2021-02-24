@@ -4,6 +4,7 @@ import { Link, useHistory, useParams } from "react-router-dom"
 import useFetch from "../useFetch"
 import Rating from "../Utils/Rating"
 import HomeBoookings from "./HomeBoookings"
+import Map from '../Utils/Map'
 
 function UpdateHomeWrapper() {
     const { id } = useParams()
@@ -159,6 +160,9 @@ function UpdateHome({ data }) {
                         <HomeBoookings />
                     </div>
                 </div>}
+            <div>
+                <Map />
+            </div>
         </div>
     )
 }
