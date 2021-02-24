@@ -20,18 +20,24 @@ function ShowHome({ data }) {
 
     return (
         <div >
-            <div>
-                {data.map(v =>
+            {data.map(v =>
+                <div className='showHomePage'>
+                    <div className='showMap'>
+                        <h3>Localización</h3>
+                        <Map id={id} />
+                    </div>
                     <div className='showHomeContainer'>
                         <h1 id='direccionShow'>{v.direccion}</h1>
                         <div className='showHomeContent'>
                             <div className='showHomeData'>
                                 <div className='pisoImagen' style={data[0].imagen && { backgroundImage: `url(http://localhost:9999/images/${data[0].imagen}.jpg)` }} />
                                 <ul key={v.id}>
-                                    <li><b>{v.ciudad}</b></li>
-                                    <li><b>{v.provincia}</b></li>
-                                    <li><b>{v.direccion}</b></li>
-                                    <li><b>{v.precio_piso}€</b></li>
+                                    <li>Ciudad: <b>{v.ciudad}</b></li>
+                                    <li>Provincia: <b>{v.provincia}</b></li>
+                                    <li>Direccion: <b>{v.direccion}</b></li>
+                                    <li>Habitaciones: <b>{v.nHabitaciones}</b></li>
+                                    <li>Baños: <b>{v.nBanos}</b></li>
+                                    <li>Precio: <b>{v.precio_piso}€</b></li>
                                     <li><b>{v.score_piso}</b></li>
                                 </ul>
                             </div>
@@ -39,9 +45,9 @@ function ShowHome({ data }) {
                                 <Rating value={v.avg_score} />
                             ({v.countScore})
                         </label>
-                            <div>
+                            <div >
                                 <p>Este piso pertece a</p>
-                                <Link to={`/user/${v.id_usuario}`}><p>{v.nombre}</p></Link>
+                                <Link to={`/user/${v.id_usuario}`}><p className='homeOwner'>{v.nombre}</p></Link>
                             </div>
                             {!(login.id === viviendaUsuario) &&
                                 <Reservar />
@@ -51,9 +57,9 @@ function ShowHome({ data }) {
                             }
                         </div>
                     </div>
-                )}
-            </div>
-            <Map id={id} />
+                </div>
+            )}
+
         </div>
     )
 }
