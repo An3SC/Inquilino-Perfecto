@@ -62,6 +62,8 @@ async function main() {
                 estado enum('activo', 'inactivo') default 'activo' not null,
                 score float,
                 imagen varchar(500),
+                latitude decimal(12,8),
+                longitude decimal(12,8),
                 descripcion varchar(500),
                 fechaPublicacion timestamp default current_timestamp,
                 fechaActualizacion timestamp default current_timestamp on update current_timestamp,
@@ -83,7 +85,7 @@ async function main() {
             fecha_salida date,
             score_piso float,
             score_usuario float,
-            estado enum('aceptada', 'pendiente', 'declinada') default 'pendiente' not null,
+            estado enum('aceptado', 'pendiente', 'declinado') default 'pendiente' not null,
             id_piso int unsigned not null,
             id_usuario int unsigned not null,
             constraint reserva_id_piso_fk1
@@ -150,6 +152,8 @@ async function main() {
             const balcon = random(0, 1)
             const jardin = random(0, 1)
             const score = random(0, 5)
+            const latitude = faker.address.latitude();
+            const longitude = faker.address.longitude();
             const id_usuario = random(1, 100);
             await connection.query(`
                 insert into piso(
@@ -165,6 +169,8 @@ async function main() {
                     balcon,
                     jardin,
                     score,
+                    latitude,
+                    longitude,
                     id_usuario) values (
                         "${provincia}",
                         "${ciudad}",
@@ -178,6 +184,8 @@ async function main() {
                         '${balcon}',
                         "${jardin}",
                         "${score}",
+                        "${latitude}",
+                        "${longitude}",
                         "${id_usuario}"
                     )
             `);
