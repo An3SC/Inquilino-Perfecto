@@ -49,7 +49,20 @@ const getUser = async (email) => {
 }
 
 const getUserById = async (id) => {
-    const query = `select * from usuario where id = ?`
+    const query = `select u.apellidos,
+                    u.ciudad,
+                    u.descripcion,
+                    u.email,
+                    u.estado,
+                    u.id,
+                    u.imagen,
+                    u.nombre,
+                    u.provincia,
+                    u.role,
+                    avg(r.score_usuario) as score_usuario,
+                    count(r.score_usuario) as count_score_usuario,
+                    validationCode
+                    from usuario u left join reserva r on r.id_usuario = u.id where u.id = ? group by r.id_reserva`
     const params = [id]
 
     const result = await performQuery(query, params)
@@ -178,6 +191,8 @@ const getHome = async (id) => {
                 p.jardin "jardin",
                 p.id_usuario "id_usuario",
                 p.imagen 'imagen',
+                p.latitude 'latitude',
+                p.longitude 'longitude',
                 u.nombre 'nombre',
                 p.score 'piso_score',
                 avg(r.score_piso) "avg_score",
@@ -297,7 +312,9 @@ const homeBookings = async (id) => {
                     r.fecha_reserva 'fecha_reserva',
                     r.fecha_entrada 'fecha_entrada',
                     r.estado 'estado',
-                    r.fecha_salida 'fecha_salida' from reserva r join usuario u on r.id_usuario = u.id where id_piso = ?`
+                    avg(r.score_usuario) "avg_scoreUsuario",
+                    count (r.score_usuario) as countScoreUsuario,
+                    r.fecha_salida 'fecha_salida' from reserva r join usuario u on r.id_usuario = u.id where id_piso = ? group by r.id_reserva`
     const params = [id]
 
     const [...result] = await performQuery(query, params)
