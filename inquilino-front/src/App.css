@@ -30,7 +30,7 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  font-family: 'quicksandlight';
+  font-family: 'quicksandlight', sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -38,16 +38,16 @@
 }
 
 .App button {
-  font-family: 'quicksandlight';
+  font-family: 'quicksandlight', sans-serif;
   font-weight: bold;
 }
 
-.App button:active {
+/* .App button:active {
   background: whitesmoke;
-}
+} */
 
 .App h1 {
-  font-family: 'lobster_twobold_italic';
+  font-family: 'lobster_twobold_italic', sans-serif;
   font-size: 45px;
 }
 
@@ -57,6 +57,7 @@
 
 .App a {
   text-decoration: none;
+  color: black;
 }
 
 .App a:hover {
@@ -81,20 +82,21 @@ html {
 .pageHome, .firstSearch,
 .videoHome, .loginContainer,
 .recoveryContainer, .registerContainer,
-.searchPage, .showHomeContainer,
-.createHomeContainer, .profileContainer,
+.searchPage, .showHomePage,
+.createHome, .profileContainer,
 .myHomesContainer, .updateContainer,
 .myBookingsContainer, .updateHomeContainer,
-.bookingIdContainer, .resetContainer {
+.bookingIdContainer, .resetContainer,
+.changeEmailContainer {
   height: 100vh;
   width: 100%;
 }
 
-.loginContainer,
+.loginContainer, .changeEmailContainer,
 .recoveryContainer, .registerContainer,
 .pageHome, .searchPage, .resetContainer,
-.validateContainer, .showHomeContainer,
-.createHomeContainer, .profileContainer,
+.validateContainer, .showHomePage,
+.createHome, .profileContainer,
  .updateContainer, .updateHomeContainer,
 .bookingIdContainer {
   position:relative;
