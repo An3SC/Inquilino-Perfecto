@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux"
-import { Route, Switch, useHistory, useParams } from "react-router-dom"
+import { Link, Route, Switch, useHistory, useParams } from "react-router-dom"
 import MyBookings from "../Bookings/MyBookings"
 import useFetch from "../useFetch"
 import Tabs from "../Utils/Tabs"
@@ -33,14 +33,18 @@ function Profile() {
                             <li><b>{user.nombre}</b></li>
                             <li>Provincia: <b>{user.provincia}</b></li>
                             <li>Ciudad: <b>{user.ciudad}</b></li>
-                            <li>Sobre mí: <b>{user.descripcion}</b></li>
+                            <li className='descriptionUser'>Sobre mí: <b>{user.descripcion}</b></li>
                         </ul>
                         <div className='ratingUser'>
                             <Rating value={user.score_usuario} />
                             ({user.count_score_usuario})
                         </div>
                         {(user.id === login.id) &&
-                            <button onClick={handleUpdate}>Actualizar mis datos</button>}
+                            <div className='userDataButtons'>
+                                <button onClick={handleUpdate}>Actualizar mis datos</button>
+                                <Link to='/recovery'><button>Cambiar mi contraseña</button></Link>
+                                <Link to={`/changeMail/${login.id}`}><button>Cambiar mi email</button></Link>
+                            </div>}
                     </div>}
                 <div className='tabsContainer'>
                     <div>

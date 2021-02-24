@@ -1,3 +1,4 @@
+import React from 'react'
 import { useState } from "react"
 import { useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom"
@@ -18,11 +19,11 @@ function Update({ data }) {
     const [apellidos, setApellidos] = useState(data.apellidos || '')
     const [provincia, setProvincia] = useState(data.provincia || '')
     const [ciudad, setCiudad] = useState(data.ciudad || '')
-    // const [email, setEmail] = useState(data.email || '')
-    // const [password, setPassword] = useState(data.password || '')
-    const [fechaNacimiento, setFechaNacimiento] = useState(data.fechaNacimiento || '')
+    // const [fechaNacimiento, setFechaNacimiento] = useState(moment(data.fechaNacimiento).format("DD-MM-YYYY") || '')
     const [descripcion, setDescripcion] = useState(data.descripcion || '')
     const [telefono, setTelefono] = useState(data.telefono || '')
+
+    const [error, setError] = useState(false)
 
     const history = useHistory()
 
@@ -37,9 +38,7 @@ function Update({ data }) {
         fd.append('apellidos', apellidos)
         fd.append('provincia', provincia)
         fd.append('ciudad', ciudad)
-        // fd.append('email', email)
-        // fd.append('password', password)
-        fd.append('fechaNacimiento', fechaNacimiento)
+        // fd.append('fechaNacimiento', fechaNacimiento)
         fd.append('descripcion', descripcion)
         fd.append('telefono', telefono)
 
@@ -51,9 +50,24 @@ function Update({ data }) {
         if (res.ok) {
             history.push(`/user/${id}`)
         } else {
+            setError(true)
             console.log('Ha habido un error')
         }
+    }
 
+    const hiddenUpload = React.useRef(null)
+
+    const handleUpload = e => {
+        e.preventDefault()
+        hiddenUpload.current.click()
+    }
+
+    const [imageName, setImageName] = useState('')
+
+    const handleChange = e => {
+        e.preventDefault()
+        const uploadedFile = e.target.files[0]
+        setImageName(uploadedFile)
     }
 
     const avatarUrl = login && login.imagen && (`http://localhost:9999/images/${login.imagen}.jpg`)
@@ -67,7 +81,9 @@ function Update({ data }) {
                     <label className='avatarPicker'>
                         <span>Foto actual:</span>
                         <div className="avatarEdit" style={avatarStyle} />
-                        <input name="userImage" type="file" accept="image/*" />
+                        <input name="userImage" type="file" accept="image/*" ref={hiddenUpload} onChange={handleChange} style={{ display: 'none' }} />
+                        <div>Has seleccionado: <b>{imageName.name}</b></div>
+                        <button onClick={handleUpload}>Sube una foto</button>
                     </label>
                     <label>
                         Nombre:
@@ -86,29 +102,22 @@ function Update({ data }) {
                     <input type='text' value={ciudad} onChange={e => setCiudad(e.target.value)} />
                     </label>
                     {/* <label>
-                    Email:
-                    <input type='email' value={email} onChange={e => setEmail(e.target.value)} />
-                </label>
-                <label>
-                    Password:
-                    <input type='password' value={password} onChange={e => setPassword(e.target.value)} />
-                </label> */}
-                    <label>
                         Fecha de nacimiento:
                     <input type='date' value={fechaNacimiento} onChange={e => setFechaNacimiento(e.target.value)} />
-                    </label>
+                    </label> */}
                     <label>
                         Descripcion:
-                    <textarea rows='3' cols='25' value={descripcion} onChange={e => setDescripcion(e.target.value)} />
+                    <textarea rows='6' cols='25' value={descripcion} onChange={e => setDescripcion(e.target.value)} />
                     </label>
                     <label>
                         Teléfono:
                     <input type='number' value={telefono} onChange={e => setTelefono(e.target.value)} />
                     </label>
+                    {error &&
+                        <p>Asegúrate de haber cubierto todos los datos correctamente</p>}
                     <button className='updateButton'>Guardar</button>
                 </form>
             </div>
-
         </div>
     )
 }
