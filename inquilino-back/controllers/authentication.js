@@ -10,10 +10,6 @@ const { authValidator } = require('../validators/auth')
 const register = async (req, res) => {
     try {
         // await authValidator.validateAsync(req.body)
-        /**
-         * Cuando cambiemos a NOT NULL los demás parámetros habrá que
-         * meterlos al lado de email y password
-         */
         const { email, password, nombre, provincia, apellidos, ciudad, descripcion, fechaNacimiento } = req.body
         const user = await db.getUser(email)
         if (user) {
@@ -54,13 +50,16 @@ const login = async (req, res) => {
     const { email, password } = req.body
 
     const user = await db.getUser(email)
-    const username = user.nombre
-    const imagen = user.imagen
-    const id = user.id
+
     if (!user) {
         res.status(401).send()
         return
     }
+
+    const username = user.nombre
+    const imagen = user.imagen
+    const userEmail = user.email
+    const id = user.id
 
     const passwordIsvalid = await bcrypt.compare(password, user.password);
 
@@ -86,6 +85,7 @@ const login = async (req, res) => {
 
     res.send({
         token,
+        userEmail,
         username,
         imagen,
         id
