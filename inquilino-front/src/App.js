@@ -18,6 +18,7 @@ import MyBookings from './Bookings/MyBookings';
 import UpdateHome from './Viviendas/UpdateHome';
 import BookingId from './Bookings/BookingId';
 import { useSelector } from 'react-redux';
+import ChangeEmail from './Login/ChangeEmail';
 
 function App() {
 
@@ -42,6 +43,9 @@ function App() {
         </Route>
         <Route path='/recovery' exact>
           <Recovery />
+        </Route>
+        <Route path='/changeMail/:id' exact>
+          <ChangeEmail />
         </Route>
         <Route path='/reset/:code' exact>
           <Reset />
