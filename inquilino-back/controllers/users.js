@@ -73,7 +73,7 @@ const updateUser = async (req, res) => {
     }
 
     try {
-        await userValidator.validateAsync(req.body)
+        // await userValidator.validateAsync(req.body)
         await db.updateUser(nombre, apellidos, fechaNacimiento, provincia, ciudad, descripcion, telefono, id)
     } catch (e) {
         console.log(e)
@@ -117,7 +117,7 @@ const updateUserEmail = async (req, res) => {
 
         await db.updateUserEmail(email, id, validationCode)
 
-        utils.updateEmailMail(email, `http://${process.env.PUBLIC_DOMAIN}/usuario/validate/${validationCode}`)
+        utils.updateEmailMail(email, `http://${process.env.FRONT_DOMAIN}/validate/${validationCode}`)
 
     } catch (e) {
         console.log(e)

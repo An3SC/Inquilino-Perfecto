@@ -19,6 +19,8 @@ const createHome = async (req, res) => {
         balcon,
         jardin,
         m2,
+        latitude,
+        longitude,
         descripcion,
         fechaPublicacion } = req.body
 
@@ -28,7 +30,7 @@ const createHome = async (req, res) => {
         const decodedToken = jwt.verify(authorization, process.env.SECRET);
         const id_usuario = decodedToken.id
 
-        const data = await db.createHome(fechaPublicacion, provincia, ciudad, direccion, precio_piso, nBanos, nHabitaciones, ascensor, garaje, balcon, jardin, m2, descripcion, id_usuario);
+        const data = await db.createHome(fechaPublicacion, provincia, ciudad, direccion, precio_piso, nBanos, nHabitaciones, ascensor, garaje, balcon, jardin, m2, latitude, longitude, descripcion, id_usuario);
 
         res.send(data)
 
