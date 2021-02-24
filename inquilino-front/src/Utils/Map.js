@@ -1,4 +1,4 @@
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker } from 'react-leaflet'
 import useFetch from '../useFetch'
 import './Map.css'
 
@@ -11,15 +11,12 @@ function Map({ data }) {
 
     return (
         <div className='pageMap'>
-            <MapContainer center={[data.latitude, data.longitude]} zoom={5} scrollWheelZoom={false}>
+            <MapContainer center={[data.latitude, data.longitude]} zoom={13} scrollWheelZoom={true}>
                 <TileLayer
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
                 <Marker position={[data.latitude, data.longitude]} />
-                <Popup>
-
-                </Popup>
             </MapContainer>
         </div>
     )
