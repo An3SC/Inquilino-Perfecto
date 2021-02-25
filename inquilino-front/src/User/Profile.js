@@ -22,6 +22,8 @@ function Profile() {
         history.push(`/user/update/${id}`)
     }
 
+    const currentUrl = window.location.pathname
+
     return (
         <div className='profileContainer'>
             <h1>{user && user.nombre}</h1>
@@ -50,6 +52,10 @@ function Profile() {
                     <div>
                         <Tabs id={id} />
                     </div>
+                    {currentUrl !== `/user/${id}/Viviendas` && currentUrl !== `/user/${id}/Reservas` &&
+                        <div>
+                            <div className='girlDog' />
+                        </div>}
                     <Switch>
                         <Route path={`/user/:id/Viviendas`}>
                             <div className='tabOption'>
