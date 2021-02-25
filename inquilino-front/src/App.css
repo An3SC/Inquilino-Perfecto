@@ -34,7 +34,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  padding-bottom: 1000px;
+  padding-bottom: 300px;
 }
 
 .App button {
@@ -68,6 +68,28 @@ html {
   scroll-behavior: smooth;
 }
 
+.errorBoundaryContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.errorBoundary {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 5px;
+  width: 35vw;
+  height: 60vh;
+}
+
+.pulp {
+  background: url('./icons/pulp.gif') no-repeat;
+  background-size: cover;
+  width: 500px;
+  height: 500px;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -79,7 +101,7 @@ html {
   color: whitesmoke;
 }
 
-.pageHome, .firstSearch,
+.pageHome, .errorBoundaryContainer, .firstSearch,
 .videoHome, .loginContainer,
 .recoveryContainer, .registerContainer,
 .searchPage, .showHomePage,
@@ -88,7 +110,7 @@ html {
 .myBookingsContainer, .updateHomeContainer,
 .bookingIdContainer, .resetContainer,
 .changeEmailContainer {
-  height: 100vh;
+  min-height: 1100px;
   width: 100%;
 }
 
@@ -98,7 +120,7 @@ html {
 .validateContainer, .showHomePage,
 .createHome, .profileContainer,
  .updateContainer, .updateHomeContainer,
-.bookingIdContainer {
+.bookingIdContainer, .errorBoundaryContainer {
   position:relative;
   z-index: 1;
   background: linear-gradient(-340deg, #F5C634 50%, whitesmoke 0%);
@@ -209,7 +231,7 @@ html {
   background: linear-gradient(340deg, #F5C634 40%, #d8ad2e 0%);
   bottom: 0;
   left:0;
-  height: 1000px;
+  height: 300px;
   width: 100%;
   position: fixed;
   z-index: -1;

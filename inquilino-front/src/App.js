@@ -19,6 +19,7 @@ import UpdateHome from './Viviendas/UpdateHome';
 import BookingId from './Bookings/BookingId';
 import { useSelector } from 'react-redux';
 import ChangeEmail from './Login/ChangeEmail';
+import ErrorBoundary from './ErrorBoundary';
 
 function App() {
 
@@ -35,7 +36,9 @@ function App() {
           <Login />
         </Route>
         <Route path='/register' exact>
-          <Register />
+          <ErrorBoundary>
+            <Register />
+          </ErrorBoundary>
         </Route>
         <Route path='/validate/:code' exact>
           <Validate />
@@ -52,12 +55,16 @@ function App() {
         </Route>
         <Route path='/user/update/:id' exact>
           {login ?
-            <Update />
+            <ErrorBoundary>
+              <Update />
+            </ErrorBoundary>
             : <Redirect to='/' />}
         </Route>
         <Route path='/user/homes/:id' exact>
           {login ?
-            <MyHomes />
+            <ErrorBoundary>
+              <MyHomes />
+            </ErrorBoundary>
             : <Redirect to='/' />}
         </Route>
         <Route path='/user/:id'>
@@ -67,12 +74,16 @@ function App() {
         </Route>
         <Route path='/userBookings' exact>
           {login ?
-            <MyBookings />
+            <ErrorBoundary>
+              <MyBookings />
+            </ErrorBoundary>
             : <Redirect to='/' />}
         </Route>
         <Route path='/booking/:id' exact>
           {login ?
-            <BookingId />
+            <ErrorBoundary>
+              <BookingId />
+            </ErrorBoundary>
             : <Redirect to='/' />}
         </Route>
         <Route path='/search/:cityUrl?'>
@@ -80,12 +91,16 @@ function App() {
         </Route>
         <Route path='/createHome' exact>
           {login ?
-            <CreateHome />
+            <ErrorBoundary>
+              <CreateHome />
+            </ErrorBoundary>
             : <Redirect to='/' />}
         </Route>
         <Route path='/myHome/:id' exact>
           {login ?
-            <UpdateHome />
+            <ErrorBoundary>
+              <UpdateHome />
+            </ErrorBoundary>
             : <Redirect to='/' />}
         </Route>
         <Route path='/searchPage' exact>
@@ -103,8 +118,3 @@ function App() {
 }
 
 export default App;
-
-
-// {login ?
-
-// : <Redirect to='/' />}
