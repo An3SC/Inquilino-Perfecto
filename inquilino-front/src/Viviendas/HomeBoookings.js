@@ -39,9 +39,9 @@ function HomeBoookings() {
                         </div>
                     }
                     {r.estado === 'aceptado' &&
-                        <label>
+                        <label className='scoreHomeBooking'>
                             <Valorar previousScore={r.avg_scoreUsuario} id={r.id} />
-                            ({r.countScoreUsuario})
+                            <p>({r.countScoreUsuario})</p>
                         </label>
 
                     }

@@ -83,9 +83,9 @@ function UpdateHome({ data }) {
     const homeUrl = data.imagen && (`http://localhost:9999/images/${data.imagen}.jpg`)
     const homeStyle = login && data.imagen && { backgroundImage: 'url(' + homeUrl + ')' }
 
-    const handleDelete = e => {
+    const handleDelete = async e => {
         e.preventDefault()
-        const res = fetch(`http://localhost:9999/vivienda/${id}`, {
+        const res = await fetch(`http://localhost:9999/vivienda/${id}`, {
             method: 'DELETE',
             headers: { 'Authorization': login.token },
         })
@@ -128,8 +128,9 @@ function UpdateHome({ data }) {
             {data && (id_usuario === data.id_usuario) && <h1>Mi vivienda</h1>}
             {data && (id_usuario !== data.id_usuario) &&
                 <div>
+                    <h1>Este no es el sitio que buscabas</h1>
                     <div className='obiWanBanner' />
-                    <Link to='/' >Este no es el sitio que buscabas</Link>
+                    <Link to='/' ><h3>Volver</h3></Link>
                 </div>
             }
             {data && (id_usuario === data.id_usuario) &&

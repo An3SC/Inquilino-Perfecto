@@ -1,3 +1,135 @@
+/* MISCELANEA */
+
+.previewContainer, .filterContainer .otrosFiltros,
+.showHomeContainer, .createHomeContainer,
+.updateHomeContainer, .myHomesContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pagination, .moreFilters, .searchFilters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination {
+  padding: 20px;
+}
+
+.pagination .back {
+  background: url('../icons/double-left-arrows-symbol.png') no-repeat;
+  background-size: contain;
+  height: 2vh;
+  width: 1vw;
+  border: none;
+  margin: 0 10px 0 0;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.pagination .forward {
+  background: url('../icons/fast-forward-double-right-arrows-symbol.png') no-repeat;
+  background-size: contain;
+  height: 2vh;
+  width: 1vw;
+  border: none;
+  margin: 0 0 0 10px;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.pagination button:hover {
+  transform: scale(1.1);
+}
+
+/* ESTILOS DE SEARCHPAGE */
+
+.filterContainer, .showMap, .createHomeForm form, .homeFormOptions, .homePicker {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.filterContainer {
+  position: absolute;
+  z-index: 2;
+  background-color: whitesmoke;
+  box-shadow: 1px 2px 1px 2px rgba(150, 150, 150, 0.75);
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-top: 7vh;
+  padding: 10px;
+  left: 9vw;
+  height: 400px;
+  width: 300px;
+}
+
+.filterContainer label {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.filterContainer label p {
+  margin: 10px;
+}
+
+.filterContainer .otrosFiltros {
+  margin-bottom: 10px;
+  margin-top: 15px;
+}
+
+.moreFilters {
+  height: 3.5vh;
+  border-radius: 5px;
+  transition: all .3s;
+  border: 1px black solid;
+  padding: 5px;
+  margin-right: 5px;
+  background: rgb(235, 235, 235);
+  cursor: pointer;
+}
+
+.moreFilters:hover {
+  background: #F5C634;
+}
+
+.moreFilters:active{
+  background: whitesmoke;
+}
+
+.searchButton {
+  background: url('../icons/magnifying-glass.png') no-repeat;
+  background-size: contain;
+  border: none;
+  height: 3vh;
+  width: 1.5vw;
+  padding: 10px;
+  margin: 0 20px 0 15px;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.searchButton:hover {
+  transform: scale(1.1);
+}
+
+.searchFilters input[type=text] {
+  height: 3vh;
+  font-size: 15px;
+  padding-right: 10px;
+  margin-right: 3px;
+  border-radius: 5px;
+}
+
+.searchDate {
+  display: flex;
+  flex-direction: column;
+}
+  
   .searchResults {
     display: flex;
     flex-direction: column;
@@ -12,15 +144,17 @@
   }
 
   .result {
-    max-width: 45vw;
-    min-height: 25vh;
+    width: 800px;
+    height: 25vh;
     transition: all 0.3s;
     background: whitesmoke;
     box-shadow: 1px 2px 3px 2px rgba(150, 150, 150, 0.75);
     border-radius: 5px;
     display: flex;
     justify-content: space-around;
+    border: 1px solid black;
     align-items: center;
+    margin: 10px;
   }
   
   .result:hover {
@@ -30,12 +164,6 @@
 
   .result:active {
     background: #F5C634;
-  }
-  
-  .result {
-    border: 1px solid black;
-    width: 75vw;
-    margin: 10px;
   }
 
   .result ul {
@@ -51,11 +179,162 @@
     padding: 5px;
   }
 
-  .homePicker {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  .pisoImagen {
+    background: url('../icons/houseIreneFlorentina.jpg') no-repeat;
+    width: 150px;
+    height: 150px;
+    background-size: cover;
+    border: 1px solid rgb(150, 150, 150);
+    box-shadow: inset 2px 3px 5px 0 rgba(150, 150, 150, 0.75);
+  }
+
+
+
+/* ESTILOS DE SHOWHOME */
+
+.showHomePage , .firstInputs, .scoreHomeBooking {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.showMap {
+  margin-top: 118px;
+  margin-bottom: auto;
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 500px;
+  width: 500px;
+  background: whitesmoke;
+  box-shadow: 1px 2px 3px 2px rgba(150, 150, 150, 0.75);
+  margin-right: 30px;
+}
+
+.showMap h3 {
+  font-family: 'lobster_twobold_italic', sans-serif;
+  font-size: 20px;
+}
+
+.homeOwner {
+  color: black;
+  border: 1px solid black;
+  font-weight: bold;
+  border-radius: 5px;
+  height: 25px;
+  width: 90px;
+  margin: 15px;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.homeOwner:hover {
+  background: #F5C634;
+}
+
+.homeOwner:active {
+  background: whitesmoke;
+}
+
+.showHomeContainer {
+  justify-content: flex-start;
+}
+
+.showHomeContent ul {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.showHomeContent .showHomeStars {
+  margin: 20px 0 10px 0;
+}
+
+.showHomeData {
+  display: flex;
+  align-items: center;
+  margin-top: 35px;
+}
+
+
+/* ESTILOS DE CREATEHOME */
+
+.createHome {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.previewCreate {
+  border-radius: 5px;
+  width: 200px;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+}
+
+.createHomeForm h1 {
+  font-size: 30px;
+}
+
+.createHomeForm, .updateHomeContent, .showHomeContent {
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-start;
+  align-items: center;
+  border-radius: 5px;
+  border: 1px solid black;
+  width: 35vw;
+  min-height: 75vh;
+  box-shadow: 1px 2px 3px 2px rgba(150, 150, 150, 0.75);
+  background: whitesmoke;
+}
+
+.createHomeForm input:not([type=checkbox]) {
+  height: 3vh;
+  min-width: 20vw;
+  margin-top: 15px;
+  border-radius: 5px;
+}
+
+.homeFormOptions {
+  margin: 15px;
+}
+
+.publicarHome {
+margin-top: 10px;
+font-size: 15px;
+font-weight: bold;
+border-radius: 5px;
+width: 80px;
+height: 35px;
+transition: all .3s;
+cursor: pointer;
+}
+
+.publicarHome:hover {
+background: #F5C634;
+}
+
+.publicarHome:active {
+background: whitesmoke;
+transform: scale(0.99);
+}
+
+.errorCreacion {
+  color: #781D0C;
+  font-weight: bold;
+}
+
+
+/* ESTILOS DE UPDATEHOME */
+
+.updateHomeContent ul {
+  list-style: none;
+  padding-left: 0;
 }
 
 .updateHomeContent form input:not([type=checkbox]) {
@@ -78,28 +357,12 @@
   margin-top: 0;
 }
 
-.firstInputs {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
-}
-
 .firstInputs fieldset {
   border: 1px solid black;
   border-radius: 5px;
   padding: 10px;
 
 }
-
-  .pisoImagen {
-    background: url('../icons/houseIreneFlorentina.jpg') no-repeat;
-    width: 150px;
-    height: 150px;
-    background-size: cover;
-    border: 1px solid rgb(150, 150, 150);
-    box-shadow: inset 2px 3px 5px 0 rgba(150, 150, 150, 0.75);
-  }
 
   .editButton1 {
     background: url('../icons/edit.png') no-repeat;
@@ -168,221 +431,20 @@
     transform: scale(1.1);
   }
 
-  .searchFilters {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .filterContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    z-index: 2;
-    background-color: whitesmoke;
-    box-shadow: 1px 2px 1px 2px rgba(150, 150, 150, 0.75);
-    border: 1px solid black;
-    border-radius: 5px;
-    margin-top: 7vh;
-    padding: 10px;
-    left: 9vw;
-    min-height: 40vh;
-    max-width: 20vw;
-  }
-
-  .filterContainer label {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-  }
-
-  .filterContainer label p {
-    margin: 10px;
-  }
-
-  .filterContainer .otrosFiltros {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 10px;
-    margin-top: 15px;
-  }
-
-  .searchButton {
-    background: url('../icons/magnifying-glass.png') no-repeat;
-    background-size: contain;
-    border: none;
-    height: 3vh;
-    width: 1.5vw;
-    padding: 10px;
-    margin: 0 20px 0 15px;
-    cursor: pointer;
-    transition: all .3s;
-  }
-
-  .searchButton:hover {
-    transform: scale(1.1);
-  }
-
-  .searchFilters input[type=text] {
-    height: 3vh;
-    font-size: 15px;
-    padding-right: 10px;
-    margin-right: 3px;
-    border-radius: 5px;
-  }
-
-  .moreFilters {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 3.5vh;
-    border-radius: 5px;
-    transition: all .3s;
-    border: 1px black solid;
-    padding: 5px;
-    margin-right: 5px;
-    background: rgb(235, 235, 235);
-    cursor: pointer;
-  }
-
-  .moreFilters:hover {
-    background: #F5C634;
-  }
-
-  .moreFilters:active{
-    background: whitesmoke;
-  }
-
-  .searchDate {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-  }
-
-  .pagination .back {
-    background: url('../icons/double-left-arrows-symbol.png') no-repeat;
-    background-size: contain;
-    height: 2vh;
-    width: 1vw;
-    border: none;
-    margin: 0 10px 0 0;
-    cursor: pointer;
-    transition: all .3s;
-  }
-
-  .pagination .forward {
-    background: url('../icons/fast-forward-double-right-arrows-symbol.png') no-repeat;
-    background-size: contain;
-    height: 2vh;
-    width: 1vw;
-    border: none;
-    margin: 0 0 0 10px;
-    cursor: pointer;
-    transition: all .3s;
-  }
-
-  .pagination button:hover {
-    transform: scale(1.1);
-  }
-
-  .createHome {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-  }
-
-  .previewContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .previewCreate {
-    border-radius: 5px;
-    width: 200px;
-    height: 200px;
+  .obiWanBanner {
+    background: url('../icons/obiWan.gif') no-repeat;
     background-size: cover;
-    background-position: center;
-  }
-
-  .createHomeContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .createHomeForm h1 {
-    font-size: 30px;
-  }
-
-  .createHomeForm, .updateHomeContent, .showHomeContent {
-    display: flex;
-    flex-direction: column;
-    justify-content:flex-start;
-    align-items: center;
-    border-radius: 5px;
-    border: 1px solid black;
     width: 35vw;
-    min-height: 75vh;
-    box-shadow: 1px 2px 3px 2px rgba(150, 150, 150, 0.75);
-    background: whitesmoke;
-  }
-
-  .createHomeForm form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .createHomeForm input:not([type=checkbox]) {
-    height: 3vh;
-    min-width: 20vw;
-    margin-top: 15px;
+    height: 30vh;
+    margin-top: 75px;
     border-radius: 5px;
+    border: 3px black solid;
   }
 
-  .homeFormOptions {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 15px;
-  }
 
-.publicarHome {
-  margin-top: 10px;
-  font-size: 15px;
-  font-weight: bold;
-  border-radius: 5px;
-  width: 15vw;
-  height: 5vh;
-  transition: all .3s;
-  cursor: pointer;
-}
-
-.publicarHome:hover {
-  background: #F5C634;
-}
-
-.publicarHome:active {
-  background: whitesmoke;
-  transform: scale(0.99);
-}
+  /* ESTILOS DE MYHOMES */
 
 .myHomesContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   width: 30vw;
 }
 
@@ -429,17 +491,6 @@
   transform: scale(0.99);
 }
 
-.updateHomeContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.updateHomeContent ul {
-  list-style: none;
-  padding-left: 0;
-}
-
 .myHomeData {
   display: flex;
   align-items: flex-start;
@@ -453,11 +504,15 @@
   margin-left: 30px;
 }
 
-.homeBookingsOverflow{
-  overflow-y: auto;
-}
+
+/* ESTILOS DE HOMEBOOKINGS */
+
 .homeBookingsContent {
   background: whitesmoke;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 15px;
 }
 
 .homeBookingsContent ul {
@@ -468,89 +523,150 @@
   align-items: flex-start;
 }
 
-.errorCreacion {
-  color: #781D0C;
-  font-weight: bold;
+.homeBookingsContent p {
+  margin-top: 0;
 }
 
-.showHomePage {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
-}
-
-.showMap {
-  margin-top: 118px;
-  margin-bottom: auto;
-  border: 1px solid black;
-  border-radius: 5px;
-  height: 500px;
-  width: 500px;
-  background: whitesmoke;
-  box-shadow: 1px 2px 3px 2px rgba(150, 150, 150, 0.75);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-right: 30px;
-}
-
-.showMap h3 {
-  font-family: 'lobster_twobold_italic', sans-serif;
-  font-size: 20px;
-}
-
-.homeOwner {
-  color: black;
-  border: 1px solid black;
-  font-weight: bold;
-  border-radius: 5px;
+.scoreHomeBooking {
   height: 25px;
-  width: 90px;
-  margin: 15px;
-  cursor: pointer;
-  transition: all .3s;
 }
 
-.homeOwner:hover {
-  background: #F5C634;
+
+@media screen and (max-width: 1300px) {
+  .previewCreate {
+    width: 100px;
+    height: 100px;
+  }
+  .createHomeForm {
+    width: 400px;
+    min-height: 650px;
+  }
+  .createHomeForm textarea {
+    width: 250px;
+    height: 55px;
+  }
+  .showMap {
+    height: 320px;
+    width: 320px;
+    margin-right: 20px;
+  }
+  .showHomeContent {
+    height: 600px;
+    width: 400px;
+  }
+  .showHomeData ul {
+    margin-left: 15px;
+  }
+  .pisoImagen {
+    width: 125px;
+    height: 125px;
+  }
+  .searchFilters input[type=text] {
+    height: 25px;
+    width: 110px;
+  }
+  .result {
+    width: 550px;
+    height: 25vh;
+  }
+  .filterContainer {
+    top: 0;
+    left: 20px;
+    height: 500px;
+    width: 200px;
+  }
+  
+  .filterContainer label {
+    flex-direction: column;
+  }
+  
+  .filterContainer label p {
+    margin: 10px;
+  }
+  
+  .filterContainer .otrosFiltros {
+    flex-direction: row;
+  }
 }
 
-.homeOwner:active {
-  background: whitesmoke;
+@media screen and (max-width: 700px) {
+  .previewContainer{
+    display: none;
+  }
+  .createHomeForm {
+    width: 350px;
+    height: 620px;
+  }
+  .createHomeForm textarea {
+    width: 200px;
+    height: 50px;
+  }
+  .showMap {
+    height: 220px;
+    width: 220px;
+    margin-right: 10px;
+  }
+  .searchFilters input[type=text] {
+    height: 25x;
+    width: 80px;
+  }
+  .showHomeData {
+    display: flex;
+    flex-direction: column;
+  }
+  .showHomeContent {
+    height: 700px;
+    width: 250px;
+  }
+  .result {
+    width: 400px;
+    height: 25vh;
+  }
+  .pisoImagen {
+    width: 100px;
+    height: 100px;
+  }
+  .filterContainer {
+    top: 0;
+    left: 20px;
+    height: 500px;
+    width: 200px;
+  }
 }
 
-.showHomeContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.showHomeContent ul {
-  list-style: none;
-  padding-left: 0;
-  margin-left: 60px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.showHomeContent .showHomeStars {
-  margin: 20px 0 10px 0;
-}
-
-.showHomeData {
-  display: flex;
-  margin-top: 35px;
-}
-
-.obiWanBanner {
-  background: url('../icons/obiWan.gif') no-repeat;
-  background-size: cover;
-  width: 35vw;
-  height: 30vh;
-  border-radius: 5px;
-  border: 3px black solid;
+@media screen and (max-width: 430px) {
+  .previewContainer{
+    display: none;
+  }
+  .showMap {
+    display: none;
+  }
+  #direccionShow {
+    margin-top: 0;
+  }
+  .showHomeContent {
+    height: 450px;
+    width: 320px;
+  }
+  .showHomeData {
+    display: flex;
+    flex-direction: row;
+  }
+  .showHomePage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .searchFilters input[type=text] {
+    height: 20x;
+    width: 55px;
+  }
+  .result {
+    width: 300px;
+    height: 20vh;
+  }
+  .pisoImagen {
+    width: 100px;
+    height: 100px;
+  }
 }

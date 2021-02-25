@@ -88,11 +88,11 @@ function CreateHome() {
     return (
         <div className='createHome'>
             <div className='showMap'>
-                <h3>Pulsa en el marcador para darnos una ubicación</h3>
+                <h3>Pulsa en el marcador</h3>
                 <NewMap center={center} position={position} onChange={handlePosition} />
             </div>
             <div className='createHomeContainer'>
-                <h1>¿Quieres publicar un anuncio?</h1>
+                <h1>Anúnciate</h1>
                 <div className='createHomeForm'>
                     <h1>Rellena los datos</h1>
                     <form onSubmit={handleSubmit}>
