@@ -74,3 +74,38 @@
   .firstDatesContainer {
     display: flex;
   }
+
+  @media screen and (max-width: 1300px) {
+    
+    .firstSearchForm input[type=text] {
+      text-align: center;
+      height: 30px;
+      width: 250px;
+    }
+    
+    .firstSearchForm input[type=date] {
+      height: 25px;
+      width: 150px;
+      border-radius: 5px;
+      background: whitesmoke;
+    }
+
+    .firstSearchForm button {
+      font-size: 13px;
+      height: 35px;
+      width: 70px;
+    }
+  }
+  
+  @media screen and (max-width: 700px) {
+    .firstDatesContainer label {
+      font-size: 20px;
+    }
+    #titulo {
+      font-size: 50px;
+    }
+  }
+  
+  @media screen and (max-width: 430px) {
+    
+  }

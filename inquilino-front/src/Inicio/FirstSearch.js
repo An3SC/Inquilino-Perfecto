@@ -24,7 +24,7 @@ function FirstSearch() {
                 <div className='firstDatesContainer'>
                     <label>
                         Fecha de entrada
-                    <input type='date' value={fechaEntrada} onChange={e => setFechaEntrada(e.target.value)} />
+                        <input type='date' value={fechaEntrada} onChange={e => setFechaEntrada(e.target.value)} />
                     </label>
                     <label>
                         Fecha de salida
