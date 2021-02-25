@@ -1,6 +1,6 @@
 import { MapContainer, TileLayer, Marker } from 'react-leaflet'
 import useFetch from '../useFetch'
-import './Map.css'
+import './Utils.css'
 
 function MapWrapper({ id }) {
     const data = useFetch(`http://localhost:9999/vivienda/${id}`)

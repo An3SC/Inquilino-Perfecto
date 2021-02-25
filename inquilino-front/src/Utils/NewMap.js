@@ -1,6 +1,6 @@
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import { useCallback, useMemo, useRef, useState } from "react"
-import './Map.css'
+import './Utils.css'
 
 function NewMap({ center, position, onChange }) {
 

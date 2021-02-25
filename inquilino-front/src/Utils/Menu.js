@@ -30,7 +30,7 @@ function Menu({ children }) {
                     <Link to={`/user/${login.id}`}>Mi perfil</Link>
                     <Link to={`/user/${login.id}/Viviendas`}>Mis pisos</Link>
                     <Link to={`/user/${login.id}/Reservas`}>Mis reservas</Link>
-                    <button className='logout' onClick={handleLogout}>Logout</button>
+                    <button className='logout' onClick={handleLogout}>Cerrar sesión</button>
                 </div>
             }
 

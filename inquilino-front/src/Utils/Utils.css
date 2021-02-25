@@ -59,3 +59,28 @@
     width: 18px;
     height: 18px;
 }
+
+.pageMap .leaflet-container {
+    height: 400px;
+    width: 400px;
+    border: 1px solid black;
+    border-radius: 5px;
+  }
+
+@media screen and (max-width: 1300px) {
+    .pageMap .leaflet-container {
+        height: 250px;
+        width: 250px;
+      }
+}
+
+@media screen and (max-width: 700px) {
+    .pageMap .leaflet-container {
+        height: 150px;
+        width: 150px;
+      }
+}
+
+@media screen and (max-width: 430px) {
+
+}
