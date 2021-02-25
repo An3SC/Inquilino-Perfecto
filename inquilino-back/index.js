@@ -95,7 +95,7 @@ app.get('/reserva/:id', haveBooking, getBooking)
 app.get('/vivienda/reservas/:id', isAuthenticated, isOwner, homeBookings)
 app.put('/reserva/accept/:id', isAuthenticated, haveBooking, acceptBooking)
 app.put('/reserva/decline/:id', isAuthenticated, haveBooking, declineBooking)
-app.delete('/reserva/:id', isAuthenticated, haveBooking, isOwner, deleteBooking)
+app.delete('/reserva/:id', isAuthenticated, haveBooking, deleteBooking)
 app.put('/reserva/:id', haveBooking, scoreBooking)
 
 app.get('/vivienda/busqueda', search)
