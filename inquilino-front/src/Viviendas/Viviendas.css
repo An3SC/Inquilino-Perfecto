@@ -69,6 +69,15 @@
   margin-top: 15px;
 }
 
+.updateHomeFlex {
+  display: flex;
+  flex-direction: row;
+}
+
+.updateHomeFlex .showMap {
+  margin-top: 0;
+}
+
 .firstInputs {
   display: flex;
   flex-direction: row;
@@ -289,6 +298,20 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
+  }
+
+  .previewContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .previewCreate {
+    border-radius: 5px;
+    width: 200px;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
   }
 
   .createHomeContainer {

@@ -1,10 +1,13 @@
 import { useState } from "react"
+import { useSelector } from "react-redux"
 import { Link, useParams } from "react-router-dom"
 import useFetch from "../useFetch"
 
 function MyHomes() {
     const { id } = useParams()
     const [page, setPage] = useState(1)
+
+    const login = useSelector(s => s.login)
 
     const homesData = useFetch(`http://localhost:9999/usuario/vivienda/${id}`) || []
 
@@ -27,7 +30,10 @@ function MyHomes() {
                         <li>Dirección: <b>{h.direccion}</b></li>
                         <li>Precio: <b>{h.precio_piso}€</b></li>
                     </ul>
-                    <Link to={`/myHome/${h.id}`}>Ver más</Link>
+                    {h.id_usuario === login.id &&
+                        <Link to={`/myHome/${h.id}`}>Ver más</Link>}
+                    {h.id_usuario !== login.id &&
+                        <Link to={`/home/${h.id}`}>Ver más</Link>}
                 </div>
             )}
         </div>
