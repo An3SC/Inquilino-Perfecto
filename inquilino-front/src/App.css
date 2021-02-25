@@ -42,10 +42,6 @@
   font-weight: bold;
 }
 
-/* .App button:active {
-  background: whitesmoke;
-} */
-
 .App h1 {
   font-family: 'lobster_twobold_italic', sans-serif;
   font-size: 45px;
@@ -110,7 +106,7 @@ html {
 .myBookingsContainer, .updateHomeContainer,
 .bookingIdContainer, .resetContainer,
 .changeEmailContainer {
-  min-height: 1100px;
+  height: 1100px;
   width: 100%;
 }
 
@@ -150,8 +146,8 @@ html {
   font-size: 15px;
   font-weight: bold;
   border-radius: 5px;
-  width: 5vw;
-  height: 3vh;
+  width: 80px;
+  height: 30px;
   transition: all .3s;
   cursor: pointer;
 }
@@ -204,8 +200,8 @@ html {
 }
 
 .logout {
-  width: 6vw;
-  height: 3vh;
+  width: 100px;
+  height: 25px;
   border-radius: 5px;
 }
 
@@ -222,8 +218,8 @@ html {
   left: 100%;
   background: url('./icons/marcador-de-posicion1.png') no-repeat;
   background-size: contain;
-  height: 8vh;
-  width: 8vw;
+  height: 60px;
+  width: 60px;
   margin-left: 15vw;
 }
 
@@ -234,7 +230,6 @@ html {
   height: 300px;
   width: 100%;
   position: fixed;
-  z-index: -1;
 }
 
 .footerContent {
@@ -250,4 +245,187 @@ html {
 
 .App-link {
   color: #61dafb;
+}
+
+
+.footerContent {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  position: relative;
+  margin-top: 25px;
+}
+
+.footerLeft {
+  margin-bottom: 40px;
+  width: 600px;
+}
+
+.footerRight {
+  width: 600px;
+}
+
+.footerRight div {
+  text-align: justify;
+  font-size: 20px;
+}
+
+.footerRight a {
+  font-family: 'lobster_twoitalic', sans-serif;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.footerRight a:hover {
+  font-size: 30px;
+}
+
+.footerLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.footerLinks1, .footerLinks2 {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.footerLink {
+  width: 40px;
+  height: 40px;
+  margin: 0 15px 15px 0;
+  transition: all 0.3s;
+}
+
+.footerLink:hover {
+  transform: scale(1.1);
+}
+
+.facebookFooter {
+background: url('./icons/facebook.png') no-repeat;
+background-size: contain;
+}
+.youtubeFooter {
+  background: url('./icons/youtube.png') no-repeat;
+  background-size: contain;
+}
+.instagramFooter {
+  background: url('./icons/instagram.png') no-repeat;
+  background-size: contain;
+}
+.twitterFooter {
+  background: url('./icons/gorjeo.png') no-repeat;
+  background-size: contain;
+}
+.linkedinFooter {
+  background: url('./icons/linkedin.png') no-repeat;
+  background-size: contain;
+}
+.githubFooter {
+  background: url('./icons/signo-de-github.png') no-repeat;
+  background-size: contain;
+}
+
+.prueba1 {
+  background: url('./icons/double-left-arrows-symbol.png');
+  background-size: cover;
+  width: 20px;
+  height: 20px;
+}
+
+.prueba2 {
+  background: url('./icons/fast-forward-double-right-arrows-symbol.png');
+  background-size: cover;
+  width: 20px;
+  height: 20px;
+}
+
+@media screen and (max-width: 1300px) {
+  .footerLeft, .footerRight {
+    width: 350px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+.pageHome, .errorBoundaryContainer, .firstSearch,
+.videoHome, .loginContainer,
+.recoveryContainer, .registerContainer,
+.searchPage, .showHomePage,
+.createHome, .profileContainer,
+.myHomesContainer, .updateContainer,
+.myBookingsContainer, .updateHomeContainer,
+.bookingIdContainer, .resetContainer,
+.changeEmailContainer {
+  height: 950px;
+}
+  .burgerUser {
+    width: 60px;
+    height: 25px;
+  }
+  .userLinks {
+    width: 25vw;
+    padding: 7px;
+    right: 18vw;
+  }
+  .logout {
+    width: 55px;
+    height: 45px;
+    border-radius: 5px;
+  }
+  .footerLeft, .footerRight {
+    width: 200px;
+  }
+  .footerLeft h1 {
+    font-size: 40px;
+  }
+  .footerRight div{
+    font-size: 17px;
+  }
+  .footerLink {
+    width: 30px;
+    height: 30px;
+    margin: 0 10px 10px 0;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .pageHome, .errorBoundaryContainer, .firstSearch,
+  .videoHome, .loginContainer,
+  .recoveryContainer, .registerContainer,
+  .searchPage, .showHomePage,
+  .createHome, .profileContainer,
+  .myHomesContainer, .updateContainer,
+  .myBookingsContainer, .updateHomeContainer,
+  .bookingIdContainer, .resetContainer,
+  .changeEmailContainer {
+    height: 800px;
+  }
+  .burgerUser {
+    margin-left: 3px;
+    font-size: 13px;
+    width: 55px;
+    height: 22px;
+  }
+  .userLinks {
+    width: 30vw;
+    padding: 5px;
+    right: 5vw;
+  }
+  .footerLeft, .footerRight {
+    width: 150px;
+  }
+  .footerLeft h1 {
+    font-size: 30px;
+  }
+  .footerRight div{
+    font-size: 15px;
+  }
+  .footerLink {
+    width: 20px;
+    height: 20px;
+    margin: 0 5px 5px 0;
+  }
 }
