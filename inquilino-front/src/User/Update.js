@@ -62,12 +62,11 @@ function Update({ data }) {
         hiddenUpload.current.click()
     }
 
-    const [imageName, setImageName] = useState('')
+    const [preview, setPreview] = useState(null)
 
-    const handleChange = e => {
+    const handlePreview = e => {
         e.preventDefault()
-        const uploadedFile = e.target.files[0]
-        setImageName(uploadedFile)
+        setPreview(URL.createObjectURL(e.target.files[0]))
     }
 
     const avatarUrl = login && login.imagen && (`http://localhost:9999/images/${login.imagen}.jpg`)
@@ -79,10 +78,17 @@ function Update({ data }) {
             <div className='updateContent'>
                 <form onSubmit={handleSubmit}>
                     <label className='avatarPicker'>
-                        <span>Foto actual:</span>
-                        <div className="avatarEdit" style={avatarStyle} />
-                        <input name="userImage" type="file" accept="image/*" ref={hiddenUpload} onChange={handleChange} style={{ display: 'none' }} />
-                        <div>Has seleccionado: <b>{imageName.name}</b></div>
+                        {!preview &&
+                            <div>
+                                <span>Foto actual:</span>
+                                <div className="avatarEdit" style={avatarStyle} />
+                            </div>}
+                        {preview &&
+                            <div>
+                                <span>Foto seleccionada:</span>
+                                <div className='previewCreate' style={{ backgroundImage: `url(${preview})` }} />
+                            </div>}
+                        <input name="userImage" type="file" accept="image/*" ref={hiddenUpload} onChange={handlePreview} style={{ display: 'none' }} />
                         <button onClick={handleUpload}>Sube una foto</button>
                     </label>
                     <label>

@@ -24,11 +24,11 @@ function Profile() {
 
     return (
         <div className='profileContainer'>
-            <h1>Mi perfil</h1>
+            <h1>{user && user.nombre}</h1>
             <div className='profileUser'>
                 {user &&
                     <div className='userDataContainer'>
-                        <div className='avatar' style={user && user.imagen && { backgroundImage: `url(http://localhost:9999/images/${user.imagen}.jpg)` }} />
+                        <div className='avatar' style={user.imagen && { backgroundImage: `url(http://localhost:9999/images/${user.imagen}.jpg)` }} />
                         <ul>
                             <li><b>{user.nombre}</b></li>
                             <li>Provincia: <b>{user.provincia}</b></li>
@@ -48,7 +48,7 @@ function Profile() {
                     </div>}
                 <div className='tabsContainer'>
                     <div>
-                        <Tabs />
+                        <Tabs id={id} />
                     </div>
                     <Switch>
                         <Route path={`/user/:id/Viviendas`}>
