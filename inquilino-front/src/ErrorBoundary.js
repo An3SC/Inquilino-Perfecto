@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css'
 
 class ErrorBoundary extends React.Component {
     constructor(props) {
@@ -12,8 +13,13 @@ class ErrorBoundary extends React.Component {
 
     render() {
         if (this.state.hasError) {
-            // Puedes renderizar cualquier interfaz de repuesto
-            return <h1>Oops! Esto no va...</h1>;
+            return <div className='errorBoundaryContainer'>
+                <div className='errorBoundary'>
+                    <h1>Anda! Esto no funciona...</h1>
+                    <div className='pulp' />
+                </div>
+
+            </div>;
         }
         return this.props.children;
     }
