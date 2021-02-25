@@ -1,3 +1,4 @@
+import React from 'react'
 import { useState } from "react"
 import { useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
@@ -70,6 +71,20 @@ function CreateHome() {
         setPosition(newPosition)
     }
 
+    const [preview, setPreview] = useState(null)
+
+    const handlePreview = e => {
+        e.preventDefault()
+        setPreview(URL.createObjectURL(e.target.files[0]))
+    }
+
+    const hiddenUpload = React.useRef(null)
+
+    const handleUpload = e => {
+        e.preventDefault()
+        hiddenUpload.current.click()
+    }
+
     return (
         <div className='createHome'>
             <div className='showMap'>
@@ -82,9 +97,14 @@ function CreateHome() {
                     <h1>Rellena los datos</h1>
                     <form onSubmit={handleSubmit}>
                         <label>
-                            <span>Foto del piso:</span>
+                            <div className='previewContainer'>
+                                <span>Foto seleccionada:</span>
+                                {preview &&
+                                    <div className='previewCreate' style={{ backgroundImage: `url(${preview})` }} />}
+                            </div>
                             <div>
-                                <input name="pisoImagen" type="file" accept="image/*" />
+                                <input name="pisoImagen" type="file" onChange={handlePreview} ref={hiddenUpload} style={{ display: 'none' }} accept="image/*" />
+                                <button onClick={handleUpload}>Sube una foto</button>
                             </div>
                         </label>
                         <input name='ciudad' type='text' placeholder='Ciudad...' value={ciudad} onChange={e => setCiudad(e.target.value)} />
