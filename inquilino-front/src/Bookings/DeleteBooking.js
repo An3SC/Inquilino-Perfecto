@@ -22,7 +22,7 @@ function DeleteBooking({ id }) {
 
     return (
         <div>
-            <button onClick={handleDelete}>Eliminar</button>
+            <div className='deleteHomeButton' onClick={(e) => { if (window.confirm('¿De veras quieres borrarla?')) handleDelete(e) }}>Borrar</div>
         </div>
     )
 }
