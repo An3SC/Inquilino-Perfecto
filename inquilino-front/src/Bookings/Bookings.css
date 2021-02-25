@@ -131,8 +131,8 @@
 .reservarContainer button {
     font-weight: bold;
     border-radius: 5px;
-    height: 3vh;
-    width: 5vw;
+    height: 30px;
+    width: 90px;
     margin: 15px;
     cursor: pointer;
     transition: all .3s;
@@ -145,3 +145,25 @@
 .reservarContainer button:active {
     background: whitesmoke;
   }
+
+.boyCouch {
+    background: url('../icons/chicosofaportatil.png') no-repeat;
+    background-size: cover;
+    width: 550px;
+    height: 550px;
+}
+
+@media screen and (max-width: 1300px) {
+
+}
+
+@media screen and (max-width: 700px) {
+  
+}
+
+@media screen and (max-width: 430px) {
+  .reservarContainer {
+      width: 200px;
+      height: 120px;
+  }
+}

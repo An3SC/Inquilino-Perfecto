@@ -52,6 +52,7 @@ function BookingId({ reserva }) {
                         </div>}
                     </div>
                 </div>}
+            <div className='boyCouch' />
         </div>
     )
 }
