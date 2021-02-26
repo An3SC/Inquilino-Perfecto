@@ -44,6 +44,13 @@
   transform: scale(1.1);
 }
 
+.boyCat {
+  background: url('../icons/chicosofagato.png') no-repeat;
+  background-size: cover;
+  width: 300px;
+  height: 300px;
+}
+
 /* ESTILOS DE SEARCHPAGE */
 
 .filterContainer, .showMap, .createHomeForm form, .homeFormOptions, .homePicker {
@@ -729,5 +736,10 @@ transform: scale(0.99);
   }
   .homeOwner {
     height: 20px;
+  }
+  .boyCat {
+    margin-top: 30px;
+    width: 200px;
+    height: 200px;
   }
 }

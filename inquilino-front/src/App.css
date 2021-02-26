@@ -37,6 +37,10 @@
   padding-bottom: 300px;
 }
 
+textarea, input {
+  font-family: 'quicksandlight', sans-serif;
+}
+
 .App button {
   font-family: 'quicksandlight', sans-serif;
   font-weight: bold;
@@ -427,5 +431,8 @@ background-size: contain;
     width: 20px;
     height: 20px;
     margin: 0 5px 5px 0;
+  }
+  input {
+    font-size: 12px;
   }
 }

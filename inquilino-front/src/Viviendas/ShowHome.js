@@ -16,8 +16,6 @@ function ShowHome({ data }) {
 
     const login = useSelector(s => s.login)
 
-    const viviendaUsuario = data.id_usuario
-
     return (
         <div >
             {data.map(v =>
@@ -50,16 +48,14 @@ function ShowHome({ data }) {
                                     <p>Este piso pertece a</p>
                                     <Link to={`/user/${v.id_usuario}`}><p className='homeOwner'>{v.nombre}</p></Link>
                                 </div>}
-                            {v.id_usuario === login.id &&
-                                <div>
-                                    <Link to={`/myHome/${id}`}>Ver más</Link>
-                                </div>
-                            }
-                            {!(login.id === viviendaUsuario) &&
+                            {v.id_usuario !== login.id &&
                                 <Reservar />
                             }
-                            {(login.id === viviendaUsuario) &&
-                                <Link to={`/updateHome/${id}`}>Editar</Link>
+                            {v.id_usuario === login.id &&
+                                <Link to={`/myHome/${id}`}><button className='editButton1' /></Link>
+                            }
+                            {v.id_usuario === login.id &&
+                                <div className='boyCat' />
                             }
                         </div>
                     </div>

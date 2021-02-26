@@ -222,4 +222,10 @@
         width: 100px;
         height: 100px;
     }
+    .updateButton {
+        width: 75px;
+    }
+    .avatarPicker {
+        margin: 15px 0 15px 0;
+    }
 }

@@ -10,8 +10,8 @@ function MyBookings() {
     const bookingsData = useFetch(`http://localhost:9999/reserva`) || []
     console.log(bookingsData)
 
-    const paginatedResults = bookingsData ? bookingsData.slice(3 * (page - 1), 3 * page) : []
-    const max = bookingsData ? Math.ceil(bookingsData.length / 3) : []
+    const paginatedResults = bookingsData ? bookingsData.slice(2 * (page - 1), 2 * page) : []
+    const max = bookingsData ? Math.ceil(bookingsData.length / 2) : []
 
     return (
         <div className='myBookingsContainer'>

@@ -132,4 +132,7 @@
     .registerContent {
       width: 250px;
     }
+    .loginContent input, .registerContent input {
+      width: 160px;
+    }
   }
