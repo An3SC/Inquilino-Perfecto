@@ -286,6 +286,7 @@ const getBooking = async (id) => {
                     r.fecha_salida,
                     r.score_piso,
                     r.estado,
+                    p.imagen,
                     r.score_usuario
                     from reserva r join piso p on r.id_piso =p.id where r.id_reserva = ?`
     const params = [id]
