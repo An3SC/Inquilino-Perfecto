@@ -103,15 +103,33 @@
     background: whitesmoke;
     font-size: 20px;
   }
-
-  @media screen and (max-width: 1300px) {
-
-  }
-  
-  @media screen and (max-width: 700px) {
-    
-  }
   
   @media screen and (max-width: 430px) {
-    
+    .recoveryContent h1, .changeEmailContent h1,
+    .loginContent h1, .registerContent h1 {
+      font-size: 25px;
+    }
+    .recoveryContent, .changeEmailContent,
+    .loginContent {
+      width: 250px;
+      height: 250px;
+    }
+    .changeEmailContent, .loginContent {
+      font-size: 12px;
+    }
+    .recoveryContent button, .changeEmailContent button,
+    .loginContent button, .registerContent button {
+      width: 25px;
+      height: 25px;
+    }
+    .pikachuRunning, .pikachuSent {
+      width: 85px;
+      height: 85px;
+    }
+    .pikachuSent, .loginContainer h1, .registerContainer h1 {
+      margin-top: 0;
+    }
+    .registerContent {
+      width: 250px;
+    }
   }

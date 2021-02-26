@@ -47,7 +47,7 @@
     align-items: center;
 }
 
-.myBookingsContent .aceptada {
+.myBookingsContent .aceptada, .bookingIdContent .aceptada {
     background: #717E4D;
     height: 140px;
     width: 140px;
@@ -57,7 +57,7 @@
     align-items: center;
 }
 
-.myBookingsContent .declinada {
+.myBookingsContent .declinada, .bookingIdContent .declinada {
     background: #781D0C;
     height: 140px;
     width: 140px;
@@ -153,17 +153,61 @@
     height: 550px;
 }
 
-@media screen and (max-width: 1300px) {
-
-}
-
-@media screen and (max-width: 700px) {
-  
-}
-
 @media screen and (max-width: 430px) {
   .reservarContainer {
       width: 200px;
       height: 120px;
+  }
+  .myBookingsContainer h1{
+    font-size: 20px;
+  }
+  .myBookingsContainer {
+    width: 300px;
+    height: 300px;
+  }
+  .myBookingsContainer .pagination {
+    padding: 5px;
+  }
+  .myBookingsContent {
+    width: 250px;
+    height: 120px;
+    font-size: 10px;
+  }
+  .myBookingsContent .aceptada, .myBookingsContent .declinada,
+  .bookingIdContent .aceptada, .bookingIdContent .declinada {
+    width: 95px;
+    height: 95px;
+    margin-right: 5px;
+  }
+  .myBookingsContent .pendiente, .bookingIdContent .pendiente {
+      margin-right: 5px;
+  }
+  .myBookingsContent a div .bookingImagen {
+    width: 85px;
+    height: 85px;
+  }
+  .bookingIdContainer h1 {
+      margin-top: none;
+  }
+  .bookingIdContent {
+      width: 300px;
+      font-size: 12px;
+  }
+  .bookingIdContent .bookingImagen {
+      width: 85px;
+      height: 85px;
+  }
+  .boyCouch {
+      width: 300px;
+      height: 300px;
+  }
+  .reservarLabel {
+      font-size: 12px;
+  }
+  .reservarContainer {
+      height: 150px;
+  }
+  .reservarLabel input {
+      width: 45px;
   }
 }

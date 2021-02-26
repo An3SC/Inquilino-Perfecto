@@ -30,14 +30,12 @@ function SearchPage() {
     const parsedData = queryString.parse(window.location.search)
 
     const stringifiedData = queryString.stringify(parsedData)
-    console.log(stringifiedData)
 
     const searchPage = useFetch(`http://localhost:9999/vivienda/busqueda?`
         + (cityUrl ? `ciudad=${cityUrl}` : '')
         + (`&${stringifiedData}`)) || []
 
     const results = searchPage.data
-    console.log(results)
 
     const paginatedResults = results ? results.slice(3 * (page - 1), 3 * page) : []
     const max = results ? Math.ceil(results.length / 3) : []
@@ -197,10 +195,10 @@ function SearchPage() {
                                     ({result.countScores})
                                 </div>
                                 <ul>
-                                    <li>Ciudad: {result.ciudad}</li>
-                                    <li>Provincia: {result.provincia}</li>
-                                    <li>Dirección: {result.direccion}</li>
-                                    <li>Precio: {result.precio_piso}€</li>
+                                    <li>Ciudad: <b>{result.ciudad}</b></li>
+                                    <li>Provincia: <b>{result.provincia}</b></li>
+                                    <li>Dirección: <b>{result.direccion}</b></li>
+                                    <li>Precio: <b>{result.precio_piso}€</b></li>
                                 </ul>
                             </div>
                         </Link>

@@ -43,12 +43,18 @@ function ShowHome({ data }) {
                             </div>
                             <label className='showHomeStars'>
                                 <Rating value={v.avg_score} />
-                            ({v.countScore})
-                        </label>
-                            <div >
-                                <p>Este piso pertece a</p>
-                                <Link to={`/user/${v.id_usuario}`}><p className='homeOwner'>{v.nombre}</p></Link>
-                            </div>
+                                ({v.countScore})
+                            </label>
+                            {v.id_usuario !== login.id &&
+                                <div className='whoOwns'>
+                                    <p>Este piso pertece a</p>
+                                    <Link to={`/user/${v.id_usuario}`}><p className='homeOwner'>{v.nombre}</p></Link>
+                                </div>}
+                            {v.id_usuario === login.id &&
+                                <div>
+                                    <Link to={`/myHome/${id}`}>Ver más</Link>
+                                </div>
+                            }
                             {!(login.id === viviendaUsuario) &&
                                 <Reservar />
                             }
@@ -58,9 +64,10 @@ function ShowHome({ data }) {
                         </div>
                     </div>
                 </div>
-            )}
+            )
+            }
 
-        </div>
+        </div >
     )
 }
 
