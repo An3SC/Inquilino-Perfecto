@@ -228,4 +228,8 @@
     .avatarPicker {
         margin: 15px 0 15px 0;
     }
+    .userDataContainer ul {
+        width: 200px;
+        text-align: justify;
+    }
 }

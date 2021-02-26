@@ -20,12 +20,12 @@ function ShowHome({ data }) {
         <div >
             {data.map(v =>
                 <div className='showHomePage'>
-                    <div className='showMap'>
-                        <h3>Localización</h3>
-                        <Map id={id} />
-                    </div>
+                    <h1 id='direccionShow'>{v.direccion}</h1>
                     <div className='showHomeContainer'>
-                        <h1 id='direccionShow'>{v.direccion}</h1>
+                        <div className='showMap'>
+                            <h3>Localización</h3>
+                            <Map id={id} />
+                        </div>
                         <div className='showHomeContent'>
                             <div className='showHomeData'>
                                 <div className='pisoImagen' style={data[0].imagen && { backgroundImage: `url(http://localhost:9999/images/${data[0].imagen}.jpg)` }} />

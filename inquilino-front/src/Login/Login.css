@@ -106,19 +106,21 @@
   
   @media screen and (max-width: 430px) {
     .recoveryContent h1, .changeEmailContent h1,
-    .loginContent h1, .registerContent h1 {
+    .loginContent h1, .registerContent h1,
+    .resetContent h1 {
       font-size: 25px;
     }
     .recoveryContent, .changeEmailContent,
-    .loginContent {
+    .loginContent, .resetContent {
       width: 250px;
       height: 250px;
     }
-    .changeEmailContent, .loginContent {
+    .changeEmailContent, .loginContent, .resetContent {
       font-size: 12px;
     }
     .recoveryContent button, .changeEmailContent button,
-    .loginContent button, .registerContent button {
+    .loginContent button, .registerContent button,
+    .resetContent button {
       width: 25px;
       height: 25px;
     }
@@ -132,7 +134,9 @@
     .registerContent {
       width: 250px;
     }
-    .loginContent input, .registerContent input {
+    .loginContent input, .registerContent input,
+    .recoveryContent input, .changeEmailContent input,
+    .resetContent input {
       width: 160px;
     }
   }

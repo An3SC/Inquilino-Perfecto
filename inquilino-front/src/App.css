@@ -435,4 +435,7 @@ background-size: contain;
   input {
     font-size: 12px;
   }
+  .userMenu {
+    margin-right: 0;
+  }
 }

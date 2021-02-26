@@ -206,6 +206,12 @@
   align-items: flex-start;
 }
 
+.showHomePage {
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+}
+
 .showMap {
   margin-top: 118px;
   margin-bottom: auto;
@@ -244,7 +250,12 @@
 }
 
 .showHomeContainer {
+  flex-direction: row;
   justify-content: flex-start;
+}
+
+.showHomeContainer .showMap {
+  margin-top: 0;
 }
 
 .showHomeContent ul {
@@ -271,8 +282,9 @@
 
 .createHome {
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .previewCreate {
@@ -281,6 +293,15 @@
   height: 200px;
   background-size: cover;
   background-position: center;
+}
+
+.createHomeContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.createHomeContainer .showMap {
+  margin-top: 0;
 }
 
 .createHomeForm h1 {
@@ -546,7 +567,7 @@ transform: scale(0.99);
   }
   .createHomeForm {
     width: 400px;
-    min-height: 650px;
+    height: 650px;
   }
   .createHomeForm textarea {
     width: 250px;
@@ -597,9 +618,6 @@ transform: scale(0.99);
 }
 
 @media screen and (max-width: 700px) {
-  .previewContainer{
-    display: none;
-  }
   .createHomeForm {
     width: 350px;
     height: 620px;
@@ -645,9 +663,9 @@ transform: scale(0.99);
 }
 
 @media screen and (max-width: 430px) {
-  .previewContainer{
+  /* .previewContainer{
     display: none;
-  }
+  } */
   .showMap {
     display: none;
   }
@@ -680,10 +698,12 @@ transform: scale(0.99);
   }
   .result ul {
     font-size: 10px;
+    text-align: justify;
+    width: 110px;
   }
   .pisoImagen {
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
   }
   .myHomesContainer h1{
     font-size: 20px;
@@ -702,6 +722,10 @@ transform: scale(0.99);
   }
   .myHomes a {
     height: 35px;
+  }
+  .myHomes ul {
+    width: 120px;
+    text-align: justify;
   }
   .updateHomeContainer h1 {
     margin-top: 0;
@@ -741,5 +765,19 @@ transform: scale(0.99);
     margin-top: 30px;
     width: 200px;
     height: 200px;
+  }
+  .createHomeContainer h1 {
+    margin-top: 0;
+  }
+  .createHomeForm {
+    width: 300px;
+    min-height: 600px;
+  }
+  .createHomeForm input:not([type=checkbox]) {
+    margin-top: 7px;
+    width: 200px;
+  }
+  .previewContainer {
+    margin-top: -25px;
   }
 }
