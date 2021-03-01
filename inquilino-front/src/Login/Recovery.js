@@ -7,12 +7,12 @@ function Recovery() {
 
     const handleSubmit = async e => {
         e.preventDefault()
-        const ret = await fetch('http://localhost:9999/usuario/recover-password', {
+        const res = await fetch('http://localhost:9999/usuario/recover-password', {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email }),
             method: 'POST'
         })
-        if (ret.ok) {
+        if (res.ok) {
             setEmail('')
             setSent(true)
         } else {

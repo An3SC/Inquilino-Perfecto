@@ -15,12 +15,12 @@ function Register() {
         if (user.password !== confirmPassword) {
             alert('Las contraseñas deben coincidir')
         } else {
-            const ret = await fetch('http://localhost:9999/usuario', {
+            const res = await fetch('http://localhost:9999/usuario', {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(user),
                 method: 'POST'
             })
-            if (ret.ok) {
+            if (res.ok) {
                 setUser('')
                 setRegistered(true)
             } else {
@@ -50,7 +50,7 @@ function Register() {
                         <button />
                     </form>}
                 {registered &&
-                    <div>
+                    <div className='registeredMessage'>
                         <label>¡Revisa tu email, te hemos enviado un correo electrónico!</label>
                         <Link to='/login'>Inicia sesión</Link>
                     </div>

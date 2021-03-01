@@ -193,7 +193,7 @@ async function main() {
 
         console.log('******PISOS CREADOS')
 
-        let reserva = 75;
+        let reserva = 150;
 
         for (let i = 1; i <= reserva; i++) {
             const precio_reserva = random(200, 2000);

@@ -39,22 +39,23 @@ function ShowHome({ data }) {
                                     <li><b>{v.score_piso}</b></li>
                                 </ul>
                             </div>
-                            <label className='showHomeStars'>
+                            {login &&
+                                <label className='showHomeStars'>
                                 <Rating value={v.avg_score} />
                                 ({v.countScore})
-                            </label>
-                            {v.id_usuario !== login.id &&
+                            </label>}
+                            {login && v.id_usuario !== login.id &&
                                 <div className='whoOwns'>
                                     <p>Este piso pertece a</p>
                                     <Link to={`/user/${v.id_usuario}`}><p className='homeOwner'>{v.nombre}</p></Link>
                                 </div>}
-                            {v.id_usuario !== login.id &&
+                            {login && v.id_usuario !== login.id &&
                                 <Reservar />
                             }
-                            {v.id_usuario === login.id &&
+                            {login && v.id_usuario === login.id &&
                                 <Link to={`/myHome/${id}`}><button className='editButton1' /></Link>
                             }
-                            {v.id_usuario === login.id &&
+                            {login && v.id_usuario === login.id &&
                                 <div className='boyCat' />
                             }
                         </div>

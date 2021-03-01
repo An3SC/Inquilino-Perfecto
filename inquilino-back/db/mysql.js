@@ -62,7 +62,7 @@ const getUserById = async (id) => {
                     avg(r.score_usuario) as score_usuario,
                     count(r.score_usuario) as count_score_usuario,
                     validationCode
-                    from usuario u left join reserva r on r.id_usuario = u.id where u.id = ? group by r.id_reserva`
+                    from usuario u left join reserva r on r.id_usuario = u.id where u.id = ? group by u.id`
     const params = [id]
 
     const result = await performQuery(query, params)
@@ -126,7 +126,8 @@ const checkValidationCode = async (code) => {
     const query = `select * from usuario where validationCode = ?`
     const params = [code]
 
-    const [result] = await performQuery(query, params)
+    const result = await performQuery(query, params)
+    console.log(result)
 
     if (result) {
         const query = `update usuario set estado = 'activo', validationCode = '' where validationCode = ?`

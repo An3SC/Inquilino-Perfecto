@@ -1,14 +1,19 @@
 /* MISCELANEA */
 
-.previewContainer, .filterContainer .otrosFiltros,
-.showHomeContainer, .createHomeContainer,
-.updateHomeContainer, .myHomesContainer {
+.previewContainer,
+.filterContainer .otrosFiltros,
+.showHomeContainer,
+.createHomeContainer,
+.updateHomeContainer,
+.myHomesContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.pagination, .moreFilters, .searchFilters {
+.pagination,
+.moreFilters,
+.searchFilters {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,18 +31,19 @@
   border: none;
   margin: 0 10px 0 0;
   cursor: pointer;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 .pagination .forward {
-  background: url('../icons/fast-forward-double-right-arrows-symbol.png') no-repeat;
+  background: url('../icons/fast-forward-double-right-arrows-symbol.png')
+    no-repeat;
   background-size: contain;
   height: 2vh;
   width: 1vw;
   border: none;
   margin: 0 0 0 10px;
   cursor: pointer;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 .pagination button:hover {
@@ -53,7 +59,11 @@
 
 /* ESTILOS DE SEARCHPAGE */
 
-.filterContainer, .showMap, .createHomeForm form, .homeFormOptions, .homePicker {
+.filterContainer,
+.showMap,
+.createHomeForm form,
+.homeFormOptions,
+.homePicker {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -92,7 +102,7 @@
 .moreFilters {
   height: 3.5vh;
   border-radius: 5px;
-  transition: all .3s;
+  transition: all 0.3s;
   border: 1px black solid;
   padding: 5px;
   margin-right: 5px;
@@ -101,10 +111,10 @@
 }
 
 .moreFilters:hover {
-  background: #F5C634;
+  background: #f5c634;
 }
 
-.moreFilters:active{
+.moreFilters:active {
   background: whitesmoke;
 }
 
@@ -117,14 +127,14 @@
   padding: 10px;
   margin: 0 20px 0 15px;
   cursor: pointer;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 .searchButton:hover {
   transform: scale(1.1);
 }
 
-.searchFilters input[type=text] {
+.searchFilters input[type='text'] {
   height: 3vh;
   font-size: 15px;
   padding-right: 10px;
@@ -136,70 +146,71 @@
   display: flex;
   flex-direction: column;
 }
-  
-  .searchResults {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: all .3s;
-  }
 
-  .searchResults a:link, a:visited {
-    text-decoration: none;
-    color: black;
-  }
+.searchResults {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s;
+}
 
-  .result {
-    width: 800px;
-    height: 25vh;
-    transition: all 0.3s;
-    background: whitesmoke;
-    box-shadow: 1px 2px 3px 2px rgba(150, 150, 150, 0.75);
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-around;
-    border: 1px solid black;
-    align-items: center;
-    margin: 10px;
-  }
-  
-  .result:hover {
-    transform: scale(1.02);
-    color: black;
-  }
+.searchResults a:link,
+a:visited {
+  text-decoration: none;
+  color: black;
+}
 
-  .result:active {
-    background: #F5C634;
-  }
+.result {
+  width: 800px;
+  height: 25vh;
+  transition: all 0.3s;
+  background: whitesmoke;
+  box-shadow: 1px 2px 3px 2px rgba(150, 150, 150, 0.75);
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid black;
+  align-items: center;
+  margin: 10px;
+}
 
-  .result ul {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    list-style: none;
-    padding-left: 0;
-    margin-left: 0;
-  }
-  
-  .result li {
-    padding: 5px;
-  }
+.result:hover {
+  transform: scale(1.02);
+  color: black;
+}
 
-  .pisoImagen {
-    background: url('../icons/houseIreneFlorentina.jpg') no-repeat;
-    width: 150px;
-    height: 150px;
-    background-size: cover;
-    border: 1px solid rgb(150, 150, 150);
-    box-shadow: inset 2px 3px 5px 0 rgba(150, 150, 150, 0.75);
-  }
+.result:active {
+  background: #f5c634;
+}
 
+.result ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
 
+.result li {
+  padding: 5px;
+}
+
+.pisoImagen {
+  background: url('../icons/houseIreneFlorentina.jpg') no-repeat;
+  width: 150px;
+  height: 150px;
+  background-size: cover;
+  border: 1px solid rgb(150, 150, 150);
+  box-shadow: inset 2px 3px 5px 0 rgba(150, 150, 150, 0.75);
+}
 
 /* ESTILOS DE SHOWHOME */
 
-.showHomePage , .firstInputs, .scoreHomeBooking {
+.showHomePage,
+.firstInputs,
+.scoreHomeBooking {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -234,15 +245,15 @@
   border: 1px solid black;
   font-weight: bold;
   border-radius: 5px;
-  height: 25px;
+  max-height: 40px;
   width: 90px;
   margin: 15px;
   cursor: pointer;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 .homeOwner:hover {
-  background: #F5C634;
+  background: #f5c634;
 }
 
 .homeOwner:active {
@@ -277,7 +288,6 @@
   margin-top: 35px;
 }
 
-
 /* ESTILOS DE CREATEHOME */
 
 .createHome {
@@ -308,20 +318,22 @@
   font-size: 30px;
 }
 
-.createHomeForm, .updateHomeContent, .showHomeContent {
+.createHomeForm,
+.updateHomeContent,
+.showHomeContent {
   display: flex;
   flex-direction: column;
-  justify-content:flex-start;
+  justify-content: flex-start;
   align-items: center;
   border-radius: 5px;
   border: 1px solid black;
   width: 35vw;
-  height: 75vh;
+  max-height: 90vh;
   box-shadow: 1px 2px 3px 2px rgba(150, 150, 150, 0.75);
   background: whitesmoke;
 }
 
-.createHomeForm input:not([type=checkbox]) {
+.createHomeForm input:not([type='checkbox']) {
   height: 3vh;
   min-width: 20vw;
   margin-top: 15px;
@@ -333,30 +345,29 @@
 }
 
 .publicarHome {
-margin-top: 10px;
-font-size: 15px;
-font-weight: bold;
-border-radius: 5px;
-width: 80px;
-height: 35px;
-transition: all .3s;
-cursor: pointer;
+  margin-top: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 5px;
+  width: 80px;
+  height: 35px;
+  transition: all 0.3s;
+  cursor: pointer;
 }
 
 .publicarHome:hover {
-background: #F5C634;
+  background: #f5c634;
 }
 
 .publicarHome:active {
-background: whitesmoke;
-transform: scale(0.99);
+  background: whitesmoke;
+  transform: scale(0.99);
 }
 
 .errorCreacion {
-  color: #781D0C;
+  color: #781d0c;
   font-weight: bold;
 }
-
 
 /* ESTILOS DE UPDATEHOME */
 
@@ -365,7 +376,7 @@ transform: scale(0.99);
   padding-left: 0;
 }
 
-.updateHomeContent form input:not([type=checkbox]) {
+.updateHomeContent form input:not([type='checkbox']) {
   height: 25px;
   min-width: 150px;
   margin-top: 15px;
@@ -389,88 +400,88 @@ transform: scale(0.99);
   border: 1px solid black;
   border-radius: 5px;
   padding: 10px;
-
 }
 
-  .editButton1 {
-    background: url('../icons/edit.png') no-repeat;
-    background-size: contain;
-    width: 35px;
-    height: 35px;
-    border: none;
-    cursor: pointer;
-    transition: all .3s;
-  }
+.editButton1 {
+  background: url('../icons/edit.png') no-repeat;
+  background-size: contain;
+  width: 35px;
+  height: 35px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
 
-  .editButton2 {
-    background: url('../icons/return.png') no-repeat;
-    background-size: contain;
-    width: 35px;
-    height: 35px;
-    border: none;
-    cursor: pointer;
-    transition: all .3s;
-  }
+.editButton2 {
+  background: url('../icons/return.png') no-repeat;
+  background-size: contain;
+  width: 35px;
+  height: 35px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
 
-  .editButton1:hover, .editButton2:hover  {
-    transform: scale(1.09);
-  }
+.editButton1:hover,
+.editButton2:hover {
+  transform: scale(1.09);
+}
 
-  .editButton1:active, .editButton2:active  {
-    transform: scale(0.97);
-  }
+.editButton1:active,
+.editButton2:active {
+  transform: scale(0.97);
+}
 
-  .deleteHomeButton {
-    border: 1px solid black;
-    border-radius: 5px;
-    width: 60px;
-    height: 20px;
-    cursor: pointer;
-    background: #781D0C;
-    color: whitesmoke;
-    font-weight: bold;
-    transition: all .3s;
-  }
+.deleteHomeButton {
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 60px;
+  height: 20px;
+  cursor: pointer;
+  background: #781d0c;
+  color: whitesmoke;
+  font-weight: bold;
+  transition: all 0.3s;
+}
 
-  .updateHomeButtons {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-  }
+.updateHomeButtons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
 
-  .updateHomeButtons button {
-    border: 1px solid black;
-    border-radius: 5px;
-    width: 65px;
-    height: 25px;
-    font-weight: bold;
-    transition: all .3s;
-  }
+.updateHomeButtons button {
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 65px;
+  height: 25px;
+  font-weight: bold;
+  transition: all 0.3s;
+}
 
-  .updateHomeButtons button:hover {
-    background: #F5C634;
-  }
+.updateHomeButtons button:hover {
+  background: #f5c634;
+}
 
-  .updateHomeButtons button:active {
-    background: whitesmoke;
-  }
+.updateHomeButtons button:active {
+  background: whitesmoke;
+}
 
-  .deleteHomeButton:hover {
-    transform: scale(1.1);
-  }
+.deleteHomeButton:hover {
+  transform: scale(1.1);
+}
 
-  .obiWanBanner {
-    background: url('../icons/obiWan.gif') no-repeat;
-    background-size: cover;
-    width: 35vw;
-    height: 30vh;
-    margin-top: 75px;
-    border-radius: 5px;
-    border: 3px black solid;
-  }
+.obiWanBanner {
+  background: url('../icons/obiWan.gif') no-repeat;
+  background-size: cover;
+  width: 35vw;
+  height: 30vh;
+  margin-top: 75px;
+  border-radius: 5px;
+  border: 3px black solid;
+}
 
-
-  /* ESTILOS DE MYHOMES */
+/* ESTILOS DE MYHOMES */
 
 .myHomesContainer {
   width: 30vw;
@@ -507,11 +518,11 @@ transform: scale(0.99);
   height: 3vh;
   width: 10vw;
   padding: 5px;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 .myHomesContainer a:hover {
-  background: #F5C634;
+  background: #f5c634;
 }
 
 .myHomesContainer a:active {
@@ -531,7 +542,6 @@ transform: scale(0.99);
   align-items: flex-start;
   margin-left: 30px;
 }
-
 
 /* ESTILOS DE HOMEBOOKINGS */
 
@@ -558,7 +568,6 @@ transform: scale(0.99);
 .scoreHomeBooking {
   height: 25px;
 }
-
 
 @media screen and (max-width: 1300px) {
   .previewCreate {
@@ -589,7 +598,7 @@ transform: scale(0.99);
     width: 125px;
     height: 125px;
   }
-  .searchFilters input[type=text] {
+  .searchFilters input[type='text'] {
     height: 25px;
     width: 110px;
   }
@@ -603,15 +612,15 @@ transform: scale(0.99);
     height: 500px;
     width: 200px;
   }
-  
+
   .filterContainer label {
     flex-direction: column;
   }
-  
+
   .filterContainer label p {
     margin: 10px;
   }
-  
+
   .filterContainer .otrosFiltros {
     flex-direction: row;
   }
@@ -631,7 +640,7 @@ transform: scale(0.99);
     width: 220px;
     margin-right: 10px;
   }
-  .searchFilters input[type=text] {
+  .searchFilters input[type='text'] {
     height: 25x;
     width: 80px;
   }
@@ -688,7 +697,7 @@ transform: scale(0.99);
     justify-content: flex-start;
     align-items: center;
   }
-  .searchFilters input[type=text] {
+  .searchFilters input[type='text'] {
     height: 20x;
     width: 55px;
   }
@@ -705,7 +714,7 @@ transform: scale(0.99);
     width: 90px;
     height: 90px;
   }
-  .myHomesContainer h1{
+  .myHomesContainer h1 {
     font-size: 20px;
   }
   .myHomesContainer {
@@ -736,7 +745,8 @@ transform: scale(0.99);
   .myHomeData {
     font-size: 12px;
   }
-  .editButton1, .editButton2 {
+  .editButton1,
+  .editButton2 {
     width: 25px;
     height: 25px;
   }
@@ -749,7 +759,7 @@ transform: scale(0.99);
   .firstInputs fieldset {
     padding: 1px;
   }
-  .firstInputs input:not([type=checkbox]) {
+  .firstInputs input:not([type='checkbox']) {
     width: 5px;
   }
   textarea {
@@ -773,7 +783,7 @@ transform: scale(0.99);
     width: 300px;
     min-height: 600px;
   }
-  .createHomeForm input:not([type=checkbox]) {
+  .createHomeForm input:not([type='checkbox']) {
     margin-top: 7px;
     width: 200px;
   }
