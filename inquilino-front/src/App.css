@@ -1,30 +1,29 @@
 @font-face {
   font-family: 'quicksandlight';
-  src: url('./fonts/finalFonts/quicksand-variablefont_wght-webfont.woff2') format('woff2'),
-       url('./fonts/finalFonts/quicksand-variablefont_wght-webfont.woff') format('woff');
+  src: url('./fonts/finalFonts/quicksand-variablefont_wght-webfont.woff2')
+      format('woff2'),
+    url('./fonts/finalFonts/quicksand-variablefont_wght-webfont.woff')
+      format('woff');
   font-weight: normal;
   font-style: normal;
-
 }
 
 @font-face {
   font-family: 'lobster_twoitalic';
   src: url('./fonts/finalFonts/lobstertwo-italic-webfont.woff2') format('woff2'),
-       url('./fonts/finalFonts/lobstertwo-italic-webfont.woff') format('woff');
+    url('./fonts/finalFonts/lobstertwo-italic-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
-
 }
 
 @font-face {
   font-family: 'lobster_twobold_italic';
-  src: url('./fonts/finalFonts/lobstertwo-bolditalic-webfont.woff2') format('woff2'),
-       url('./fonts/finalFonts/lobstertwo-bolditalic-webfont.woff') format('woff');
+  src: url('./fonts/finalFonts/lobstertwo-bolditalic-webfont.woff2')
+      format('woff2'),
+    url('./fonts/finalFonts/lobstertwo-bolditalic-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
-
 }
-
 
 .App {
   text-align: center;
@@ -37,7 +36,8 @@
   padding-bottom: 300px;
 }
 
-textarea, input {
+textarea,
+input {
   font-family: 'quicksandlight', sans-serif;
 }
 
@@ -61,7 +61,7 @@ textarea, input {
 }
 
 .App a:hover {
-  color:#d8ad2e
+  color: #d8ad2e;
 }
 
 html {
@@ -101,34 +101,51 @@ html {
   color: whitesmoke;
 }
 
-.pageHome, .errorBoundaryContainer, .firstSearch,
-.videoHome, .loginContainer,
-.recoveryContainer, .registerContainer,
-.searchPage, .showHomePage,
-.createHome, .profileContainer,
-.myHomesContainer, .updateContainer,
-.myBookingsContainer, .updateHomeContainer,
-.bookingIdContainer, .resetContainer,
+.pageHome,
+.errorBoundaryContainer,
+.firstSearch,
+.videoHome,
+.loginContainer,
+.recoveryContainer,
+.registerContainer,
+.searchPage,
+.showHomePage,
+.createHome,
+.profileContainer,
+.myHomesContainer,
+.updateContainer,
+.myBookingsContainer,
+.updateHomeContainer,
+.bookingIdContainer,
+.resetContainer,
 .changeEmailContainer {
   height: 1100px;
   width: 100%;
 }
 
-.loginContainer, .changeEmailContainer,
-.recoveryContainer, .registerContainer,
-.pageHome, .searchPage, .resetContainer,
-.validateContainer, .showHomePage,
-.createHome, .profileContainer,
- .updateContainer, .updateHomeContainer,
-.bookingIdContainer, .errorBoundaryContainer {
-  position:relative;
+.loginContainer,
+.changeEmailContainer,
+.recoveryContainer,
+.registerContainer,
+.pageHome,
+.searchPage,
+.resetContainer,
+.validateContainer,
+.showHomePage,
+.createHome,
+.profileContainer,
+.updateContainer,
+.updateHomeContainer,
+.bookingIdContainer,
+.errorBoundaryContainer {
+  position: relative;
   z-index: 1;
-  background: linear-gradient(-340deg, #F5C634 50%, whitesmoke 0%);
-  box-shadow: 0px 8px 2px -2px rgba(0, 0, 0, 0.75);;
+  background: linear-gradient(-340deg, #f5c634 50%, whitesmoke 0%);
+  box-shadow: 0px 8px 2px -2px rgba(0, 0, 0, 0.75);
 }
 
 .headerContainer {
-  position:relative;
+  position: relative;
   background: whitesmoke;
   display: flex;
   height: 10vh;
@@ -142,7 +159,7 @@ html {
 }
 
 .userMenu {
-  margin-right: 15vw
+  margin-right: 15vw;
 }
 
 .burgerUser {
@@ -152,19 +169,18 @@ html {
   border-radius: 5px;
   width: 80px;
   height: 30px;
-  transition: all .3s;
+  transition: all 0.3s;
   cursor: pointer;
 }
 
 .burgerUser:hover {
-  background: #F5C634;
+  background: #f5c634;
 }
 
 .burgerUser:active {
   background: whitesmoke;
   transform: scale(0.99);
 }
-
 
 .linksContainer .userMenu {
   display: flex;
@@ -210,7 +226,7 @@ html {
 }
 
 .logout:hover {
-  background: #F5C634;
+  background: #f5c634;
 }
 
 .logout:active {
@@ -228,9 +244,9 @@ html {
 }
 
 .footerContainer {
-  background: linear-gradient(340deg, #F5C634 40%, #d8ad2e 0%);
+  background: linear-gradient(340deg, #f5c634 40%, #d8ad2e 0%);
   bottom: 0;
-  left:0;
+  left: 0;
   height: 300px;
   width: 100%;
   position: fixed;
@@ -250,7 +266,6 @@ html {
 .App-link {
   color: #61dafb;
 }
-
 
 .footerContent {
   display: flex;
@@ -277,7 +292,7 @@ html {
 .footerRight a {
   font-family: 'lobster_twoitalic', sans-serif;
   cursor: pointer;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 .footerRight a:hover {
@@ -291,7 +306,8 @@ html {
   justify-content: center;
 }
 
-.footerLinks1, .footerLinks2 {
+.footerLinks1,
+.footerLinks2 {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -309,8 +325,8 @@ html {
 }
 
 .facebookFooter {
-background: url('./icons/facebook.png') no-repeat;
-background-size: contain;
+  background: url('./icons/facebook.png') no-repeat;
+  background-size: contain;
 }
 .youtubeFooter {
   background: url('./icons/youtube.png') no-repeat;
@@ -348,23 +364,33 @@ background-size: contain;
 }
 
 @media screen and (max-width: 1300px) {
-  .footerLeft, .footerRight {
+  .footerLeft,
+  .footerRight {
     width: 350px;
   }
 }
 
 @media screen and (max-width: 700px) {
-.pageHome, .errorBoundaryContainer, .firstSearch,
-.videoHome, .loginContainer,
-.recoveryContainer, .registerContainer,
-.searchPage, .showHomePage,
-.createHome, .profileContainer,
-.myHomesContainer, .updateContainer,
-.myBookingsContainer, .updateHomeContainer,
-.bookingIdContainer, .resetContainer,
-.changeEmailContainer {
-  height: 950px;
-}
+  .pageHome,
+  .errorBoundaryContainer,
+  .firstSearch,
+  .videoHome,
+  .loginContainer,
+  .recoveryContainer,
+  .registerContainer,
+  .searchPage,
+  .showHomePage,
+  .createHome,
+  .profileContainer,
+  .myHomesContainer,
+  .updateContainer,
+  .myBookingsContainer,
+  .updateHomeContainer,
+  .bookingIdContainer,
+  .resetContainer,
+  .changeEmailContainer {
+    height: 950px;
+  }
   .burgerUser {
     width: 60px;
     height: 25px;
@@ -379,13 +405,14 @@ background-size: contain;
     height: 45px;
     border-radius: 5px;
   }
-  .footerLeft, .footerRight {
+  .footerLeft,
+  .footerRight {
     width: 200px;
   }
   .footerLeft h1 {
     font-size: 40px;
   }
-  .footerRight div{
+  .footerRight div {
     font-size: 17px;
   }
   .footerLink {
@@ -396,14 +423,23 @@ background-size: contain;
 }
 
 @media screen and (max-width: 430px) {
-  .pageHome, .errorBoundaryContainer, .firstSearch,
-  .videoHome, .loginContainer,
-  .recoveryContainer, .registerContainer,
-  .searchPage, .showHomePage,
-  .createHome, .profileContainer,
-  .myHomesContainer, .updateContainer,
-  .myBookingsContainer, .updateHomeContainer,
-  .bookingIdContainer, .resetContainer,
+  .pageHome,
+  .errorBoundaryContainer,
+  .firstSearch,
+  .videoHome,
+  .loginContainer,
+  .recoveryContainer,
+  .registerContainer,
+  .searchPage,
+  .showHomePage,
+  .createHome,
+  .profileContainer,
+  .myHomesContainer,
+  .updateContainer,
+  .myBookingsContainer,
+  .updateHomeContainer,
+  .bookingIdContainer,
+  .resetContainer,
   .changeEmailContainer {
     height: 800px;
   }
@@ -418,13 +454,14 @@ background-size: contain;
     padding: 5px;
     right: 5vw;
   }
-  .footerLeft, .footerRight {
+  .footerLeft,
+  .footerRight {
     width: 150px;
   }
   .footerLeft h1 {
     font-size: 30px;
   }
-  .footerRight div{
+  .footerRight div {
     font-size: 15px;
   }
   .footerLink {
